@@ -162,7 +162,6 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("*Powered by Claude Code*")
 
 if company:
-    st.sidebar.write("Files found:", [f.name for f in (out / company).glob("*.md")])
     base = out / company
     src_content = read_file(base/"sources"/"source_index.md")
     src_count = src_content.count("http") if src_content else len(list((base/"sources").glob("*")))
