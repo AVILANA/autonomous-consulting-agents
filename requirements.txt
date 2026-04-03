@@ -1,0 +1,24 @@
+﻿# Autonomous Consulting Agents - Dependencies
+# Core AI
+anthropic>=0.40.0
+
+# Web requests and research
+httpx>=0.27.0
+beautifulsoup4>=4.12.0
+
+# SEC EDGAR access
+edgartools>=2.0.0
+
+# Environment and configuration
+python-dotenv>=1.0.0
+
+# Data processing
+pandas>=2.1.0
+
+# Visualizations
+plotly>=5.18.0
+kaleido>=0.2.1
+
+# Utilities
+rich>=13.7.0
+tenacity>=8.2.0
