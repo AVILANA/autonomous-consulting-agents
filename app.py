@@ -1,7 +1,4 @@
-﻿"# Updated " + (Get-Date -Format "yyyy-MM-dd HH:mm") | Set-Content -Path "app_temp.txt"
-Get-Content "app.py" | Add-Content "app_temp.txt"
-Move-Item -Path "app_temp.txt" -Destination "app.py" -Force
-import streamlit as st
+﻿import streamlit as st
 import streamlit.components.v1 as components
 from pathlib import Path
 import plotly.graph_objects as go
