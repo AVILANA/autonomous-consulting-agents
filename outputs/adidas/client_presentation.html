@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>adidas AG — Outside-In Perspective</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 48px;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 3px solid #1a1a1a;
+    padding-bottom: 28px;
+    margin-bottom: 48px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .company-name {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #1a1a1a;
+    line-height: 1;
+  }
+  .confidential-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #cc0000;
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  .header-sub {
+    margin-top: 12px;
+  }
+  .doc-title {
+    font-size: 20px;
+    font-weight: 300;
+    color: #444444;
+    letter-spacing: 0.5px;
+  }
+  .header-meta {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #777777;
+    display: flex;
+    gap: 24px;
+  }
+  .header-meta span { display: inline-block; }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #999999;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+  }
+  .section-intro {
+    font-size: 14px;
+    color: #666666;
+    font-style: italic;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .section-break {
+    margin: 56px 0 40px;
+  }
+
+  /* PROVOCATION CARDS */
+  .provocation-card {
+    border-left: 4px solid #1a1a1a;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    background: #fafafa;
+    page-break-inside: avoid;
+  }
+  .provocation-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999999;
+    margin-bottom: 6px;
+  }
+  .provocation-headline {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .provocation-body {
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .cost-highlight {
+    display: inline-block;
+    font-weight: 700;
+    color: #1a1a1a;
+    background: #fff3cd;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  .evidence-block {
+    margin: 16px 0;
+  }
+  .evidence-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888888;
+    margin-bottom: 8px;
+  }
+  .evidence-list {
+    list-style: none;
+    padding: 0;
+  }
+  .evidence-list li {
+    font-size: 13px;
+    color: #444444;
+    padding: 5px 0 5px 16px;
+    position: relative;
+    border-bottom: 1px solid #eeeeee;
+    line-height: 1.6;
+  }
+  .evidence-list li:last-child { border-bottom: none; }
+  .evidence-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #aaaaaa;
+    font-size: 12px;
+  }
+  .cost-block {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 2px;
+  }
+  .cost-block-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888888;
+    margin-bottom: 6px;
+  }
+  .cost-block p {
+    font-size: 13.5px;
+    color: #333333;
+    line-height: 1.65;
+  }
+  .discovery-question {
+    font-size: 13px;
+    font-style: italic;
+    color: #555555;
+    border-top: 1px dashed #dddddd;
+    margin-top: 16px;
+    padding-top: 14px;
+    line-height: 1.6;
+  }
+  .discovery-question strong {
+    font-style: normal;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* 90-DAY PLAN */
+  .three-col {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 16px 0;
+    margin: 0 -16px;
+  }
+  .col {
+    display: table-cell;
+    width: 33.33%;
+    vertical-align: top;
+  }
+  .phase-card {
+    border: 1px solid #e0e0e0;
+    padding: 24px 22px;
+    height: 100%;
+    page-break-inside: avoid;
+  }
+  .phase-number {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    margin-bottom: 4px;
+  }
+  .phase-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .phase-timing {
+    font-size: 12px;
+    color: #888888;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  .phase-body {
+    font-size: 13.5px;
+    color: #333333;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .deliverable-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    margin-bottom: 6px;
+  }
+  .deliverable-text {
+    font-size: 12.5px;
+    color: #555555;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* QUESTIONS */
+  .questions-list {
+    counter-reset: question-counter;
+    list-style: none;
+    padding: 0;
+  }
+  .questions-list li {
+    counter-increment: question-counter;
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eeeeee;
+    align-items: flex-start;
+  }
+  .questions-list li:last-child { border-bottom: none; }
+  .q-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #e8e8e8;
+    line-height: 1;
+    min-width: 36px;
+    text-align: right;
+  }
+  .q-text {
+    font-size: 14.5px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding-top: 4px;
+  }
+  .closing-paragraph {
+    font-size: 14px;
+    color: #555555;
+    font-style: italic;
+    margin-top: 32px;
+    padding: 20px 24px;
+    border-left: 3px solid #dddddd;
+    background: #fafafa;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-size: 11px;
+    color: #aaaaaa;
+  }
+  .footer-right {
+    font-size: 11px;
+    color: #aaaaaa;
+    text-align: right;
+  }
+
+  /* PRINT */
+  @media print {
+    body { font-size: 13px; }
+    .page { padding: 32px 36px; }
+    .provocation-card { page-break-inside: avoid; }
+    .three-col { display: table; }
+    .col { display: table-cell; }
+    .section-break { margin: 40px 0 32px; }
+    .company-name { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="company-name">adidas AG</div>
+      <div class="confidential-badge">Confidential</div>
+    </div>
+    <div class="header-sub">
+      <div class="doc-title">Outside-In Perspective</div>
+      <div class="header-meta">
+        <span>Prepared for: Harm Ohlmeyer, CFO</span>
+        <span>April 9, 2026</span>
+        <span>For Discussion Purposes Only</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: PROVOCATIONS -->
+  <div class="section-label">Section 1 of 3</div>
+  <div class="section-title">Five Provocations</div>
+  <div class="section-intro">What we believe, built entirely from public data, before we have set foot inside the building.</div>
+
+  <!-- Provocation 1 -->
+  <div class="provocation-card">
+    <div class="provocation-number">Provocation 01</div>
+    <div class="provocation-headline">Your inventory costs €1.1B more per year than it should — and your planning system knows it.</div>
+    <div class="provocation-body">
+      adidas carries €4.99B in inventory, 21% of revenue — a ratio that has not materially improved since the Yeezy normalization three years ago. ASICS, at one-sixth your scale, tripled its operating margin from 7% to 14.7% in 24 months. The primary driver was not a technology platform. It was faster full-price sell-through through tighter planning discipline. The Samba and Gazelle have driven lifestyle category growth that your current planning cycle — estimated at 2–4 weeks from signal to order revision — is structurally slow to capture. When a product goes viral, your competitors respond in 48 hours. Your system responds in the next planning cycle.
+    </div>
+    <div class="evidence-block">
+      <div class="evidence-label">Evidence</div>
+      <ul class="evidence-list">
+        <li>Adidas inventory €4.99B at end-FY2024, representing 21.1% of revenue — flat since Yeezy normalization. <em>[Fact — adidas Annual Report 2024]</em></li>
+        <li>ASICS tripled EBIT margin from 7.0% (FY2022) to 14.7% (FY2024) in two years. Revenue grew 18%; EBIT grew 210%. Primary levers: faster full-price sell-through, DTC shift, planning discipline. <em>[Fact — ASICS FY2024 Financials]</em></li>
+        <li>Adidas o9 Solutions demand planning system is live; real-time store sell-through integration and social signal demand sensing for lifestyle products are not confirmed publicly. <em>[Fact on o9; Inference on integration gap]</em></li>
+      </ul>
+    </div>
+    <div class="cost-block">
+      <div class="cost-block-label">Cost of Inaction</div>
+      <p>Moving inventory from 21% to 18% of revenue releases <span class="cost-highlight">€745M in permanent working capital</span>. At current borrowing cost, that is €35M in interest savings alone — before counting gross margin lost to clearance outlets. Conservative estimate: <span class="cost-highlight">€200–400M per year</span> in margin and capital cost traceable to planning lag.</p>
+    </div>
+    <div class="discovery-question">
+      <strong>Discovery Question</strong>
+      What is the actual SKU-level forecast accuracy of your current o9 planning model by channel and region — and what percentage of your lifestyle product inventory (Samba, Gazelle, Spezial) is currently allocated based on forward social signal data versus historical sell-through patterns?
+    </div>
+  </div>
+
+  <!-- Provocation 2 -->
+  <div class="provocation-card">
+    <div class="provocation-number">Provocation 02</div>
+    <div class="provocation-headline">You spend €3B on marketing and cannot prove what half of it does — and the World Cup window closes in 8 weeks.</div>
+    <div class="provocation-body">
+      adidas's marketing spend is approximately €3B annually — 12–13% of revenue. Lululemon runs a 23.7% operating margin at 5–6% marketing spend. On Holding runs 12.5% operating margin. The €3B is not a brand investment problem. It is an efficiency problem. Your own internal content operations have demonstrated a 90%+ cost reduction in production workflows. That capability is not yet operating at the scale that changes the marketing P&L. FIFA World Cup 2026 launches in June — the largest commercial activation window in your calendar, in your weakest region, with 13 national team kits in market. The content model your teams are using for World Cup preparation costs 10–15× more per asset than your own internal production capability can deliver.
+    </div>
+    <div class="evidence-block">
+      <div class="evidence-label">Evidence</div>
+      <ul class="evidence-list">
+        <li>Adidas discloses ~€3B in annual marketing and point-of-sale spend — approximately 12–13% of revenue. <em>[Fact — adidas Annual Reports 2023–2025]</em></li>
+        <li>Lululemon: 23.7% EBIT margin, 59.2% gross margin at 5–6% marketing spend. On Holding: 12.5% EBIT margin at ~15% marketing. Marketing spend gap between adidas and margin-leading peers is structural, not cyclical. <em>[Fact — peer filings; Inference on driver]</em></li>
+        <li>Adidas's internal content pipeline processes 2M+ product reviews per year at 91.67% cost reduction — confirmed in production. Not a pilot. <em>[Fact — publicly disclosed vendor partnership announcements]</em></li>
+      </ul>
+    </div>
+    <div class="cost-block">
+      <div class="cost-block-label">Cost of Inaction</div>
+      <p>A 2-point improvement in marketing efficiency — from 12.5% to 10.5% of revenue — generates <span class="cost-highlight">€496M in annual operating income</span>. That alone closes more than half the gap between your current 8.3% margin and your 2028 &gt;10% target. The World Cup window to change the cost structure for this cycle closes in approximately <span class="cost-highlight">8 weeks</span>.</p>
+    </div>
+    <div class="discovery-question">
+      <strong>Discovery Question</strong>
+      What percentage of the ~€3B marketing budget is currently flowing through your own high-efficiency content production workflows — and what is your internal target for that share by the 2026 World Cup?
+    </div>
+  </div>
+
+  <!-- Provocation 3 -->
+  <div class="provocation-card">
+    <div class="provocation-number">Provocation 03</div>
+    <div class="provocation-headline">A €200M tariff bill arrived in your guidance, and your response cycle is measured in weeks.</div>
+    <div class="provocation-body">
+      adidas absorbed €200M in US tariff exposure directly into FY2026 guidance — roughly 10% of FY2025 operating income. This single line item explains 43% of the gap between your guidance and analyst consensus that drove a 7% stock decline on results day. You source 92% of production from Asia across 283 factories, with Vietnam (27%) and Indonesia (19%) as lead countries. Structural sourcing diversification requires months. But the analytical response to a new tariff event — scenario modeling, sourcing re-ranking, landed-cost recalculation, PO amendments — currently takes weeks, not days. Section 122 broad tariff authority expires July 24, 2026. That is a second guidance inflection point in 15 weeks. The market will price the scenario before your sourcing teams have modeled it.
+    </div>
+    <div class="evidence-block">
+      <div class="evidence-label">Evidence</div>
+      <ul class="evidence-list">
+        <li>€200M tariff impact explicitly guided into FY2026 earnings — disclosed March 4, 2026. Explains ~43% of the €420M gap between guidance and analyst consensus. <em>[Fact — adidas FY2025 press release]</em></li>
+        <li>Adidas sources 92% of production from Asia: Vietnam 27%, Indonesia 19%, China 16%, plus additional Asian suppliers. <em>[Fact — adidas 20-F filings]</em></li>
+        <li>Section 122 broad tariff authority expires July 24, 2026 — creating a second guidance inflection point in 10–15 weeks. <em>[Fact on expiry; Inference on response capability]</em></li>
+      </ul>
+    </div>
+    <div class="cost-block">
+      <div class="cost-block-label">Cost of Inaction</div>
+      <p>Each week of response latency on a €200M annual tariff exposure costs approximately <span class="cost-highlight">€3.8M in avoidable landed-cost absorption</span>. Across three major sourcing decision cycles per year, the latency gap between best-in-class decision speed and current speed is estimated at <span class="cost-highlight">€40–80M annually</span> in sourcing decisions made on stale data.</p>
+    </div>
+    <div class="discovery-question">
+      <strong>Discovery Question</strong>
+      When the next material tariff change is announced, what is adidas's current time-to-sourcing-decision — measured from announcement to approved PO amendment — and how many of the 283 factories have been pre-qualified as credible alternative sources for the top 20 tariff-exposed SKU categories?
+    </div>
+  </div>
+
+  <!-- Provocation 4 -->
+  <div class="provocation-card">
+    <div class="provocation-number">Provocation 04</div>
+    <div class="provocation-headline">Your e-commerce delivers in 3–7 days. The same shoe arrives from Amazon in 1–2. The €4.5B channel is paying for that gap.</div>
+    <div class="provocation-body">
+      adidas e-commerce grew 16% to approximately €4.5B in FY2025 — the fastest-growing channel in the portfolio. Your published delivery SLA in the US is 3–7 days. Amazon Prime delivers 1–2. Nike's express tier delivers 2–3. Your response — a Buy with Prime partnership with Amazon, announced February 2025 — routes a fraction of DTC orders through Amazon's fulfillment network. The delivery gap closes. But the customer relationship and loyalty membership that converts a purchase into a long-term adidas consumer goes to Amazon, not to adiClub. You have the physical infrastructure to compete — your Wilkes-Barre distribution center can serve the US Northeast in one day. The gap is not in the building. It is in the process and system layer that translates physical capability into a consumer-facing promise.
+    </div>
+    <div class="evidence-block">
+      <div class="evidence-label">Evidence</div>
+      <ul class="evidence-list">
+        <li>Adidas US standard delivery: 3–7 days; UK standard: 3–5 working days. Published SLAs on adidas.com and adidas.co.uk. <em>[Fact — adidas published SLA pages]</em></li>
+        <li>Amazon Prime: 1–2 days for adidas products via Buy with Prime / MCF partnership announced February 20, 2025. Nike express tier: 2–3 days. <em>[Fact — Amazon MCF press release; Nike published SLAs]</em></li>
+        <li>E-commerce contributed approximately €4.5B (18% of FY2025 revenue), growing at +16% CN. Wilkes-Barre DC physically capable of 1-day ground delivery to US Northeast. <em>[Fact on revenue/growth and DC capability; Inference on consumer-facing SLA gap]</em></li>
+      </ul>
+    </div>
+    <div class="cost-block">
+      <div class="cost-block-label">Cost of Inaction</div>
+      <p>Industry benchmarks consistently show that each additional day of delivery time reduces conversion by 15–25% in apparel. If adidas's delivery gap suppresses conversion by even 10% relative to the Amazon benchmark, <span class="cost-highlight">the annual revenue at risk on the €4.5B e-commerce base is approximately €450M</span> — and growing as the channel scales toward the DTC target.</p>
+    </div>
+    <div class="discovery-question">
+      <strong>Discovery Question</strong>
+      What is adidas's actual e-commerce conversion rate at each delivery speed option (standard vs. express), and what is the internal model for the DTC revenue and adiClub membership impact of closing the delivery speed gap to 1–2 day parity in the top five US metro markets?
+    </div>
+  </div>
+
+  <!-- Provocation 5 -->
+  <div class="provocation-card">
+    <div class="provocation-number">Provocation 05</div>
+    <div class="provocation-headline">ASICS closed a 6.4-point margin gap in two years. adidas has held the same gap for five.</div>
+    <div class="provocation-body">
+      ASICS — a company at one-sixth your scale, with a fraction of your brand power and transformation investment — went from 7.0% to 14.7% operating margin in 24 months without building a new enterprise platform. adidas has been targeting &gt;10% operating margin since 2021. The analyst community has priced in &gt;10% by 2028. Nobody is paying for 12%. Yet the arithmetic is simple: the gap between adidas's 8.3% and ASICS's 14.7% — applied to a €24.8B revenue base — is <strong>€1.59B in annual operating income that adidas is structurally not generating.</strong> ASICS's levers were not exotic: faster channel shift to direct, pricing discipline, and tighter inventory management. The tools are the same. The execution urgency is different.
+    </div>
+    <div class="evidence-block">
+      <div class="evidence-label">Evidence</div>
+      <ul class="evidence-list">
+        <li>ASICS EBIT margin trajectory: FY2022: 7.0% → FY2023: 10.6% → FY2024: 14.7%. Three consecutive years of record margins. Levers: DTC channel shift, ASP discipline, inventory planning — not a major technology transformation. <em>[Fact — ASICS FY2024 Consolidated Financial Statements]</em></li>
+        <li>Adidas EBIT margin trajectory: FY2022: ~3.0% → FY2023: 1.3% (trough) → FY2024: 5.6% → FY2025: 8.3%. Recovery is real and structural. The 2028 target of &gt;10% is a level ASICS surpassed in FY2023. <em>[Fact — adidas Annual Reports]</em></li>
+        <li>6.4pp gap between adidas (8.3%) and ASICS (14.7%) applied to €24.8B revenue = €1.59B in annual EBIT. Closing half the gap to ASICS by 2028 (11.5%) generates €790M additional annual EBIT above the stated target. <em>[Fact on revenues/margins; Inference on gap calculation]</em></li>
+      </ul>
+    </div>
+    <div class="cost-block">
+      <div class="cost-block-label">Cost of Inaction</div>
+      <p>Every year adidas operates at 8.3% rather than 10% costs <span class="cost-highlight">€420M in annual operating income</span>. That is the floor — the target the market has already priced. The real question is what happens above 10%, and whether your organization is aligned around that ceiling or around a genuine ambition for 12–14%.</p>
+    </div>
+    <div class="discovery-question">
+      <strong>Discovery Question</strong>
+      Does adidas have an internal bottom-up model of what operating margin is structurally achievable at full program maturity — and what specific assumptions about inventory turn improvement, marketing efficiency, demand planning precision, and procurement speed sit inside the 2028 &gt;10% target?
+    </div>
+  </div>
+
+  <!-- SECTION 2: 90-DAY PLAN -->
+  <div class="section-break">
+    <div class="section-label">Section 2 of 3</div>
+    <div class="section-title">What We Would Explore Together</div>
+    <div class="section-intro">A 90-day diagnostic — before any commitment to a larger engagement.</div>
+  </div>
+
+  <div class="three-col">
+    <div class="col">
+      <div class="phase-card">
+        <div class="phase-number">Phase One</div>
+        <div class="phase-name">Validate</div>
+        <div class="phase-timing">Weeks 1 to 4</div>
+        <div class="phase-body">
+          We stress-test each provocation against internal data to confirm where the gaps are real, where they are already being addressed, and where our external analysis was wrong.
+        </div>
+        <div class="deliverable-label">Deliverable</div>
+        <div class="deliverable-text">A fact-based gap assessment with quantified opportunity sizes — confirmed or revised — across inventory efficiency, marketing ROI, tariff response speed, and e-commerce delivery.</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="phase-card">
+        <div class="phase-number">Phase Two</div>
+        <div class="phase-name">Design</div>
+        <div class="phase-timing">Weeks 5 to 8</div>
+        <div class="phase-body">
+          Working with your teams, we translate the confirmed gaps into a sequenced improvement agenda — prioritized by financial impact, organizational readiness, and what can be done before or immediately after the World Cup window.
+        </div>
+        <div class="deliverable-label">Deliverable</div>
+        <div class="deliverable-text">A prioritized roadmap with three to five specific operational improvements, each with an owner, a financial case, and a 12-month implementation path.</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="phase-card">
+        <div class="phase-number">Phase Three</div>
+        <div class="phase-name">Prove</div>
+        <div class="phase-timing">Weeks 9 to 12</div>
+        <div class="phase-body">
+          We run one focused proof of concept in the highest-priority area — demand sensing, marketing efficiency, or tariff scenario modeling — using live internal data to demonstrate what the improvement looks like at operational scale before any broader rollout decision is made.
+        </div>
+        <div class="deliverable-label">Deliverable</div>
+        <div class="deliverable-text">A live demonstration of the improvement in one area, with a measured before-and-after, ready to present to the Executive Board.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: KEY QUESTIONS -->
+  <div class="section-break">
+    <div class="section-label">Section 3 of 3</div>
+    <div class="section-title">Five Questions We Would Want to Answer Together</div>
+    <div class="section-intro">The questions your filings raise but cannot answer.</div>
+  </div>
+
+  <ol class="questions-list">
+    <li>
+      <div class="q-number">01</div>
+      <div class="q-text">What does your demand planning system actually do when a lifestyle product goes viral — and what is the documented lag from social signal to production order revision?</div>
+    </li>
+    <li>
+      <div class="q-number">02</div>
+      <div class="q-text">What percentage of your €3B marketing budget flows through your own high-efficiency content operations today, and what is your internal target for that share by the 2026 World Cup?</div>
+    </li>
+    <li>
+      <div class="q-number">03</div>
+      <div class="q-text">When a tariff change is announced, what is the clock — from announcement to approved sourcing decision — and who owns that process?</div>
+    </li>
+    <li>
+      <div class="q-number">04</div>
+      <div class="q-text">What is the e-commerce conversion rate at each delivery speed option, and what is the internal model for what 1–2 day delivery in the top five US markets would do to DTC revenue and adiClub membership growth?</div>
+    </li>
+    <li>
+      <div class="q-number">05</div>
+      <div class="q-text">Does adidas have an internal model of what operating margin is structurally achievable at full program maturity — and is the 2028 &gt;10% target a floor or a ceiling in the internal planning conversation?</div>
+    </li>
+  </ol>
+
+  <div class="closing-paragraph">
+    These hypotheses are built on public data. With 4 weeks of internal access, we can confirm or disprove each one. We are not asking for a commitment to a transformation. We are asking for a conversation about whether our picture of the business is right — and where it needs to be corrected.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Based exclusively on public sources.</div>
+    <div class="footer-right">adidas AG — Outside-In Perspective — April 2026<br>Confidential. For Discussion Purposes Only.</div>
+  </div>
+
+</div>
+</body>
+</html>

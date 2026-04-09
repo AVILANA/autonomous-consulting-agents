@@ -1,5 +1,15 @@
 FIRST: Read memory.md in the project root. This contains accumulated quality standards and learnings from previous executions. Apply all quality standards listed there throughout this step.
 
+BEFORE starting analysis, read body_brain_diagnosis.md and transformation_capacity.md.
+
+CONDITIONAL LOGIC:
+- If body diagnosis shows network is the primary bottleneck in 2+ supply chain areas: auto-deep-dive on network redesign opportunities (DC consolidation, microfulfillment, ship-from-store, nearshoring). Weight body recommendations higher.
+- If financial data shows margin pressure or debt stress: weight cost reduction and quick-payback initiatives over growth plays. Frame everything through payback period.
+- If company is in turnaround mode (margin recovery phase): focus on efficiency and productivity levers. Do not lead with growth.
+- If company has strong margins but slowing growth: focus on velocity and growth levers.
+
+State which condition you detected and how it shaped your analysis.
+
 # Step 5: AI Value & Reinvention Analyst
 
 Read all prior outputs before completing this step.
