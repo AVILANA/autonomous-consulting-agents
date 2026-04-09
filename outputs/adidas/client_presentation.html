@@ -1,572 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>adidas AG — Outside-In Perspective</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #1a1a1a;
-    background: #ffffff;
-  }
-  .page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 48px;
-  }
-
-  /* HEADER */
-  .header {
-    border-bottom: 3px solid #1a1a1a;
-    padding-bottom: 28px;
-    margin-bottom: 48px;
-  }
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .company-name {
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: #1a1a1a;
-    line-height: 1;
-  }
-  .confidential-badge {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #ffffff;
-    background: #cc0000;
-    padding: 5px 12px;
-    border-radius: 2px;
-    margin-top: 6px;
-  }
-  .header-sub {
-    margin-top: 12px;
-  }
-  .doc-title {
-    font-size: 20px;
-    font-weight: 300;
-    color: #444444;
-    letter-spacing: 0.5px;
-  }
-  .header-meta {
-    margin-top: 8px;
-    font-size: 13px;
-    color: #777777;
-    display: flex;
-    gap: 24px;
-  }
-  .header-meta span { display: inline-block; }
-
-  /* SECTION LABELS */
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #999999;
-    margin-bottom: 8px;
-  }
-  .section-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 6px;
-  }
-  .section-intro {
-    font-size: 14px;
-    color: #666666;
-    font-style: italic;
-    margin-bottom: 32px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e8e8e8;
-  }
-  .section-break {
-    margin: 56px 0 40px;
-  }
-
-  /* PROVOCATION CARDS */
-  .provocation-card {
-    border-left: 4px solid #1a1a1a;
-    padding: 24px 28px;
-    margin-bottom: 28px;
-    background: #fafafa;
-    page-break-inside: avoid;
-  }
-  .provocation-number {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #999999;
-    margin-bottom: 6px;
-  }
-  .provocation-headline {
-    font-size: 17px;
-    font-weight: 700;
-    color: #1a1a1a;
-    line-height: 1.4;
-    margin-bottom: 16px;
-  }
-  .provocation-body {
-    font-size: 14px;
-    color: #333333;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-  .cost-highlight {
-    display: inline-block;
-    font-weight: 700;
-    color: #1a1a1a;
-    background: #fff3cd;
-    padding: 1px 4px;
-    border-radius: 2px;
-  }
-  .evidence-block {
-    margin: 16px 0;
-  }
-  .evidence-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #888888;
-    margin-bottom: 8px;
-  }
-  .evidence-list {
-    list-style: none;
-    padding: 0;
-  }
-  .evidence-list li {
-    font-size: 13px;
-    color: #444444;
-    padding: 5px 0 5px 16px;
-    position: relative;
-    border-bottom: 1px solid #eeeeee;
-    line-height: 1.6;
-  }
-  .evidence-list li:last-child { border-bottom: none; }
-  .evidence-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: #aaaaaa;
-    font-size: 12px;
-  }
-  .cost-block {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    padding: 14px 18px;
-    margin: 16px 0;
-    border-radius: 2px;
-  }
-  .cost-block-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #888888;
-    margin-bottom: 6px;
-  }
-  .cost-block p {
-    font-size: 13.5px;
-    color: #333333;
-    line-height: 1.65;
-  }
-  .discovery-question {
-    font-size: 13px;
-    font-style: italic;
-    color: #555555;
-    border-top: 1px dashed #dddddd;
-    margin-top: 16px;
-    padding-top: 14px;
-    line-height: 1.6;
-  }
-  .discovery-question strong {
-    font-style: normal;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #aaaaaa;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  /* 90-DAY PLAN */
-  .three-col {
-    display: table;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 16px 0;
-    margin: 0 -16px;
-  }
-  .col {
-    display: table-cell;
-    width: 33.33%;
-    vertical-align: top;
-  }
-  .phase-card {
-    border: 1px solid #e0e0e0;
-    padding: 24px 22px;
-    height: 100%;
-    page-break-inside: avoid;
-  }
-  .phase-number {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #aaaaaa;
-    margin-bottom: 4px;
-  }
-  .phase-name {
-    font-size: 20px;
-    font-weight: 800;
-    color: #1a1a1a;
-    margin-bottom: 4px;
-  }
-  .phase-timing {
-    font-size: 12px;
-    color: #888888;
-    margin-bottom: 16px;
-    padding-bottom: 14px;
-    border-bottom: 2px solid #1a1a1a;
-  }
-  .phase-body {
-    font-size: 13.5px;
-    color: #333333;
-    line-height: 1.65;
-    margin-bottom: 16px;
-  }
-  .deliverable-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #aaaaaa;
-    margin-bottom: 6px;
-  }
-  .deliverable-text {
-    font-size: 12.5px;
-    color: #555555;
-    font-style: italic;
-    line-height: 1.6;
-  }
-
-  /* QUESTIONS */
-  .questions-list {
-    counter-reset: question-counter;
-    list-style: none;
-    padding: 0;
-  }
-  .questions-list li {
-    counter-increment: question-counter;
-    display: flex;
-    gap: 20px;
-    padding: 18px 0;
-    border-bottom: 1px solid #eeeeee;
-    align-items: flex-start;
-  }
-  .questions-list li:last-child { border-bottom: none; }
-  .q-number {
-    font-size: 28px;
-    font-weight: 800;
-    color: #e8e8e8;
-    line-height: 1;
-    min-width: 36px;
-    text-align: right;
-  }
-  .q-text {
-    font-size: 14.5px;
-    color: #1a1a1a;
-    line-height: 1.6;
-    padding-top: 4px;
-  }
-  .closing-paragraph {
-    font-size: 14px;
-    color: #555555;
-    font-style: italic;
-    margin-top: 32px;
-    padding: 20px 24px;
-    border-left: 3px solid #dddddd;
-    background: #fafafa;
-  }
-
-  /* FOOTER */
-  .footer {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-left {
-    font-size: 11px;
-    color: #aaaaaa;
-  }
-  .footer-right {
-    font-size: 11px;
-    color: #aaaaaa;
-    text-align: right;
-  }
-
-  /* PRINT */
-  @media print {
-    body { font-size: 13px; }
-    .page { padding: 32px 36px; }
-    .provocation-card { page-break-inside: avoid; }
-    .three-col { display: table; }
-    .col { display: table-cell; }
-    .section-break { margin: 40px 0 32px; }
-    .company-name { font-size: 34px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outside-In Perspective: <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" style="filter:invert(1);height:60px;vertical-align:middle;margin-right:15px;"><title></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #312e81 0%, #4338ca 35%, #4f46e5 60%, #7c3aed 100%); }
+        .provocation-card { border-left: 4px solid #6366f1; }
+        .cost-box-amber { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+        .cost-box-red { background: linear-gradient(135deg, #fee2e2, #fecaca); }
+        .cost-box-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+        .cost-box-green { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+        .synthesis-bg { background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%); }
+    </style>
 </head>
-<body>
-<div class="page">
+<body class="bg-slate-50 text-gray-800 min-h-screen">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-top">
-      <div class="company-name">adidas AG</div>
-      <div class="confidential-badge">Confidential</div>
-    </div>
-    <div class="header-sub">
-      <div class="doc-title">Outside-In Perspective</div>
-      <div class="header-meta">
-        <span>Prepared for: Harm Ohlmeyer, CFO</span>
-        <span>April 9, 2026</span>
-        <span>For Discussion Purposes Only</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 1: PROVOCATIONS -->
-  <div class="section-label">Section 1 of 3</div>
-  <div class="section-title">Five Provocations</div>
-  <div class="section-intro">What we believe, built entirely from public data, before we have set foot inside the building.</div>
-
-  <!-- Provocation 1 -->
-  <div class="provocation-card">
-    <div class="provocation-number">Provocation 01</div>
-    <div class="provocation-headline">Your inventory costs €1.1B more per year than it should — and your planning system knows it.</div>
-    <div class="provocation-body">
-      adidas carries €4.99B in inventory, 21% of revenue — a ratio that has not materially improved since the Yeezy normalization three years ago. ASICS, at one-sixth your scale, tripled its operating margin from 7% to 14.7% in 24 months. The primary driver was not a technology platform. It was faster full-price sell-through through tighter planning discipline. The Samba and Gazelle have driven lifestyle category growth that your current planning cycle — estimated at 2–4 weeks from signal to order revision — is structurally slow to capture. When a product goes viral, your competitors respond in 48 hours. Your system responds in the next planning cycle.
-    </div>
-    <div class="evidence-block">
-      <div class="evidence-label">Evidence</div>
-      <ul class="evidence-list">
-        <li>Adidas inventory €4.99B at end-FY2024, representing 21.1% of revenue — flat since Yeezy normalization. <em>[Fact — adidas Annual Report 2024]</em></li>
-        <li>ASICS tripled EBIT margin from 7.0% (FY2022) to 14.7% (FY2024) in two years. Revenue grew 18%; EBIT grew 210%. Primary levers: faster full-price sell-through, DTC shift, planning discipline. <em>[Fact — ASICS FY2024 Financials]</em></li>
-        <li>Adidas o9 Solutions demand planning system is live; real-time store sell-through integration and social signal demand sensing for lifestyle products are not confirmed publicly. <em>[Fact on o9; Inference on integration gap]</em></li>
-      </ul>
-    </div>
-    <div class="cost-block">
-      <div class="cost-block-label">Cost of Inaction</div>
-      <p>Moving inventory from 21% to 18% of revenue releases <span class="cost-highlight">€745M in permanent working capital</span>. At current borrowing cost, that is €35M in interest savings alone — before counting gross margin lost to clearance outlets. Conservative estimate: <span class="cost-highlight">€200–400M per year</span> in margin and capital cost traceable to planning lag.</p>
-    </div>
-    <div class="discovery-question">
-      <strong>Discovery Question</strong>
-      What is the actual SKU-level forecast accuracy of your current o9 planning model by channel and region — and what percentage of your lifestyle product inventory (Samba, Gazelle, Spezial) is currently allocated based on forward social signal data versus historical sell-through patterns?
-    </div>
-  </div>
-
-  <!-- Provocation 2 -->
-  <div class="provocation-card">
-    <div class="provocation-number">Provocation 02</div>
-    <div class="provocation-headline">You spend €3B on marketing and cannot prove what half of it does — and the World Cup window closes in 8 weeks.</div>
-    <div class="provocation-body">
-      adidas's marketing spend is approximately €3B annually — 12–13% of revenue. Lululemon runs a 23.7% operating margin at 5–6% marketing spend. On Holding runs 12.5% operating margin. The €3B is not a brand investment problem. It is an efficiency problem. Your own internal content operations have demonstrated a 90%+ cost reduction in production workflows. That capability is not yet operating at the scale that changes the marketing P&L. FIFA World Cup 2026 launches in June — the largest commercial activation window in your calendar, in your weakest region, with 13 national team kits in market. The content model your teams are using for World Cup preparation costs 10–15× more per asset than your own internal production capability can deliver.
-    </div>
-    <div class="evidence-block">
-      <div class="evidence-label">Evidence</div>
-      <ul class="evidence-list">
-        <li>Adidas discloses ~€3B in annual marketing and point-of-sale spend — approximately 12–13% of revenue. <em>[Fact — adidas Annual Reports 2023–2025]</em></li>
-        <li>Lululemon: 23.7% EBIT margin, 59.2% gross margin at 5–6% marketing spend. On Holding: 12.5% EBIT margin at ~15% marketing. Marketing spend gap between adidas and margin-leading peers is structural, not cyclical. <em>[Fact — peer filings; Inference on driver]</em></li>
-        <li>Adidas's internal content pipeline processes 2M+ product reviews per year at 91.67% cost reduction — confirmed in production. Not a pilot. <em>[Fact — publicly disclosed vendor partnership announcements]</em></li>
-      </ul>
-    </div>
-    <div class="cost-block">
-      <div class="cost-block-label">Cost of Inaction</div>
-      <p>A 2-point improvement in marketing efficiency — from 12.5% to 10.5% of revenue — generates <span class="cost-highlight">€496M in annual operating income</span>. That alone closes more than half the gap between your current 8.3% margin and your 2028 &gt;10% target. The World Cup window to change the cost structure for this cycle closes in approximately <span class="cost-highlight">8 weeks</span>.</p>
-    </div>
-    <div class="discovery-question">
-      <strong>Discovery Question</strong>
-      What percentage of the ~€3B marketing budget is currently flowing through your own high-efficiency content production workflows — and what is your internal target for that share by the 2026 World Cup?
-    </div>
-  </div>
-
-  <!-- Provocation 3 -->
-  <div class="provocation-card">
-    <div class="provocation-number">Provocation 03</div>
-    <div class="provocation-headline">A €200M tariff bill arrived in your guidance, and your response cycle is measured in weeks.</div>
-    <div class="provocation-body">
-      adidas absorbed €200M in US tariff exposure directly into FY2026 guidance — roughly 10% of FY2025 operating income. This single line item explains 43% of the gap between your guidance and analyst consensus that drove a 7% stock decline on results day. You source 92% of production from Asia across 283 factories, with Vietnam (27%) and Indonesia (19%) as lead countries. Structural sourcing diversification requires months. But the analytical response to a new tariff event — scenario modeling, sourcing re-ranking, landed-cost recalculation, PO amendments — currently takes weeks, not days. Section 122 broad tariff authority expires July 24, 2026. That is a second guidance inflection point in 15 weeks. The market will price the scenario before your sourcing teams have modeled it.
-    </div>
-    <div class="evidence-block">
-      <div class="evidence-label">Evidence</div>
-      <ul class="evidence-list">
-        <li>€200M tariff impact explicitly guided into FY2026 earnings — disclosed March 4, 2026. Explains ~43% of the €420M gap between guidance and analyst consensus. <em>[Fact — adidas FY2025 press release]</em></li>
-        <li>Adidas sources 92% of production from Asia: Vietnam 27%, Indonesia 19%, China 16%, plus additional Asian suppliers. <em>[Fact — adidas 20-F filings]</em></li>
-        <li>Section 122 broad tariff authority expires July 24, 2026 — creating a second guidance inflection point in 10–15 weeks. <em>[Fact on expiry; Inference on response capability]</em></li>
-      </ul>
-    </div>
-    <div class="cost-block">
-      <div class="cost-block-label">Cost of Inaction</div>
-      <p>Each week of response latency on a €200M annual tariff exposure costs approximately <span class="cost-highlight">€3.8M in avoidable landed-cost absorption</span>. Across three major sourcing decision cycles per year, the latency gap between best-in-class decision speed and current speed is estimated at <span class="cost-highlight">€40–80M annually</span> in sourcing decisions made on stale data.</p>
-    </div>
-    <div class="discovery-question">
-      <strong>Discovery Question</strong>
-      When the next material tariff change is announced, what is adidas's current time-to-sourcing-decision — measured from announcement to approved PO amendment — and how many of the 283 factories have been pre-qualified as credible alternative sources for the top 20 tariff-exposed SKU categories?
-    </div>
-  </div>
-
-  <!-- Provocation 4 -->
-  <div class="provocation-card">
-    <div class="provocation-number">Provocation 04</div>
-    <div class="provocation-headline">Your e-commerce delivers in 3–7 days. The same shoe arrives from Amazon in 1–2. The €4.5B channel is paying for that gap.</div>
-    <div class="provocation-body">
-      adidas e-commerce grew 16% to approximately €4.5B in FY2025 — the fastest-growing channel in the portfolio. Your published delivery SLA in the US is 3–7 days. Amazon Prime delivers 1–2. Nike's express tier delivers 2–3. Your response — a Buy with Prime partnership with Amazon, announced February 2025 — routes a fraction of DTC orders through Amazon's fulfillment network. The delivery gap closes. But the customer relationship and loyalty membership that converts a purchase into a long-term adidas consumer goes to Amazon, not to adiClub. You have the physical infrastructure to compete — your Wilkes-Barre distribution center can serve the US Northeast in one day. The gap is not in the building. It is in the process and system layer that translates physical capability into a consumer-facing promise.
-    </div>
-    <div class="evidence-block">
-      <div class="evidence-label">Evidence</div>
-      <ul class="evidence-list">
-        <li>Adidas US standard delivery: 3–7 days; UK standard: 3–5 working days. Published SLAs on adidas.com and adidas.co.uk. <em>[Fact — adidas published SLA pages]</em></li>
-        <li>Amazon Prime: 1–2 days for adidas products via Buy with Prime / MCF partnership announced February 20, 2025. Nike express tier: 2–3 days. <em>[Fact — Amazon MCF press release; Nike published SLAs]</em></li>
-        <li>E-commerce contributed approximately €4.5B (18% of FY2025 revenue), growing at +16% CN. Wilkes-Barre DC physically capable of 1-day ground delivery to US Northeast. <em>[Fact on revenue/growth and DC capability; Inference on consumer-facing SLA gap]</em></li>
-      </ul>
-    </div>
-    <div class="cost-block">
-      <div class="cost-block-label">Cost of Inaction</div>
-      <p>Industry benchmarks consistently show that each additional day of delivery time reduces conversion by 15–25% in apparel. If adidas's delivery gap suppresses conversion by even 10% relative to the Amazon benchmark, <span class="cost-highlight">the annual revenue at risk on the €4.5B e-commerce base is approximately €450M</span> — and growing as the channel scales toward the DTC target.</p>
-    </div>
-    <div class="discovery-question">
-      <strong>Discovery Question</strong>
-      What is adidas's actual e-commerce conversion rate at each delivery speed option (standard vs. express), and what is the internal model for the DTC revenue and adiClub membership impact of closing the delivery speed gap to 1–2 day parity in the top five US metro markets?
-    </div>
-  </div>
-
-  <!-- Provocation 5 -->
-  <div class="provocation-card">
-    <div class="provocation-number">Provocation 05</div>
-    <div class="provocation-headline">ASICS closed a 6.4-point margin gap in two years. adidas has held the same gap for five.</div>
-    <div class="provocation-body">
-      ASICS — a company at one-sixth your scale, with a fraction of your brand power and transformation investment — went from 7.0% to 14.7% operating margin in 24 months without building a new enterprise platform. adidas has been targeting &gt;10% operating margin since 2021. The analyst community has priced in &gt;10% by 2028. Nobody is paying for 12%. Yet the arithmetic is simple: the gap between adidas's 8.3% and ASICS's 14.7% — applied to a €24.8B revenue base — is <strong>€1.59B in annual operating income that adidas is structurally not generating.</strong> ASICS's levers were not exotic: faster channel shift to direct, pricing discipline, and tighter inventory management. The tools are the same. The execution urgency is different.
-    </div>
-    <div class="evidence-block">
-      <div class="evidence-label">Evidence</div>
-      <ul class="evidence-list">
-        <li>ASICS EBIT margin trajectory: FY2022: 7.0% → FY2023: 10.6% → FY2024: 14.7%. Three consecutive years of record margins. Levers: DTC channel shift, ASP discipline, inventory planning — not a major technology transformation. <em>[Fact — ASICS FY2024 Consolidated Financial Statements]</em></li>
-        <li>Adidas EBIT margin trajectory: FY2022: ~3.0% → FY2023: 1.3% (trough) → FY2024: 5.6% → FY2025: 8.3%. Recovery is real and structural. The 2028 target of &gt;10% is a level ASICS surpassed in FY2023. <em>[Fact — adidas Annual Reports]</em></li>
-        <li>6.4pp gap between adidas (8.3%) and ASICS (14.7%) applied to €24.8B revenue = €1.59B in annual EBIT. Closing half the gap to ASICS by 2028 (11.5%) generates €790M additional annual EBIT above the stated target. <em>[Fact on revenues/margins; Inference on gap calculation]</em></li>
-      </ul>
-    </div>
-    <div class="cost-block">
-      <div class="cost-block-label">Cost of Inaction</div>
-      <p>Every year adidas operates at 8.3% rather than 10% costs <span class="cost-highlight">€420M in annual operating income</span>. That is the floor — the target the market has already priced. The real question is what happens above 10%, and whether your organization is aligned around that ceiling or around a genuine ambition for 12–14%.</p>
-    </div>
-    <div class="discovery-question">
-      <strong>Discovery Question</strong>
-      Does adidas have an internal bottom-up model of what operating margin is structurally achievable at full program maturity — and what specific assumptions about inventory turn improvement, marketing efficiency, demand planning precision, and procurement speed sit inside the 2028 &gt;10% target?
-    </div>
-  </div>
-
-  <!-- SECTION 2: 90-DAY PLAN -->
-  <div class="section-break">
-    <div class="section-label">Section 2 of 3</div>
-    <div class="section-title">What We Would Explore Together</div>
-    <div class="section-intro">A 90-day diagnostic — before any commitment to a larger engagement.</div>
-  </div>
-
-  <div class="three-col">
-    <div class="col">
-      <div class="phase-card">
-        <div class="phase-number">Phase One</div>
-        <div class="phase-name">Validate</div>
-        <div class="phase-timing">Weeks 1 to 4</div>
-        <div class="phase-body">
-          We stress-test each provocation against internal data to confirm where the gaps are real, where they are already being addressed, and where our external analysis was wrong.
+    <!-- ═══════════════════════════════════════════════════════════ HEADER -->
+    <header class="gradient-header">
+        <div class="max-w-5xl mx-auto px-8 py-12">
+            <div class="flex items-start justify-between mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,255,255,0.15);">
+                        <span class="text-white font-black text-base tracking-tight">Ac</span>
+                    </div>
+                    <span class="text-indigo-200 text-xs font-semibold tracking-widest uppercase">Accenture Strategy</span>
+                </div>
+                <span class="text-indigo-300 text-xs font-medium text-right max-w-xs leading-relaxed">Confidential — Prepared for:<br>Chief Operating Officer / VP Supply Chain</span>
+            </div>
+            <div class="border-t pt-8" style="border-color:rgba(255,255,255,0.15);">
+                <p class="text-indigo-300 text-xs font-semibold tracking-widest uppercase mb-3">Outside-In Perspective</p>
+                <h1 class="text-white font-black tracking-tight leading-none mb-4" style="font-size:52px;"><img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" style="filter:invert(1);height:60px;vertical-align:middle;margin-right:15px;"></h1>
+                <div class="flex items-center gap-4">
+                    <span class="text-indigo-200 text-sm font-medium">XETRA: ADS</span>
+                    <span class="text-indigo-400 text-sm">·</span>
+                    <span class="text-indigo-200 text-sm font-medium">April 9, 2026</span>
+                    <span class="text-indigo-400 text-sm">·</span>
+                    <span class="text-indigo-200 text-sm font-medium">FY2025 Actuals</span>
+                </div>
+            </div>
         </div>
-        <div class="deliverable-label">Deliverable</div>
-        <div class="deliverable-text">A fact-based gap assessment with quantified opportunity sizes — confirmed or revised — across inventory efficiency, marketing ROI, tariff response speed, and e-commerce delivery.</div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="phase-card">
-        <div class="phase-number">Phase Two</div>
-        <div class="phase-name">Design</div>
-        <div class="phase-timing">Weeks 5 to 8</div>
-        <div class="phase-body">
-          Working with your teams, we translate the confirmed gaps into a sequenced improvement agenda — prioritized by financial impact, organizational readiness, and what can be done before or immediately after the World Cup window.
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════ INTRO STRIP -->
+    <div style="background:linear-gradient(135deg,#4338ca,#6366f1);">
+        <div class="max-w-5xl mx-auto px-8 py-5">
+            <p class="text-indigo-100 text-sm italic leading-relaxed">What we believe, built entirely from public data, before we have set foot inside the building.</p>
         </div>
-        <div class="deliverable-label">Deliverable</div>
-        <div class="deliverable-text">A prioritized roadmap with three to five specific operational improvements, each with an owner, a financial case, and a 12-month implementation path.</div>
-      </div>
     </div>
-    <div class="col">
-      <div class="phase-card">
-        <div class="phase-number">Phase Three</div>
-        <div class="phase-name">Prove</div>
-        <div class="phase-timing">Weeks 9 to 12</div>
-        <div class="phase-body">
-          We run one focused proof of concept in the highest-priority area — demand sensing, marketing efficiency, or tariff scenario modeling — using live internal data to demonstrate what the improvement looks like at operational scale before any broader rollout decision is made.
+
+    <!-- ═══════════════════════════════════════════════════════════ MAIN -->
+    <main class="max-w-5xl mx-auto px-8 py-14">
+
+        <!-- ─────────────────────────────────────── ANALYTICAL BASIS LEGEND -->
+        <div class="bg-gray-50 border border-gray-200 rounded px-4 py-3 mb-10">
+            <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Analytical Basis</p>
+            <p class="text-xs text-gray-500 leading-relaxed">Throughout this document, each claim is tagged by its evidential strength: <span class="font-medium">[FACT]</span> — Directly confirmed in public filings, press releases, or corporate disclosures &nbsp;·&nbsp; <span class="font-medium">[INFERENCE]</span> — Logical conclusion drawn from confirmed facts, but not directly stated by the company &nbsp;·&nbsp; <span class="font-medium">[ASSUMPTION]</span> — Hypothesis based on industry benchmarks or absence of public disclosure — requires validation</p>
         </div>
-        <div class="deliverable-label">Deliverable</div>
-        <div class="deliverable-text">A live demonstration of the improvement in one area, with a measured before-and-after, ready to present to the Executive Board.</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- SECTION 3: KEY QUESTIONS -->
-  <div class="section-break">
-    <div class="section-label">Section 3 of 3</div>
-    <div class="section-title">Five Questions We Would Want to Answer Together</div>
-    <div class="section-intro">The questions your filings raise but cannot answer.</div>
-  </div>
+        <!-- ─────────────────────────────────────── SECTION 1 HEADER -->
+        <div class="flex items-baseline gap-4 mb-10">
+            <div class="w-1 h-8 rounded-full bg-indigo-600 flex-shrink-0"></div>
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">Section 1 — The Provocations</h2>
+                <p class="text-gray-400 text-sm mt-0.5">Four supply chain hypotheses, each with a quantified cost of inaction</p>
+            </div>
+        </div>
 
-  <ol class="questions-list">
-    <li>
-      <div class="q-number">01</div>
-      <div class="q-text">What does your demand planning system actually do when a lifestyle product goes viral — and what is the documented lag from social signal to production order revision?</div>
-    </li>
-    <li>
-      <div class="q-number">02</div>
-      <div class="q-text">What percentage of your €3B marketing budget flows through your own high-efficiency content operations today, and what is your internal target for that share by the 2026 World Cup?</div>
-    </li>
-    <li>
-      <div class="q-number">03</div>
-      <div class="q-text">When a tariff change is announced, what is the clock — from announcement to approved sourcing decision — and who owns that process?</div>
-    </li>
-    <li>
-      <div class="q-number">04</div>
-      <div class="q-text">What is the e-commerce conversion rate at each delivery speed option, and what is the internal model for what 1–2 day delivery in the top five US markets would do to DTC revenue and adiClub membership growth?</div>
-    </li>
-    <li>
-      <div class="q-number">05</div>
-      <div class="q-text">Does adidas have an internal model of what operating margin is structurally achievable at full program maturity — and is the 2028 &gt;10% target a floor or a ceiling in the internal planning conversation?</div>
-    </li>
-  </ol>
+        <!-- ═══════════════════════════════════════ PROVOCATION 01 -->
+        <div class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
+            <div class="p-8">
+                <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Demand Planning</p>
+                <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
+                    Your demand plan is 3 weeks behind the market. Your €4.99B inventory proves it.
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">Working Capital Release</span>
+                    <span class="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold">Planning Cycle Speed</span>
+                </div>
+                <p class="text-gray-400 text-xs font-medium mb-6">Primary buyers: CFO · CSCO · COO</p>
+                <ul class="space-y-3 mb-7">
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>adidas closed FY2024 with <strong>€4.99B in inventory</strong> — 20% of annual revenue — despite record brand heat and full-price sell-through on lifestyle products like the Samba and Gazelle. The inventory level reflects a planning system calibrated for a world that moves slower than today's consumer. <span class="text-gray-400 text-xs font-medium">[FACT — FY2024 Annual Report]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>Demand sensing from a social trend to a planning update is estimated at <strong>2–4 weeks</strong>. Best-in-class brands using real-time consumer signals update allocation within <strong>48–72 hours</strong>. The gap is not technology — adidas runs <strong>o9 Solutions</strong> for in-season planning and <strong>Amazon SageMaker</strong> for seasonal forecasting. The gap is in the input: both systems operate on historical sell-in orders from retailers, not real-time sell-through from consumers. <span class="text-gray-400 text-xs font-medium">[INFERENCE — from velocity benchmarks; FACT on platform deployments]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>The Samba and Gazelle lifestyle cycle that powered the recovery is explicitly flagged by CEO Gulden as having a natural end. When the next cycle turns, adidas's planning system will detect it the same way it detected the last one — through retailer reorders, <strong>weeks after the consumer has already moved on</strong>. <span class="text-gray-400 text-xs font-medium">[INFERENCE — Gulden earnings call commentary]</span></span>
+                    </li>
+                </ul>
+                <div class="cost-box-amber rounded-xl p-5 mb-6">
+                    <p class="text-amber-800 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction</p>
+                    <p class="text-amber-900 font-black mb-2" style="font-size:32px; line-height:1;">€248M / year</p>
+                    <p class="text-amber-800 text-sm leading-relaxed">Every 1 percentage point of gross margin lost to forecast-driven markdowns and stockouts costs €248M in operating profit at current revenue scale. A 5% improvement in forecast accuracy reduces inventory carrying cost by ~<strong>€250M in working capital</strong>. Neither happens while the demand signal refreshes monthly. <span class="text-amber-600 text-xs font-medium">[FACT on FY2025 revenue €24.8B; FACT on inventory base; INFERENCE on gross margin leverage at 51.0%]</span></p>
+                </div>
+                <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> What is your current forecast accuracy at the SKU/store level for lifestyle product lines — and what percentage of annual markdown cost traces directly back to forecast error?</p>
+            </div>
+        </div>
 
-  <div class="closing-paragraph">
-    These hypotheses are built on public data. With 4 weeks of internal access, we can confirm or disprove each one. We are not asking for a commitment to a transformation. We are asking for a conversation about whether our picture of the business is right — and where it needs to be corrected.
-  </div>
+        <!-- ═══════════════════════════════════════ PROVOCATION 02 -->
+        <div class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
+            <div class="p-8">
+                <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Procurement &amp; Trade Risk</p>
+                <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
+                    A €200M tariff bill is baked into your 2026 guidance — and your sourcing team still responds in weeks.
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">Risk Mitigation</span>
+                    <span class="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold">Decision Cycle Compression</span>
+                </div>
+                <p class="text-gray-400 text-xs font-medium mb-6">Primary buyers: CFO · COO · CSCO</p>
+                <ul class="space-y-3 mb-7">
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>adidas embedded <strong>€200M in tariff headwinds</strong> into FY2026 guidance, triggering a €420M miss vs. analyst consensus and a <strong>7% stock drop</strong> on results day despite record underlying performance. The gap is almost entirely tariff and FX — not operations. Management explicitly excluded potential upside if tariffs ease. <span class="text-gray-400 text-xs font-medium">[FACT — FY2025 results, March 4, 2026]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span><strong>Vietnam (27% of production)</strong> and <strong>Indonesia (19%)</strong> carry the same US tariff escalation risk that China carried in 2025 — combined, 46% of adidas's manufacturing base. There is no public evidence of a real-time scenario model that continuously calculates the landed cost impact of a Vietnam- or Indonesia-specific tariff shock. When the China shock hit in 2025, the sourcing pivot took months. Best-in-class teams with continuous scenario modeling respond in <strong>48–72 hours</strong>. <span class="text-gray-400 text-xs font-medium">[FACT — sourcing shares, FY2025 Annual Report; INFERENCE — response gap]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>The <strong>Databricks multi-agent infrastructure</strong> that adidas is presenting at the 2026 Data+AI Summit is already capable of running a tariff scenario agent. The infrastructure cost is already paid. The decision model has not been built. <span class="text-gray-400 text-xs font-medium">[FACT — Databricks 2026 summit; INFERENCE — application gap]</span></span>
+                    </li>
+                </ul>
+                <div class="cost-box-red rounded-xl p-5 mb-6">
+                    <p class="text-red-800 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction</p>
+                    <p class="text-red-900 font-black mb-2" style="font-size:32px; line-height:1;">€200–300M / year</p>
+                    <p class="text-red-800 text-sm leading-relaxed">A Vietnam or Indonesia-specific tariff escalation equivalent to what China experienced could add €200–300M beyond the €200M already embedded in guidance. Every week without an automated response model is a week of unmanaged financial exposure at the CFO's desk. <strong>Section 122 tariff authority expires July 24, 2026 — a hard deadline with no confirmed defense.</strong> <span class="text-red-600 text-xs font-medium">[FACT on confirmed €200M exposure; FACT on Section 122 expiry; INFERENCE on additional escalation risk]</span></p>
+                </div>
+                <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> How long does it take your procurement team today to go from a US tariff policy announcement to a final sourcing shift decision — and who owns that decision, at what cadence?</p>
+            </div>
+        </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="footer-left">Based exclusively on public sources.</div>
-    <div class="footer-right">adidas AG — Outside-In Perspective — April 2026<br>Confidential. For Discussion Purposes Only.</div>
-  </div>
+        <!-- ═══════════════════════════════════════ PROVOCATION 03 -->
+        <div class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
+            <div class="p-8">
+                <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Consumer Fulfillment</p>
+                <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
+                    Your 1,933 stores sit idle while customers wait 3–7 days. Amazon delivers in 1–2.
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">Revenue Protection / Growth</span>
+                    <span class="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold">Fulfillment Speed</span>
+                </div>
+                <p class="text-gray-400 text-xs font-medium mb-6">Primary buyers: COO · CSCO · CMO · CEO</p>
+                <ul class="space-y-3 mb-7">
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>adidas operates <strong>1,933 own stores</strong> with RFID inventory tracking at greater than <strong>99% accuracy</strong> — a confirmed, distributed fulfillment network sitting in the markets where adidas.com customers live. Ship-from-store technology is deployed. But the scale of active ship-from-store fulfillment has not been confirmed as operational at any meaningful volume. <span class="text-gray-400 text-xs font-medium">[FACT on infrastructure — FY2025 Annual Report; INFERENCE on operational scale]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>Standard US direct-to-consumer delivery is <strong>3–7 days</strong>; 2-day nationwide via standard carrier options. Amazon Prime delivers in <strong>1–2 days</strong> across 90%+ of US addresses. In Europe, Zalando delivers in 1–3 days with its own logistics network. adidas.com e-commerce is <strong>€4.3B</strong> and growing at +16% currency-neutral in FY2025. The delivery gap applies to the fastest-growing part of the business. <span class="text-gray-400 text-xs font-medium">[FACT — consumer fulfillment research; FACT on e-commerce metrics, FY2025 Annual Report]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>North America grew only <strong>+4% currency-neutral in FY2025</strong> vs. +13% globally — and the FIFA World Cup in the US, Mexico, and Canada is 10–12 weeks away. The fulfillment gap is largest exactly where the commercial moment is largest. Every order that converts and arrives late is a loyalty data point that goes to Amazon instead of adidas. <span class="text-gray-400 text-xs font-medium">[FACT — FY2025 results; FACT on World Cup timing]</span></span>
+                    </li>
+                </ul>
+                <div class="cost-box-blue rounded-xl p-5 mb-6">
+                    <p class="text-blue-800 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction</p>
+                    <p class="text-blue-900 font-black mb-2" style="font-size:32px; line-height:1;">€43M+ / year</p>
+                    <p class="text-blue-800 text-sm leading-relaxed">adidas.com e-commerce at <strong>€4.3B and growing at 16%</strong>. Even a 1-percentage-point improvement in conversion from closing the delivery gap represents <strong>€43M in incremental revenue</strong>. The stores, the RFID, and the ship-from-store technology already exist. The routing intelligence does not. <span class="text-blue-600 text-xs font-medium">[FACT on e-commerce base — FY2025 Annual Report; INFERENCE on conversion leverage]</span></p>
+                </div>
+                <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> What percentage of adidas.com orders in the US are currently fulfilled from stores vs. central distribution centers — and what is the specific bottleneck preventing scale: routing software, store labor, carrier integration, or a commercial decision?</p>
+            </div>
+        </div>
 
-</div>
+        <!-- ═══════════════════════════════════════ PROVOCATION 04 -->
+        <div class="provocation-card bg-white rounded-2xl shadow-md mb-10 overflow-hidden">
+            <div class="p-8">
+                <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Inbound Logistics</p>
+                <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
+                    You have real-time tracking across your supply chain and still pay €20–40M in avoidable air freight.
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">COGS Avoidance</span>
+                    <span class="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-xs font-semibold">Response Latency</span>
+                </div>
+                <p class="text-gray-400 text-xs font-medium mb-6">Primary buyers: CFO · CSCO · COO</p>
+                <ul class="space-y-3 mb-7">
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>adidas adopted <strong>project44</strong> for real-time supply chain visibility in February 2026 — under World Cup supply pressure. Real-time tracking and predictive decision-making are two different things. The visibility layer now exists across the inbound network. The decision model that uses it to avoid costly mode upgrades has not been confirmed as active. <span class="text-gray-400 text-xs font-medium">[FACT on project44 adoption — February 2026; INFERENCE on decision layer gap]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span>Air freight runs at <strong>4–6× the cost of ocean shipping</strong>. When a shipment misses its ocean window due to port congestion or factory delay, the reactive upgrade to air is typically a manual decision made days after the window has already closed. Industry benchmarks suggest <strong>15–25% of air freight spend is avoidable</strong> with predictive mode optimization. With an estimated total air freight spend of €100–200M annually, a 20% reduction = <strong>€20–40M in direct COGS savings</strong>. <span class="text-gray-400 text-xs font-medium">[FACT — air/ocean rate premium; INFERENCE on avoidable share; ASSUMPTION on total air spend]</span></span>
+                    </li>
+                    <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                        <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                        <span><strong>283 factories</strong> across Vietnam, Indonesia, China, and Cambodia ship into a 60-distribution-center global network. Port congestion at the top 5 Asia-to-North-America lanes is predictable <strong>7–14 days in advance</strong> using the vessel queue data that project44 now provides. The data exists. The alert model does not. <span class="text-gray-400 text-xs font-medium">[FACT on factory and DC count — FY2025 Annual Report; INFERENCE on prediction capability]</span></span>
+                    </li>
+                </ul>
+                <div class="cost-box-green rounded-xl p-5 mb-6">
+                    <p class="text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction</p>
+                    <p class="text-emerald-900 font-black mb-2" style="font-size:32px; line-height:1;">€20–40M / year</p>
+                    <p class="text-emerald-800 text-sm leading-relaxed">The infrastructure investment — project44 — is already paid. Every month without an activated decision model is a month of <strong>reactive air freight premiums that could have been avoided</strong> before the ship left the port. Additionally: each undetected inbound delay creates DC labor disruption, elevated safety stock requirements, and wholesale fill-rate penalties that do not appear in the freight line item. <span class="text-emerald-600 text-xs font-medium">[INFERENCE — based on industry benchmark for logistics visibility programs; ASSUMPTION on spend base]</span></p>
+                </div>
+                <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> What is your current annual air freight spend as a share of total logistics cost — and how far in advance is the decision to upgrade a shipment from ocean to air currently made, and by whom?</p>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ SYNTHESIS CARD (P05) -->
+        <div class="synthesis-bg rounded-2xl border-2 border-indigo-700 mb-16 overflow-hidden">
+            <div class="p-8">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="bg-indigo-700 text-white rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider">Synthesis: The Full Margin Thesis</span>
+                </div>
+                <h3 class="text-indigo-900 font-black leading-snug mb-5" style="font-size:22px;">
+                    Fixing four supply chain gaps moves your margin from 8.3% to 9.5% — €300M in annual EBIT.
+                </h3>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="bg-indigo-200 text-indigo-800 rounded-full px-3 py-1 text-xs font-semibold">Operating Margin Expansion</span>
+                </div>
+                <p class="text-indigo-600 text-xs font-medium mb-8">Primary buyers: CEO · CFO · COO</p>
+
+                <!-- Arithmetic table -->
+                <div class="bg-white rounded-xl overflow-hidden mb-8 shadow-sm border border-indigo-100">
+                    <table class="w-full">
+                        <thead>
+                            <tr style="background:linear-gradient(135deg,#3730a3,#4f46e5);">
+                                <th class="text-left px-5 py-3.5 text-white font-semibold text-sm">Provocation</th>
+                                <th class="text-left px-5 py-3.5 text-white font-semibold text-sm">Specific Sub-Process</th>
+                                <th class="text-right px-5 py-3.5 text-white font-semibold text-sm">Estimated Annual EBIT Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100">
+                                <td class="px-5 py-3.5 font-semibold text-gray-800 text-sm whitespace-nowrap">1 — Demand Planning</td>
+                                <td class="px-5 py-3.5 text-gray-500 text-sm">Demand sensing latency → gross margin via full-price sell-through <span class="text-gray-400 text-xs">[INFERENCE]</span></td>
+                                <td class="px-5 py-3.5 text-right font-bold text-gray-900 text-sm whitespace-nowrap">€100–150M</td>
+                            </tr>
+                            <tr class="border-b border-gray-100 bg-slate-50">
+                                <td class="px-5 py-3.5 font-semibold text-gray-800 text-sm whitespace-nowrap">2 — Tariff Intelligence</td>
+                                <td class="px-5 py-3.5 text-gray-500 text-sm">Policy-to-decision cycle → landed cost avoidance <span class="text-gray-400 text-xs">[INFERENCE]</span></td>
+                                <td class="px-5 py-3.5 text-right font-bold text-gray-900 text-sm whitespace-nowrap">€40–80M</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="px-5 py-3.5 font-semibold text-gray-800 text-sm whitespace-nowrap">3 — Ship-from-Store</td>
+                                <td class="px-5 py-3.5 text-gray-500 text-sm">Store fulfillment routing → e-commerce conversion uplift <span class="text-gray-400 text-xs">[INFERENCE]</span></td>
+                                <td class="px-5 py-3.5 text-right font-bold text-gray-900 text-sm whitespace-nowrap">€40–70M</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 bg-slate-50">
+                                <td class="px-5 py-3.5 font-semibold text-gray-800 text-sm whitespace-nowrap">4 — Air Freight</td>
+                                <td class="px-5 py-3.5 text-gray-500 text-sm">Mode selection timing → COGS reduction <span class="text-gray-400 text-xs">[INFERENCE]</span></td>
+                                <td class="px-5 py-3.5 text-right font-bold text-gray-900 text-sm whitespace-nowrap">€20–40M</td>
+                            </tr>
+                            <tr style="background:linear-gradient(135deg,#eef2ff,#e0e7ff);">
+                                <td class="px-5 py-4 font-black text-indigo-900 text-base" colspan="2">Combined · Center Estimate</td>
+                                <td class="px-5 py-4 text-right font-black text-indigo-900" style="font-size:26px;">~€270M</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Margin progression tiles -->
+                <div class="grid grid-cols-3 gap-4 mb-8">
+                    <div class="bg-white rounded-xl p-5 text-center shadow-sm border border-indigo-100">
+                        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">FY2025 Operating Margin</p>
+                        <p class="text-gray-700 font-black" style="font-size:36px; line-height:1;">8.3%</p>
+                        <p class="text-gray-400 text-xs mt-2">€2,059M EBIT on €24.8B revenue <span class="text-gray-400 text-xs">[FACT — FY2025 Annual Report]</span></p>
+                    </div>
+                    <div class="rounded-xl p-5 text-center flex flex-col items-center justify-center" style="background:linear-gradient(135deg,#c7d2fe,#a5b4fc);">
+                        <p class="text-indigo-900 font-black" style="font-size:28px; line-height:1;">+~€270M</p>
+                        <p class="text-indigo-700 text-xs font-semibold mt-2">+~1.1pp operating margin</p>
+                        <p class="text-indigo-600 text-xs mt-1">No new platforms · No new CapEx</p>
+                    </div>
+                    <div class="rounded-xl p-5 text-center shadow-sm" style="background:linear-gradient(135deg,#3730a3,#4f46e5);">
+                        <p class="text-indigo-200 text-xs font-semibold uppercase tracking-wider mb-2">Supply Chain Efficiency Target</p>
+                        <p class="text-white font-black" style="font-size:36px; line-height:1;">~9.5%</p>
+                        <p class="text-indigo-300 text-xs mt-2">2028 committed target: &gt;10% <span class="text-indigo-400 text-xs">[FACT — management guidance]</span></p>
+                    </div>
+                </div>
+
+                <!-- Narrative -->
+                <div class="bg-white rounded-xl p-6 border border-indigo-200 shadow-sm">
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4">The margin math: FY2025 operating profit of ~€2,059M on €24.8B revenue = 8.3% operating margin. Adding ~€270M center estimate: €2,329M / €24.8B = ~9.4%, rounded to ~9.5%. The publicly committed 2028 target is &gt;10%. Closing these four supply chain gaps delivers approximately <strong>two-thirds of the remaining margin journey</strong> — from supply chain efficiency alone, before any revenue growth or SG&amp;A leverage. <span class="text-gray-400 text-xs font-medium">[FACT on FY2025 EBIT and revenue; INFERENCE on improvement estimate]</span></p>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4">ASICS moved from 7.0% operating margin to 14.7% in two years by fixing exactly this category of problem: channel mix, full-price discipline, and supply chain responsiveness. adidas is at 8.3% with the same levers available — at 6× the revenue scale. <span class="text-gray-400 text-xs font-medium">[FACT — ASICS FY2022 and FY2024 margins]</span></p>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-4">Every platform required to close these gaps is already operating: <strong>o9 Solutions</strong> for demand planning, <strong>project44</strong> for freight visibility, <strong>GK OmniPOS</strong> for ship-from-store. The work sits above existing platforms, connecting them — not replacing them.</p>
+                    <p class="text-gray-800 text-sm font-semibold leading-relaxed">Provocations 01–04 are all supply chain efficiency plays. None require revenue growth to deliver returns. In a tariff-volatile, FX-pressured macro environment, this is the only margin path that adidas fully controls. <span class="text-red-700">Provocation 2 is time-sensitive before July 24, 2026.</span></p>
+                </div>
+
+                <!-- Cost of inaction box -->
+                <div class="mt-6 rounded-xl p-5" style="background:linear-gradient(135deg,#312e81,#3730a3);">
+                    <p class="text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction — Full Thesis</p>
+                    <p class="text-white font-black mb-2" style="font-size:32px; line-height:1;">~€270M / year</p>
+                    <p class="text-indigo-200 text-sm leading-relaxed">Each year without these four supply chain improvements costs an estimated €270M in EBIT and leaves the 2028 &gt;10% target dependent on revenue growth and macro tailwinds that are already being hedged against in management's own guidance. The €420M FY2026 guidance gap vs. analyst consensus is exactly the kind of gap these four improvements are designed to close — from the inside out. <span class="text-indigo-400 text-xs font-medium">[INFERENCE on opportunity cost; FACT on guidance gap — March 4, 2026 press release]</span></p>
+                </div>
+
+                <!-- Synthesis discovery question -->
+                <p class="text-indigo-700 italic mt-6" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-indigo-800">Discovery question:</strong> How does the CFO's internal model decompose the path from 8.3% to &gt;10% — specifically, what share is attributed to supply chain efficiency vs. revenue growth vs. SG&amp;A reduction — and is there a single owner responsible for the supply chain efficiency workstream?</p>
+            </div>
+        </div>
+
+        <!-- ─────────────────────────────────────── SECTION 2 HEADER -->
+        <div class="flex items-baseline gap-4 mb-10">
+            <div class="w-1 h-8 rounded-full bg-indigo-600 flex-shrink-0"></div>
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">Section 2 — Engagement Plan</h2>
+                <p class="text-gray-400 text-sm mt-0.5">Two phases. Fixed fees. The second only proceeds if Phase One confirms the opportunity.</p>
+            </div>
+        </div>
+
+        <!-- Phase cards grid -->
+        <div class="grid grid-cols-2 gap-6 mb-6">
+
+            <!-- PHASE ONE -->
+            <div class="bg-blue-50 rounded-2xl border border-blue-200 p-7 flex flex-col">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white font-black text-base flex-shrink-0">1</div>
+                    <div>
+                        <p class="font-bold text-blue-900 text-base">Validate and Scope</p>
+                        <p class="text-blue-500 text-xs font-semibold uppercase tracking-wide">Weeks 1–4 · Fixed Fee</p>
+                    </div>
+                </div>
+                <p class="text-blue-800 text-sm leading-relaxed mb-6">Stress-test each provocation against internal data. Confirm where the gaps are real, where they are already being addressed, and where our analysis was wrong.</p>
+                <div class="space-y-4 flex-1">
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-200 text-blue-800 text-xs font-bold flex items-center justify-center">1</span>
+                        <div>
+                            <p class="text-blue-900 text-sm font-semibold">Weeks 1–2: Data Access &amp; Interviews</p>
+                            <p class="text-blue-700 text-xs mt-1 leading-relaxed">Compare each provocation estimate against actual internal metrics. What is the confirmed demand forecast error rate at the SKU–region level for lifestyle product lines? How long does the tariff scenario process take end to end? What percentage of inbound shipments have live location data connected to the demand planning model? We kill any provocation that does not hold up against the internal numbers.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-200 text-blue-800 text-xs font-bold flex items-center justify-center">2</span>
+                        <div>
+                            <p class="text-blue-900 text-sm font-semibold">Weeks 2–3: Network Diagnostic (Optional)</p>
+                            <p class="text-blue-700 text-xs mt-1 leading-relaxed">Two to three days. Determine whether the physical distribution network — DC configuration, last-mile coverage, store inventory positioning — constrains the opportunity independently of process. If the physical network is the binding constraint, Phase Two shifts to network optimization before process improvement.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-200 text-blue-800 text-xs font-bold flex items-center justify-center">3</span>
+                        <div>
+                            <p class="text-blue-900 text-sm font-semibold">Weeks 3–4: Confirm Phase Two Scope</p>
+                            <p class="text-blue-700 text-xs mt-1 leading-relaxed">Define the specific sub-process, SKU set, measurable outcome target, and baseline for Phase Two delivery. If the provocations were wrong, you owe nothing beyond Phase One.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-blue-200 mt-6 pt-5">
+                    <p class="text-blue-600 text-xs font-semibold uppercase tracking-wider mb-1">Deliverable</p>
+                    <p class="text-blue-900 text-sm font-semibold leading-snug">A go/no-go document with confirmed opportunity sizes and Phase Two scope definition.</p>
+                </div>
+            </div>
+
+            <!-- PHASE TWO -->
+            <div class="bg-indigo-50 rounded-2xl border border-indigo-200 p-7 flex flex-col">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-9 h-9 bg-indigo-600 rounded-full flex items-center justify-center text-white font-black text-base flex-shrink-0">2</div>
+                    <div>
+                        <p class="font-bold text-indigo-900 text-base">Design, Build, Deploy</p>
+                        <p class="text-indigo-500 text-xs font-semibold uppercase tracking-wide">Weeks 5–24 · Fixed Fee + Success Bonus</p>
+                    </div>
+                </div>
+                <p class="text-indigo-800 text-sm leading-relaxed mb-6">Deploy against the confirmed scope. No big-bang cutover — the new process runs in parallel with the existing one for direct comparison without operational risk.</p>
+                <div class="space-y-4 flex-1">
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-200 text-indigo-800 text-xs font-bold flex items-center justify-center">1</span>
+                        <div>
+                            <p class="text-indigo-900 text-sm font-semibold">Weeks 5–8: Design</p>
+                            <p class="text-indigo-700 text-xs mt-1 leading-relaxed">Map the current process in the scope confirmed in Phase One. Design where process automation and real-time data integration intervene. Plan integration with existing systems — no new platforms required. Define data pipelines. Start security and governance approvals.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-200 text-indigo-800 text-xs font-bold flex items-center justify-center">2</span>
+                        <div>
+                            <p class="text-indigo-900 text-sm font-semibold">Weeks 9–16: Build and Integrate</p>
+                            <p class="text-indigo-700 text-xs mt-1 leading-relaxed">Deploy in the adidas environment. Connect to live data feeds. Build monitoring dashboards. Run parallel operations alongside the existing process for direct comparison without operational risk.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-200 text-indigo-800 text-xs font-bold flex items-center justify-center">3</span>
+                        <div>
+                            <p class="text-indigo-900 text-sm font-semibold">Weeks 17–20: Go Live</p>
+                            <p class="text-indigo-700 text-xs mt-1 leading-relaxed">New process runs in production on the agreed scope. Measure against the Phase One baseline. The numbers are real, not a demonstration.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <span class="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-200 text-indigo-800 text-xs font-bold flex items-center justify-center">4</span>
+                        <div>
+                            <p class="text-indigo-900 text-sm font-semibold">Weeks 21–24: Measure and Expand</p>
+                            <p class="text-indigo-700 text-xs mt-1 leading-relaxed">Document before-and-after. Build the business case for scaling to adjacent SKU sets, geographies, or process areas. Propose the broader reinvention program.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-indigo-200 mt-6 pt-5">
+                    <p class="text-indigo-600 text-xs font-semibold uppercase tracking-wider mb-1">Deliverable</p>
+                    <p class="text-indigo-900 text-sm font-semibold leading-snug">Measured before-and-after on one sub-process with a business case for full-scale rollout.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk callout -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-16 flex gap-4 items-start">
+            <div class="w-1 rounded-full bg-amber-400 flex-shrink-0 self-stretch" style="min-height:100%;"></div>
+            <p class="text-amber-900 text-sm font-medium leading-relaxed">If Phase One invalidates a provocation, client owes nothing beyond the Phase One fee. The engagement is structured so the financial risk of being wrong sits with us, not with you.</p>
+        </div>
+
+        <!-- ─────────────────────────────────────── SECTION 3 HEADER -->
+        <div class="flex items-baseline gap-4 mb-10">
+            <div class="w-1 h-8 rounded-full bg-indigo-600 flex-shrink-0"></div>
+            <div>
+                <h2 class="text-2xl font-bold text-gray-900">Section 3 — Discovery Questions</h2>
+                <p class="text-gray-400 text-sm mt-0.5">Five questions we would want to answer in the first conversation</p>
+            </div>
+        </div>
+
+        <div class="space-y-4 mb-10">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">1</span>
+                <p class="text-gray-700 text-sm leading-relaxed">When a lifestyle product like the Samba or Gazelle starts to accelerate beyond forecast — driven by a cultural moment, a celebrity, or social momentum — what is the documented process from detection to production order revision, and how many weeks does that cycle currently take end to end?</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">2</span>
+                <p class="text-gray-700 text-sm leading-relaxed">When a tariff event is announced — as it was on February 22, 2026 — what is the internal clock from announcement to an approved, issued sourcing decision? Who owns that process, and what tools do they use to run the scenario?</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">3</span>
+                <p class="text-gray-700 text-sm leading-relaxed">What percentage of inbound shipments currently have live location data connected to your demand planning model — and what is the current annual spend on emergency air freight triggered by late detection of transit delays?</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">4</span>
+                <p class="text-gray-700 text-sm leading-relaxed">What is the fully-loaded cost per fulfilled adidas.com e-commerce order versus the equivalent wholesale pallet delivery — and what does your returns data show as the primary reason code for e-commerce returns?</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-red-100 p-5 flex gap-4 items-start">
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 text-red-700 font-bold text-sm flex items-center justify-center">5</span>
+                <p class="text-gray-700 text-sm leading-relaxed">With the FIFA World Cup opening in June and 13 national team kits moving through the US inbound supply chain right now, what is the contingency plan if a major inbound ocean freight exception hits the network in the next eight weeks?</p>
+            </div>
+        </div>
+
+        <!-- Closing blockquote -->
+        <blockquote class="border-l-4 border-indigo-500 rounded-r-xl pl-6 pr-6 py-5 mb-4" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff);">
+            <p class="text-indigo-800 italic text-base leading-relaxed font-medium">These hypotheses are built entirely on public data. With 4 weeks of internal access, we can confirm or disprove each one and size the exact opportunity.</p>
+        </blockquote>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════ FOOTER -->
+    <footer class="border-t border-gray-200 bg-white mt-4">
+        <div class="max-w-5xl mx-auto px-8 py-7 flex items-center justify-between gap-8">
+            <p class="text-gray-400 text-xs leading-relaxed">Analysis based exclusively on public sources: annual reports, SEC filings, earnings transcripts, investor presentations.</p>
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <div class="w-7 h-7 rounded flex items-center justify-center" style="background:linear-gradient(135deg,#4338ca,#7c3aed);">
+                    <span class="text-white font-black text-xs">Ac</span>
+                </div>
+                <span class="text-gray-400 text-xs font-medium">Accenture Strategy · 2026</span>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
