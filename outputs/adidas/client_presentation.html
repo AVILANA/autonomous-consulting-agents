@@ -91,33 +91,29 @@
         <!-- ─────────────────────────────────────── MAIN -->
         <main class="max-w-5xl mx-auto px-8 py-14">
 
-            <!-- INTRO + LEGEND ROW -->
-            <div style="display:flex; gap:40px; align-items:flex-start; margin-bottom:40px;">
-                <div style="flex:0 0 60%;">
-                    <h2 style="font-size:28px; font-weight:700; color:#111827; margin-bottom:16px;">What is this?</h2>
-                    <p class="text-gray-400 italic" style="font-size:18px; line-height:1.8;">This document presents an outside-in assessment of your fulfillment operations and competitive position, built entirely from public sources — annual reports, earnings transcripts, investor presentations, and corporate disclosures. It identifies four quantified operational gaps, benchmarks your performance against nine global peers, and tags every claim by confidence level. The goal is not to tell you what to do — it is to show what we found, ask the questions only your team can answer, and whether these gaps are worth exploring together.</p>
-                </div>
-                <div style="flex:0 0 35%;">
-                    <div class="bg-gray-50 border border-gray-200 rounded px-4 py-3">
-                        <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-2">Analytical Basis</p>
-                        <ul class="text-xs text-gray-500 leading-relaxed space-y-1 list-none">
-                            <li><span class="font-medium">[FACT]</span> — Directly confirmed in public filings or corporate disclosures</li>
-                            <li><span class="font-medium">[INFERENCE — HIGH CONFIDENCE]</span> — Two or more facts connect with direct logic</li>
-                            <li><span class="font-medium">[INFERENCE — MODERATE CONFIDENCE]</span> — Based on absence of disclosure, alternative explanations exist</li>
-                            <li><span class="font-medium">[INFERENCE — LOW CONFIDENCE]</span> — Industry benchmarks applied to this company, requires validation</li>
-                            <li><span class="font-medium">[ASSUMPTION]</span> — No public evidence, hypothesis only</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- INTRO PARAGRAPH (full width) -->
+            <div style="margin-bottom:40px;">
+                <h2 style="font-size:28px; font-weight:700; color:#111827; margin-bottom:16px;">What is this?</h2>
+                <p class="text-gray-400 italic" style="font-size:18px; line-height:1.8;">This document presents an outside-in assessment of your fulfillment operations and competitive position, built entirely from public sources — annual reports, earnings transcripts, investor presentations, and corporate disclosures. It identifies four quantified operational gaps, benchmarks your performance against nine global peers, and tags every claim by confidence level. The goal is not to tell you what to do — it is to show what we found, ask the questions only your team can answer, and whether these gaps are worth exploring together.</p>
             </div>
 
             <!-- SECTION 1 HEADER -->
-            <div class="flex items-baseline gap-4 mb-10">
+            <div class="flex items-baseline gap-4 mb-4">
                 <div class="w-1 h-8 rounded-full bg-indigo-600 flex-shrink-0"></div>
                 <div>
                     <h2 class="text-2xl font-bold text-gray-900">Section 1 — The Provocations</h2>
                     <p class="text-gray-400 text-sm mt-0.5">Four fulfillment hypotheses, each with a quantified cost of inaction</p>
                 </div>
+            </div>
+
+            <!-- ANALYTICAL BASIS LEGEND (horizontal) -->
+            <div class="bg-gray-50 border border-gray-200 rounded px-4 py-2 mb-10" style="display:flex; flex-direction:row; flex-wrap:wrap; gap:16px; align-items:center;">
+                <span class="text-gray-400 font-semibold uppercase tracking-wider" style="font-size:11px; white-space:nowrap;">Claim tags:</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[FACT]</span> — Public filing</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — HIGH]</span> — Direct logic</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — MODERATE]</span> — Alt. explanations exist</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — LOW]</span> — Benchmark applied</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[ASSUMPTION]</span> — No public evidence</span>
             </div>
 
             <!-- ═══════════════════════════════════════ PROVOCATION 01 -->
