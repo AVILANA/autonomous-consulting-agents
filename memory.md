@@ -21,6 +21,25 @@ This file is read by every step at the start of execution. It contains accumulat
 - Include an executive summary at the start where each analytical step summarizes its top 3 findings.
 - Due diligence must produce prioritized discovery questions ranked by decision impact.
 
+## Approved Title Examples (learned from user feedback — use as quality benchmark)
+
+APPROVED TITLES:
+- Every shipment is tracked in real time. Your planning team may still be working with data that is weeks old — and if so, the gap could cost €50M a year in avoidable air freight.
+- Your warehouse packs an order in 2 hours. Customers wait 3–7 days for delivery. Amazon delivers in 1–2.
+- €200M in tariffs hit your guidance. The next bill arrives July 24 — is anyone modelling it?
+- Your carriers may be overcharging you €60M a year. When was the last time someone checked?
+- Transport speed, warehouse delivery, tariff response and freight invoices — four gaps worth €300M that sit between you and your 2028 target.
+
+TITLE RULES LEARNED FROM USER FEEDBACK:
+- Use conditional language when not FACT: may, could, if so, it seems, it looks like
+- Use questions instead of accusations: 'is anyone modelling it?' instead of 'nobody is modelling it'
+- Include one specific number that creates pain
+- Never use jargon: no idle, dormant, bifurcated, operationalized, paradigm
+- Never name technologies in titles: no TikTok, o9, SAP, project44
+- Be specific not generic: name the gap, not the category
+- A 16-year-old who understands business should understand every word
+- The synthesis title must name all the gaps and connect them to the margin target
+
 ## Execution History
 (This section is updated automatically after each run)
 

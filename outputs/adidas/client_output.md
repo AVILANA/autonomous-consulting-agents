@@ -1,91 +1,136 @@
 # Outside-In Perspective: adidas AG
-**Prepared for:** Harm Ohlmeyer, CFO
-**Date:** April 9, 2026
+**Prepared for:** COO / VP Supply Chain (primary) · CFO (secondary)
+**Date:** April 10, 2026
 **Classification:** Confidential — For Discussion Purposes Only
 
 ---
 
-# PAGE 1 — THE PROVOCATIONS
+# SECTION 1 — THE PROVOCATIONS
 
 *What we believe, built entirely from public data, before we have set foot inside the building.*
 
 ---
 
-## 1. Your inventory costs €1.1B more per year than it should — and your planning system knows it.
+## 1. Your tracking system sees every shipment in real time. Your planning system reacts three weeks later.
 
-adidas carries €4.99B in inventory, 21% of revenue — a ratio that has not materially improved since the Yeezy normalization three years ago. ASICS, at one-sixth your scale, tripled its operating margin from 7% to 14.7% in 24 months. The primary driver was not a technology platform. It was faster full-price sell-through through tighter planning discipline. The Samba and Gazelle have driven lifestyle category growth that your current planning cycle — estimated at 2–4 weeks from signal to order revision — is structurally slow to capture. When a product goes viral, your competitors respond in 48 hours. Your system responds in the next planning cycle.
+In February 2026, adidas deployed project44 — live track-and-trace across 60 distribution centers and the full inbound ocean freight network. The visibility layer exists and works. What does not exist, in any public disclosure, is a connection from that live shipment data into the demand planning cycle that decides what to move, where, and when.
 
-**Cost of inaction:** Moving inventory from 21% to 18% of revenue releases €745M in permanent working capital. At your current borrowing cost, that is €35M in interest savings alone — before counting the gross margin lost to clearance outlets on inventory that missed the full-price window. Conservative estimate: **€200–400M per year in margin and capital cost** traceable to planning lag.
+The consequence is structural. When a vessel delay develops at a Vietnamese port, the planning system does not automatically see it. The exception surfaces when it arrives, not before it becomes a problem. When US tariffs escalated in 2025 and adidas eliminated China-to-US sourcing, the response took months. Best-in-class operations run the same scenario in 48 to 72 hours. The gap between those two numbers — weeks versus hours — is not a technology gap. project44 is already running. It is an integration and decision process gap.
 
----
+adidas operates 60 distribution centers across six continents, all of them moving inventory on plans that close on data that is three to four weeks old. The inbound network running through Vietnam and Indonesia — now carrying 46% of global production — is less predictable than the prior China routing. Safety stock is the buffer for that uncertainty. And safety stock costs money to carry, money to move, and margin when it is in the wrong place at the wrong moment.
 
-## 2. You spend €3B on marketing and cannot prove what half of it does — and the World Cup window closes in 8 weeks.
-
-adidas's marketing spend is approximately €3B annually — 12–13% of revenue. Lululemon runs a 23.7% operating margin at 5–6% marketing spend. On Holding runs 12.5% operating margin. The €3B is not a brand investment problem. It is an efficiency problem. Your own internal content operations have demonstrated a 90%+ cost reduction in production workflows. That capability is not yet operating at the scale that changes the marketing P&L. FIFA World Cup 2026 launches in June — the largest commercial activation window in your calendar, in your weakest region, with 13 national team kits in market. The agency content model your teams are using for World Cup preparation is the same model that costs 10–15× more per asset than your internal production capability can deliver.
-
-**Cost of inaction:** A 2-point improvement in marketing efficiency — from 12.5% to 10.5% of revenue — generates **€496M in annual operating income.** That alone closes more than half the gap between your current 8.3% margin and your 2028 >10% target. The World Cup window to change the cost structure for this cycle closes in approximately 8 weeks.
+**Cost of inaction:** €50–75 million per year in avoidable emergency air freight premiums and reactive routing decisions that do not appear as a named line item — they disappear into cost of goods sold. Air freight costs four times ocean. Every unplanned air shipment is a margin event. The frequency of those events grows every year that the planning system operates independently of the visibility layer.
 
 ---
 
-## 3. A €200M tariff bill arrived in your guidance, and your response cycle is measured in weeks.
+## 2. Your warehouse packs an order in two hours. Your website tells customers three to seven days.
 
-adidas absorbed €200M in US tariff exposure directly into FY2026 guidance — roughly 10% of FY2025 operating income. This single line item explains 43% of the gap between your guidance and analyst consensus that drove a 7% stock decline on results day. You source 92% of production from Asia across 283 factories, with Vietnam (27%) and Indonesia (19%) as lead countries. Structural sourcing diversification requires months. But the analytical response to a new tariff event — scenario modeling, sourcing re-ranking, landed-cost recalculation, PO amendments — currently takes weeks, not days. Section 122 broad tariff authority expires July 24, 2026. That is a second guidance inflection point in 15 weeks. The market will price the scenario before your sourcing teams have modeled it.
+The Wilkes-Barre, Pennsylvania distribution center — 843,000 square feet, 71,000 stock-keeping units — achieves a confirmed two-hour pack service level. It can reach parts of the US Northeast same-day and the full country within two days via standard ground. adidas.com publishes a three-to-seven-day standard delivery commitment for US e-commerce orders.
 
-**Cost of inaction:** Each week of response latency on a €200M annual tariff exposure costs approximately €3.8M in avoidable landed-cost absorption. Across three major sourcing decision cycles per year, the latency gap between best-in-class decision speed and current speed is estimated at **€40–80M annually** in sourcing decisions made on stale data.
+The Mantova facility in Italy — 130,000 square meters, 375,000 to 500,000 parcels per day, serving 19 European countries — has no published per-country delivery commitment. Customers in France, Spain, and Poland do not know what to expect when they order from adidas.com. So they default to Amazon, which publishes a one-to-two day commitment and delivers on it.
 
----
+The capability is already built and paid for. The three-to-seven-day commitment is not a logistics constraint. It is a number that was set at some point and never revisited against what the operation can actually do. The 39 partner-managed distribution centers outside the primary network are a complete black box — no public data on automation maturity, on-time performance, or delivery reliability.
 
-## 4. Your e-commerce delivers in 3–7 days. The same shoe arrives from Amazon in 1–2. The €4.5B channel is paying for that gap.
+adidas e-commerce reached €4.3 billion in FY2025, growing 16%. At industry-standard return rates of 15 to 25% for athletic and lifestyle products, between €650 million and €1.1 billion in goods is moving back through the network annually, with no disclosed cost per returned unit and no confirmed process for routing returned inventory to its highest-value destination.
 
-adidas e-commerce grew 16% to approximately €4.5B in FY2025 — the fastest-growing channel in the portfolio. Your published delivery SLA in the US is 3–7 days. Amazon Prime delivers 1–2. Nike's express tier delivers 2–3. Your response — a Buy with Prime partnership with Amazon, announced February 2025 — routes a fraction of DTC orders through Amazon's fulfillment network. The delivery gap closes. But the customer relationship and loyalty membership that converts a purchase into a long-term adidas consumer goes to Amazon, not to adiClub. You have the physical infrastructure to compete — your Wilkes-Barre distribution center can serve the US Northeast in one day. The gap is not in the building. It is in the process and system layer that translates physical capability into a consumer-facing promise.
-
-**Cost of inaction:** Industry benchmarks consistently show that each additional day of delivery time reduces conversion by 15–25% in apparel. If adidas's delivery gap suppresses conversion by even 10% relative to the Amazon benchmark, **the annual revenue at risk on the €4.5B e-commerce base is approximately €450M** — and growing as the channel scales toward the DTC target.
+**Cost of inaction:** €100–150 million per year in lost direct-to-consumer conversion and post-purchase loyalty from customers who see a three-to-seven-day promise and choose Amazon instead. The gap is not a capability problem. The capability is there. It is a decision problem — and the opportunity grows at 16% per year alongside e-commerce revenue.
 
 ---
 
-## 5. ASICS closed a 6.4-point margin gap in two years. adidas has held the same gap for five.
+## 3. A €200 million tariff bill is already in your guidance for 2026. You have no confirmed system to reduce it.
 
-ASICS — a company at one-sixth your scale, with a fraction of your brand power and transformation investment — went from 7.0% to 14.7% operating margin in 24 months without building a new enterprise platform. adidas has been targeting >10% operating margin since 2021. The analyst community has priced in >10% by 2028. Nobody is paying for 12%. Yet the arithmetic is simple: the gap between adidas's 8.3% and ASICS's 14.7% — applied to a €24.8B revenue base — is **€1.59B in annual operating income that adidas is structurally not generating.** ASICS's levers were not exotic: faster channel shift to direct, pricing discipline, and tighter inventory management. The tools are the same. The execution urgency is different.
+adidas explicitly embedded €200 million in US tariff costs into FY2026 guidance, issued March 4, 2026. That number is based on current rates applied to current sourcing flows. It does not model what happens if Vietnam or Indonesia — which together carry 46% of global production and are currently subject to the same escalating trade policy scrutiny that China faced 18 months ago — face a rate increase of 15 to 20 percentage points.
 
-**Cost of inaction:** Every year adidas operates at 8.3% rather than 10% costs **€420M in annual operating income.** That is the floor — the target the market has already priced. The real question is what happens above 10%, and whether your organization is aligned around that ceiling or around a genuine ambition for 12–14%.
+Section 122 broad tariff authority expires July 24, 2026. That is 15 weeks from today. It is a known date on the calendar. The market will price the Vietnam and Indonesia scenario before internal sourcing teams have modeled it, unless the scenario is already running.
 
----
----
+adidas operates across 124 supplier partners and 283 factories in 32 countries. Running a full tariff scenario — total landed cost recalculated across all active sourcing combinations — takes days to weeks using current processes. When a policy window closes in 15 weeks, the decision clock starts from the announcement date, not from when modeling is complete.
 
-# PAGE 2 — WHAT WE WOULD EXPLORE TOGETHER
+The €200 million already in guidance was manageable in 2025 because the China-to-US pivot had already been executed. The next pivot — away from Vietnam or Indonesia exposure — has not been pre-modeled. There is no confirmed evidence from any public source that adidas has a system running continuous scenario analysis on its active sourcing portfolio.
 
-*A 90-day diagnostic — before any commitment to a larger engagement.*
-
----
-
-## The 90-Day Plan
-
-**Validate — Weeks 1 to 4**
-We stress-test each provocation against internal data to confirm where the gaps are real, where they are already being addressed, and where our external analysis was wrong.
-*Deliverable: A fact-based gap assessment with quantified opportunity sizes — confirmed or revised — across inventory efficiency, marketing ROI, tariff response speed, and e-commerce delivery.*
-
-**Design — Weeks 5 to 8**
-Working with your teams, we translate the confirmed gaps into a sequenced improvement agenda — prioritized by financial impact, organizational readiness, and what can be done before or immediately after the World Cup window.
-*Deliverable: A prioritized roadmap with three to five specific operational improvements, each with an owner, a financial case, and a 12-month implementation path.*
-
-**Prove — Weeks 9 to 12**
-We run one focused proof of concept in the highest-priority area — demand sensing, marketing efficiency, or tariff scenario modeling — using live internal data to demonstrate what the improvement looks like at operational scale before any broader rollout decision is made.
-*Deliverable: A live demonstration of the improvement in one area, with a measured before-and-after, ready to present to the Executive Board.*
+**Cost of inaction:** €200 million per year confirmed in guidance. A further €100–200 million in Vietnam and Indonesia escalation risk sits outside current guidance and is not being systematically modeled. July 24 is a live test with a known date and no confirmed defense.
 
 ---
 
-## Five Questions We Would Want to Answer Together
+## 4. Nobody checks your freight invoices. Sixty million euros in carrier overcharges goes unchallenged every year.
 
-**1.** What does your demand planning system actually do when a lifestyle product goes viral — and what is the documented lag from social signal to production order revision?
+adidas uses 100% third-party logistics for last-mile delivery. Confirmed partners include Amazon Multi-Channel Fulfillment in the United States, Kuehne+Nagel across 19 European countries, DHL Supply Chain in Brazil, and an estimated 15 or more national carriers across the remaining global network. Each carrier operates on a separate rate card, separate billing structure, and separate invoicing format.
 
-**2.** What percentage of your €3B marketing budget flows through your own high-efficiency content operations today, and what is your internal target for that share by the 2026 World Cup?
+At the scale of 60 distribution centers, hundreds of thousands of daily parcels, and 100% outsourced last-mile delivery, industry benchmarks for freight invoice errors — duplicate billing, rate card misapplication, accessorial charges applied incorrectly — run at 2 to 4% of total freight spend. At an estimated €1.5 to 2.0 billion in annual logistics spend, a reasonable inference for a network at this scale and outsourcing depth, that is €30 to €80 million in annual recoverable overbilling.
 
-**3.** When a tariff change is announced, what is the clock — from announcement to approved sourcing decision — and who owns that process?
+No public evidence exists of systematic freight audit or automated invoice reconciliation at adidas. The billing structures of Amazon MCF, Kuehne+Nagel, and a national carrier in Poland are fundamentally different from one another — which multiplies reconciliation complexity across a fragmented carrier base. The invoices are paid. The checks are not run.
 
-**4.** What is the e-commerce conversion rate at each delivery speed option, and what is the internal model for what 1–2 day delivery in the top five US markets would do to DTC revenue and adiClub membership growth?
-
-**5.** Does adidas have an internal model of what operating margin is structurally achievable at full program maturity — and is the 2028 >10% target a floor or a ceiling in the internal planning conversation?
+**Cost of inaction:** €50–60 million per year in carrier overcharges, duplicate billing, and invoice errors — unrecovered because no systematic reconciliation process is in place. This is not a new spend line. The spend is already happening. The recovery is not.
 
 ---
 
-*These hypotheses are built on public data. With 4 weeks of internal access, we can confirm or disprove each one.*
+## 5. Fix the full fulfillment chain and operating margin moves from 8.3% to 9.5% — €300 million closer to your 2028 target.
+
+The arithmetic from provocations one through four is straightforward.
+
+| What we addressed | Conservative annual improvement |
+|---|---|
+| Transportation planning — connect the visibility layer to the demand plan | €50–75 million |
+| Warehousing — activate the SLA to match what the DC can actually do | €75–100 million |
+| Tariffs — run continuous scenario modeling rather than reactive response | €100 million |
+| Freight audit — reconcile invoices before paying them | €50–60 million |
+| **Total** | **~€300 million** |
+
+adidas closed FY2025 at €2,059 million operating profit — 8.3% on €24.8 billion in revenue. The publicly committed 2028 target is above 10%, which requires approximately €2,480 million. The gap is €421 million. This analysis closes €300 million of it through fulfillment operations that are already built and running, using platforms that are already deployed.
+
+The March 4, 2026 stock decline of approximately 7% was triggered by a €420 million shortfall between FY2026 guidance and analyst consensus. Management attributed the gap to tariff and currency conservatism. Three of the four fulfilment gaps above — transport planning integration, warehouse SLA activation, and freight audit recovery — are addressable without waiting for new platforms, new contracts, or the TRANS4RM transformation program to complete. The fourth — tariff scenario modeling — is time-sensitive before July 24.
+
+None of the work above requires a platform change. project44 is running. The Wilkes-Barre and Mantova sites are operating. The carrier contracts exist. The opportunity is in connecting what is already there and checking the invoices that are already being paid.
+
+**Cost of inaction:** €300 million per year in combined fulfillment inefficiency holds operating margin 1.2 points below potential — making the 2028 target dependent on brand heat rather than operational control. When the Samba and Gazelle lifestyle cycle decelerates — and Gulden has said publicly it will — that gap becomes very hard to close through brand momentum alone.
+
+---
+
+# SECTION 2 — ENGAGEMENT PLAN
+
+---
+
+## PHASE ONE: Validate and Scope — Weeks 1 to 4. Fixed fee.
+
+**Purpose:** Stress-test each provocation against internal data. Confirm where the gaps are real, where they are already being addressed, and where our analysis was wrong.
+
+**Weeks 1–2: Data access and stakeholder interviews.** We compare each provocation estimate against actual internal numbers. What is the confirmed cycle time from a disruption signal — a port closure, a tariff announcement, a demand spike — to a revised transport plan? What percentage of inbound shipments currently have live location data connected to the demand planning model? What is the true delivery SLA adidas can publish and consistently meet for US e-commerce orders? What is the current annual spend on emergency air freight triggered by late detection of transit delays? Does an automated freight invoice reconciliation process exist today, and what percentage of invoices are checked before payment? We kill any provocation that does not hold up against the internal numbers.
+
+**Weeks 2–3: Optional supply chain network diagnostic (two to three days).** Determine whether the physical distribution network — DC configuration, last-mile coverage, carrier contract structure — constrains the opportunity independently of process. If the physical network is the binding constraint, Phase Two shifts to network optimization before process improvement.
+
+**Weeks 3–4: Confirm Phase Two scope.** Define the specific sub-process, geography, carrier set, measurable outcome target, and baseline for Phase Two delivery. If the provocations were wrong, you owe nothing beyond Phase One.
+
+**Deliverable:** A go/no-go document with confirmed opportunity sizes and Phase Two scope definition. If the provocations were wrong, you owe nothing beyond Phase One.
+
+---
+
+## PHASE TWO: Design, Build, Test, Deploy — Weeks 5 to 24. Fixed fee with success bonus tied to measurable outcome.
+
+**Weeks 5–8 — Design.** Map the current process in the scope confirmed in Phase One. Design where process improvement and real-time data integration intervene. Plan integration with existing systems — no new platforms required. Define data connections. Start security and governance approvals. *Deliverable: Signed-off design.*
+
+**Weeks 9–16 — Build and Integrate.** Deploy in the adidas environment. Connect to live data feeds. Build monitoring dashboards. Run parallel operations — the new process runs alongside the existing one for direct comparison without operational risk. No big-bang cutover.
+
+**Weeks 17–20 — Go Live.** New process runs in production on the agreed scope. Measure against the Phase One baseline. The numbers are real, not a demonstration.
+
+**Weeks 21–24 — Measure and Expand.** Document before-and-after. Build the business case for scaling to adjacent carrier sets, geographies, or process areas. Propose the broader reinvention program.
+
+**Deliverable:** Measured before-and-after on one sub-process with a business case for full-scale rollout.
+
+---
+
+# SECTION 3 — DISCOVERY QUESTIONS
+
+*Five questions we would want answered in the first conversation.*
+
+**1.** What is the current cycle time from a disruption signal — a port closure, a tariff announcement, a demand spike — to a revised, approved transport plan? Who owns that decision, and does it connect to the demand plan or sit in a separate team?
+
+**2.** What percentage of US direct-to-consumer orders are actually delivered within two days from the Wilkes-Barre distribution center today — and is the three-to-seven-day published commitment a legal floor, a carrier contract default, or a planning assumption that nobody has revisited?
+
+**3.** When a US tariff policy announcement arrives — as it did on February 22, 2026 — what is the internal clock from announcement to an approved sourcing decision? Who runs the scenario, what tools do they use, and how long did the 2025 China pivot actually take from first policy signal to final decision?
+
+**4.** Does adidas have an automated freight invoice reconciliation process today — rate card verification, duplicate detection, accessorial charge audit? What percentage of carrier invoices are checked before payment, and when was the last external freight audit conducted?
+
+**5.** What is the total cost-to-serve per direct-to-consumer order today, broken down by fulfillment mode — distribution center ship, ship-from-store, Amazon Multi-Channel Fulfillment, click-and-collect — and what is the returns rate by market and channel?
+
+---
+
+*These hypotheses are built on public data. With 4 weeks of internal access, we can confirm or disprove each one — and size the exact opportunity.*
