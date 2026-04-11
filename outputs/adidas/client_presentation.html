@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior:smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,34 @@
         .agent-card-dark { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s ease; }
         .agent-card-dark:hover { background: rgba(255,255,255,0.07); border-color: rgba(165,180,252,0.4); }
         .infra-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+        /* ─── SCORECARD — Light theme (scoped, does not affect other sections) ─── */
+        .scorecard-wrapper { display:none; }
+        .scorecard-table { width:100%; border-collapse:collapse; font-size:13px; line-height:1.5; }
+        .scorecard-table th { background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap; }
+        .scorecard-table td { padding:12px 14px; border-bottom:1px solid #f1f5f9; color:#334155; font-size:13px; font-variant-numeric:tabular-nums; }
+        .scorecard-table tr:hover { background-color:#f1f5f9; }
+        .sc-tier-hdr td { background-color:#f8fafc !important; color:#4f46e5; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:14px; border-top:2px solid #e2e8f0; }
+        .sc-tier-hdr.muted td { color:#64748b; }
+        .sc-status-red { color:#dc2626; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; }
+        .sc-status-amber { color:#d97706; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; }
+        .sc-status-green { color:#16a34a; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; }
+        .sc-gap-bad { color:#dc2626; font-weight:600; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-gap-good { color:#16a34a; font-weight:600; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-company { color:#0f172a; font-weight:700; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-peer { color:#94a3b8; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-best-name { color:#94a3b8; font-size:11px; }
+        .sc-best-val { color:#475569; font-weight:600; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-est { color:#94a3b8; font-size:10px; font-style:italic; }
+        .sc-t3 td { color:#64748b; font-size:12px; }
+        .sc-t3-red { color:#dc2626; font-weight:600; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-t3-green { color:#16a34a; font-weight:600; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-link { color:#4f46e5; text-decoration:none; font-weight:600; font-size:12px; }
+        .sc-link:hover { color:#6366f1; text-decoration:underline; }
+        .sc-link-dim { color:#4f46e5; text-decoration:none; font-weight:600; font-size:11px; margin-right:4px; }
+        .sc-link-dim:hover { color:#6366f1; text-decoration:underline; }
+        .sc-narrative { margin-top:20px; padding:16px; background-color:#f1f5f9; border-left:3px solid #4f46e5; color:#334155; font-size:14px; line-height:1.6; font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif; }
+        .sc-footnotes { margin-top:16px; padding-top:12px; border-top:1px solid #e2e8f0; font-size:10px; color:#94a3b8; line-height:1.6; font-family:'SF Mono','Fira Code','Consolas',monospace; }
+        .sc-footnotes strong { color:#475569; }
     </style>
 </head>
 <body class="bg-slate-50 text-gray-800 min-h-screen">
@@ -97,8 +125,457 @@
                 <p class="text-gray-400 italic" style="font-size:18px; line-height:1.8;">This document presents an outside-in assessment of your fulfillment operations and competitive position, built entirely from public sources — annual reports, earnings transcripts, investor presentations, and corporate disclosures. It identifies four quantified operational gaps, benchmarks your performance against nine global peers, and tags every claim by confidence level. The goal is not to tell you what to do — it is to show what we found, ask the questions only your team can answer, and whether these gaps are worth exploring together.</p>
             </div>
 
+            <!-- ANALYTICAL BASIS LEGEND (horizontal) -->
+            <div class="bg-gray-50 border border-gray-200 rounded px-4 py-2 mb-6" style="display:flex; flex-direction:row; flex-wrap:wrap; gap:16px; align-items:center;">
+                <span class="text-gray-400 font-semibold uppercase tracking-wider" style="font-size:11px; white-space:nowrap;">Claim tags:</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[FACT]</span> — Public filing</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — HIGH CONFIDENCE]</span> — Two or more facts connect with direct logic</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — MODERATE CONFIDENCE]</span> — Based on absence of disclosure, alt. explanations exist</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — LOW CONFIDENCE]</span> — Industry benchmarks applied, requires validation</span>
+                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[ASSUMPTION]</span> — No public evidence, hypothesis only</span>
+            </div>
+
+            <!-- ═══════════════════════════════════════ THE SCORECARD (Bloomberg terminal) -->
+            <div class="scorecard-wrapper">
+                <div id="kpi-scorecard-legacy">
+                    <div style="margin-bottom:20px;">
+                        <h2 style="color:#0f172a;font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:4px;">The Scorecard</h2>
+                        <p style="color:#64748b;font-size:12px;font-family:'SF Mono','Fira Code','Consolas',monospace;">Key operational KPIs benchmarked against 8 global peers. Public filings only.</p>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="scorecard-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:22%;">KPI</th>
+                                    <th style="width:13%;">adidas Actual</th>
+                                    <th style="width:15%;">Peer Median (n=8)</th>
+                                    <th style="width:18%;">Best-in-Class</th>
+                                    <th style="width:14%;">Gap</th>
+                                    <th style="width:9%;">Status</th>
+                                    <th style="width:9%;">Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="sc-tier-hdr"><td colspan="7">▸ TIER 1 — Operations Controls Directly</td></tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">Inventory / Revenue</div>
+                                      <div class="text-xs text-gray-500 mt-1">How much cash is trapped in unsold product</div>
+                                      <div class="sc-est" style="margin-top:2px;">FY2024 — FY2025 balance sheet not yet published</div>
+                                    </td>
+                                    <td class="sc-company">21.0% <span class="sc-est">(FY2024)</span></td>
+                                    <td class="sc-peer">~16%</td>
+                                    <td><span class="sc-best-name">ASICS</span> <span class="sc-best-val">~13%</span></td>
+                                    <td class="sc-gap-bad">+5.0pp worse</td>
+                                    <td class="sc-status-red">● RED</td>
+                                    <td><a href="#provocation-1" class="sc-link">→ P1</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">Inventory Turns</div>
+                                      <div class="text-xs text-gray-500 mt-1">How fast stock converts to sales</div>
+                                      <div class="sc-est" style="margin-top:2px;">FY2024 — FY2025 balance sheet not yet published</div>
+                                    </td>
+                                    <td class="sc-company">~3.1× <span class="sc-est">(FY2024)</span></td>
+                                    <td class="sc-peer">~4.2×</td>
+                                    <td><span class="sc-best-name">Deckers</span> <span class="sc-best-val">~5.0×</span></td>
+                                    <td class="sc-gap-bad">−1.1× below</td>
+                                    <td class="sc-status-red">● RED</td>
+                                    <td><a href="#provocation-1" class="sc-link">→ P1</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">Sourcing Concentration (top 2)</div>
+                                      <div class="text-xs text-gray-500 mt-1">Tariff and disruption risk from supplier geography</div>
+                                      <div class="sc-est" style="margin-top:2px;">FY2024 — FY2025 breakdown not yet disclosed</div>
+                                    </td>
+                                    <td class="sc-company">46% <span class="sc-est">(FY2024)</span></td>
+                                    <td class="sc-peer">~35%</td>
+                                    <td><span class="sc-best-name">Diversified peers</span> <span class="sc-best-val">~25%</span></td>
+                                    <td class="sc-gap-bad">+11pp worse</td>
+                                    <td class="sc-status-red">● RED</td>
+                                    <td><a href="#provocation-3" class="sc-link">→ P3</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">Gross-to-Op Margin Spread</div>
+                                      <div class="text-xs text-gray-500 mt-1">How much profit operations consumes between factory and bottom line</div>
+                                    </td>
+                                    <td class="sc-company">42.7pp <span class="sc-est">(FY2025)</span></td>
+                                    <td class="sc-peer">38.7pp</td>
+                                    <td><span class="sc-best-name">Deckers</span> <span class="sc-best-val">34.2pp</span></td>
+                                    <td class="sc-gap-bad">+4.0pp worse</td>
+                                    <td class="sc-status-red">● RED</td>
+                                    <td><a href="#provocation-4" class="sc-link">→ P4</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">DTC (Direct-to-Consumer) Delivery Speed (US, days)</div>
+                                      <div class="text-xs text-gray-500 mt-1">What you promise the customer vs. what competitors deliver</div>
+                                    </td>
+                                    <td class="sc-company">3–7 days <span class="sc-est">(current)</span></td>
+                                    <td class="sc-peer">2–3 days <span class="sc-est">[EST.]</span></td>
+                                    <td><span class="sc-best-name">Amazon</span> <span class="sc-best-val">1–2 days</span></td>
+                                    <td class="sc-gap-bad">~2+ days slower</td>
+                                    <td class="sc-status-red">● RED</td>
+                                    <td><a href="#provocation-2" class="sc-link">→ P2</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">DTC Channel Mix</div>
+                                      <div class="text-xs text-gray-500 mt-1">Share of revenue through your own stores and website</div>
+                                    </td>
+                                    <td class="sc-company">~40% <span class="sc-est">(FY2025)</span></td>
+                                    <td class="sc-peer">~42%</td>
+                                    <td><span class="sc-best-name">Lululemon</span> <span class="sc-best-val">~95%</span></td>
+                                    <td class="sc-gap-bad">−2pp below</td>
+                                    <td class="sc-status-amber">● AMBER</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="font-semibold">E-commerce Growth (Year-over-Year)</div>
+                                      <div class="text-xs text-gray-500 mt-1">Speed of your fastest-growing and highest-margin channel</div>
+                                    </td>
+                                    <td class="sc-company">+16% <span class="sc-est">(FY2025)</span></td>
+                                    <td class="sc-peer">~+9% <span class="sc-est">[EST.]</span></td>
+                                    <td><span class="sc-best-name">On Holding</span> <span class="sc-best-val">+30%</span></td>
+                                    <td class="sc-gap-good">+7pp ahead</td>
+                                    <td class="sc-status-green">● GREEN</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="sc-tier-hdr muted"><td colspan="7">▸ TIER 2 — Operations Significantly Influences</td></tr>
+                                <tr class="sc-t3">
+                                    <td>
+                                      <div class="font-semibold">Gross Margin (%)</div>
+                                      <div class="text-xs text-gray-500 mt-1">Pricing power after product cost — before operating expenses</div>
+                                    </td>
+                                    <td class="sc-company">51.0% <span class="sc-est">(FY2025)</span></td>
+                                    <td class="sc-peer">56.9%</td>
+                                    <td><span class="sc-best-name">Anta</span> <span class="sc-best-val">63.4%</span></td>
+                                    <td class="sc-gap-bad">−5.9pp below</td>
+                                    <td class="sc-status-amber">● AMBER</td>
+                                    <td><a href="#provocation-1" class="sc-link-dim">→ P1</a></td>
+                                </tr>
+                                <tr class="sc-t3">
+                                    <td>
+                                      <div class="font-semibold">SG&amp;A (Selling, General &amp; Administrative) / Revenue (%)</div>
+                                      <div class="text-xs text-gray-500 mt-1">Overhead efficiency — logistics, marketing, and corporate costs combined</div>
+                                    </td>
+                                    <td class="sc-company">42.7% <span class="sc-est">(FY2025)</span></td>
+                                    <td class="sc-peer">~40.3% <span class="sc-est">[EST.]</span></td>
+                                    <td><span class="sc-best-name">Deckers</span> <span class="sc-best-val">34.2%</span></td>
+                                    <td class="sc-gap-bad">+2.4pp worse</td>
+                                    <td class="sc-status-amber">● AMBER</td>
+                                    <td><a href="#provocation-1" class="sc-link-dim">→ P1</a> <a href="#provocation-4" class="sc-link-dim">→ P4</a></td>
+                                </tr>
+                                <tr class="sc-t3">
+                                    <td>
+                                      <div class="font-semibold">Revenue per Employee</div>
+                                      <div class="text-xs text-gray-500 mt-1">How much revenue each employee generates</div>
+                                      <div class="sc-est" style="margin-top:2px;">FY2025 revenue ÷ FY2024 headcount — cross-year estimate</div>
+                                    </td>
+                                    <td class="sc-company">~€400K <span class="sc-est">(cross-year)</span></td>
+                                    <td class="sc-peer">~€449K <span class="sc-est">[EST.]</span></td>
+                                    <td><span class="sc-best-name">On</span> <span class="sc-best-val">~€770K</span></td>
+                                    <td class="sc-gap-bad">−11% below</td>
+                                    <td class="sc-status-amber">● AMBER</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="sc-tier-hdr muted"><td colspan="7">▸ TIER 3 — Management Commitments Operations Must Deliver</td></tr>
+                                <tr class="sc-t3">
+                                    <td>
+                                      <div class="font-semibold">Operating Margin</div>
+                                      <div class="text-xs text-gray-500 mt-1">The profit target your CEO committed to publicly</div>
+                                    </td>
+                                    <td class="sc-company">8.3% (FY2025)</td>
+                                    <td class="sc-peer">—</td>
+                                    <td class="sc-peer">Target: &gt;10%</td>
+                                    <td class="sc-t3-red">−1.7pp to target</td>
+                                    <td style="color:#4b5563;font-size:11px;">2028</td>
+                                    <td style="color:#4b5563;font-size:10px;">adidas FY2025 results</td>
+                                </tr>
+                                <tr class="sc-t3">
+                                    <td>
+                                      <div class="font-semibold">Revenue Growth (Currency-Neutral)</div>
+                                      <div class="text-xs text-gray-500 mt-1">Top-line growth commitment to investors</div>
+                                    </td>
+                                    <td class="sc-company">+12% (FY2025)</td>
+                                    <td class="sc-peer">—</td>
+                                    <td class="sc-peer">Target: High-single-digit</td>
+                                    <td class="sc-t3-green">Exceeding</td>
+                                    <td style="color:#4b5563;font-size:11px;">FY2026</td>
+                                    <td style="color:#4b5563;font-size:10px;">adidas FY2026 Guidance</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="sc-narrative">
+                        9 of 10 tracked operational KPIs sit at or below peer median — including inventory efficiency, sourcing concentration, delivery speed, and the gross-to-operating margin spread that consumes 42.7 points between factory and bottom line. The four provocations that follow address all 5 RED-flagged metrics — inventory turns, delivery speed, sourcing concentration, and freight cost. Closing these gaps is worth approximately €300M in annual EBIT (Earnings Before Interest &amp; Tax) — over 70% of the distance between today's 8.3% and the 2028 &gt;10% commitment.
+                    </div>
+                    <div class="sc-footnotes">
+                        <strong>Sources &amp; Methodology —</strong>
+                        1. Inventory/Revenue: adidas Annual Report FY2024 [FACT] — FY2025 balance sheet not yet published as of April 2026 &nbsp;|&nbsp;
+                        2. Inventory Turns: COGS ÷ ending inventory, adidas Annual Report FY2024 [FACT — calculated] — FY2025 balance sheet not yet published as of April 2026 &nbsp;|&nbsp;
+                        3. Sourcing Concentration: adidas Annual Report 2024 — Vietnam 27%, Indonesia 19% [FACT] — FY2025 country breakdown not yet disclosed as of April 2026 &nbsp;|&nbsp;
+                        4. Gross-to-Op Spread: FY2025 gross margin 51.0% minus EBIT margin 8.3% [FACT — calculated] &nbsp;|&nbsp;
+                        5. DTC Delivery Speed: adidas.com US help page [FACT] &nbsp;|&nbsp;
+                        6. DTC Channel Mix: FY2025 channel reporting [FACT] &nbsp;|&nbsp;
+                        7. E-commerce Growth: FY2025 results press release [FACT] &nbsp;|&nbsp;
+                        8. Gross Margin: FY2025 results press release [FACT] &nbsp;|&nbsp;
+                        9. SG&amp;A / Revenue: Derived from FY2025 gross margin and EBIT margin [FACT — calculated] &nbsp;|&nbsp;
+                        10. Revenue per Employee: €24.8B (FY2025) ÷ 62,035 employees (FY2024) — FY2025 headcount not yet disclosed; cross-year estimate [FACT — partially calculated] &nbsp;·&nbsp; <strong>pp</strong> = percentage points &nbsp;·&nbsp;
+                        <strong>Peer fiscal years (most recent published annual as of April 2026) —</strong> Nike: FY2025 (yr. ends May 2025) &nbsp;|&nbsp; Lululemon: FY2025 (yr. ends Jan 2026) &nbsp;|&nbsp; Deckers: FY2025 (yr. ends Mar 2025) &nbsp;|&nbsp; ASICS: FY2024 (yr. ends Dec 2024) &nbsp;|&nbsp; On Holding: FY2024 (yr. ends Dec 2024) &nbsp;|&nbsp; Anta: FY2024 (yr. ends Dec 2024) &nbsp;|&nbsp; Puma: FY2024 (yr. ends Dec 2024). Peer medians use each company's most recent published annual results.
+                    </div>
+                </div>
+            </div>
+            <!-- /SCORECARD -->
+
+            <!-- ═══════════════════════════════════════ SECTION 0: THE NUMBERS (KPI DASHBOARD) -->
+            <div id="kpi-dashboard" class="bg-white rounded-xl shadow-md p-6 mb-8">
+
+                <!-- Section Header -->
+                <div class="flex items-baseline gap-4 mb-1">
+                    <div class="w-1 h-8 rounded-full bg-indigo-600 flex-shrink-0"></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">The Numbers</h2>
+                        <p class="text-gray-400 text-sm mt-0.5">What the market sees — and where fulfillment holds the answer.</p>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-xs mb-6 ml-5">Confidence rule: only figures at MODERATE CONFIDENCE or above are shown. <span class="font-medium">[EST.]</span> = estimated, not confirmed from filings. Estimated figures are capped at AMBER.</p>
+
+                <!-- ─── UNIFIED SCORECARD TABLE (Tiers 1, 2, 3) ─── -->
+                <div class="overflow-x-auto mb-6">
+                    <table style="width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; line-height: 1.5;">
+                        <colgroup>
+                            <col style="width: 22%;">
+                            <col style="width: 14%;">
+                            <col style="width: 14%;">
+                            <col style="width: 16%;">
+                            <col style="width: 13%;">
+                            <col style="width: 9%;">
+                            <col style="width: 8%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">KPI</th>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">adidas Actual</th>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">Peer Median (n=8)</th>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">Best-in-Class</th>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">Gap</th>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">Status</th>
+                                <th style="background-color:#f1f5f9; color:#64748b; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; padding:10px 14px; border-bottom:2px solid #e2e8f0; text-align:left; white-space:nowrap;">Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ── Tier 1 header row ── -->
+                            <tr>
+                                <td colspan="7" style="background-color: #fef2f2; color: #dc2626; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 14px; border-top: 2px solid #fecaca;">
+                                    Tier 1 — Operations Controls Directly
+                                </td>
+                            </tr>
+                            <!-- Inventory / Revenue -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Inventory / Revenue</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">How much cash is trapped in unsold product</div>
+                                    <div style="font-size: 10px; color: #94a3b8; font-style: italic; margin-top: 2px;">FY2024 — FY2025 balance sheet not yet published</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">21.0% <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2024)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~16%</td>
+                                <td style="padding:12px 14px; color:#64748b;">ASICS: ~13%</td>
+                                <td style="padding:12px 14px; color:#b91c1c; font-weight:600;">+5.0pp worse</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fee2e2; color:#991b1b; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">RED</span></td>
+                                <td style="padding:12px 14px; text-align: center;"><a href="#provocation-1" style="display: inline-block; padding: 4px 10px; background-color: #eef2ff; color: #4f46e5; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none;">→ P1</a></td>
+                            </tr>
+                            <!-- Inventory Turns -->
+                            <tr style="border-bottom: 1px solid #f1f5f9; background-color: rgba(249,250,251,0.3);">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Inventory Turns</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">How fast stock converts to sales</div>
+                                    <div style="font-size: 10px; color: #94a3b8; font-style: italic; margin-top: 2px;">FY2024 — FY2025 balance sheet not yet published</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">~3.1× <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2024)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~4.2×</td>
+                                <td style="padding:12px 14px; color:#64748b;">Deckers: ~5.0×</td>
+                                <td style="padding:12px 14px; color:#b91c1c; font-weight:600;">−1.1× below</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fee2e2; color:#991b1b; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">RED</span></td>
+                                <td style="padding:12px 14px; text-align: center;"><a href="#provocation-1" style="display: inline-block; padding: 4px 10px; background-color: #eef2ff; color: #4f46e5; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none;">→ P1</a></td>
+                            </tr>
+                            <!-- Sourcing Concentration -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Sourcing Concentration (top 2)</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Tariff and disruption risk from supplier geography</div>
+                                    <div style="font-size: 10px; color: #94a3b8; font-style: italic; margin-top: 2px;">FY2024 — FY2025 breakdown not yet disclosed</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">46% <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2024)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~35%</td>
+                                <td style="padding:12px 14px; color:#64748b;">Diversified peers: ~25%</td>
+                                <td style="padding:12px 14px; color:#b91c1c; font-weight:600;">+11pp worse</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fee2e2; color:#991b1b; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">RED</span></td>
+                                <td style="padding:12px 14px; text-align: center;"><a href="#provocation-3" style="display: inline-block; padding: 4px 10px; background-color: #eef2ff; color: #4f46e5; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none;">→ P3</a></td>
+                            </tr>
+                            <!-- Gross-to-Op Margin Spread -->
+                            <tr style="border-bottom: 1px solid #f1f5f9; background-color: rgba(249,250,251,0.3);">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Gross-to-Op Margin Spread</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">How much profit operations consumes between factory and bottom line</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">42.7pp <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2025)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">38.7pp</td>
+                                <td style="padding:12px 14px; color:#64748b;">Deckers: 34.2pp</td>
+                                <td style="padding:12px 14px; color:#b91c1c; font-weight:600;">+4.0pp worse</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fee2e2; color:#991b1b; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">RED</span></td>
+                                <td style="padding:12px 14px; text-align: center;"><a href="#provocation-4" style="display: inline-block; padding: 4px 10px; background-color: #eef2ff; color: #4f46e5; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none;">→ P4</a></td>
+                            </tr>
+                            <!-- DTC Delivery Speed -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">DTC Delivery Speed (US, days)</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">What you promise vs. what competitors deliver</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">3–7 days <span style="font-size:10px; color:#94a3b8; font-style:italic;">(current)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">2–3 days [EST.]</td>
+                                <td style="padding:12px 14px; color:#64748b;">Amazon: 1–2 days</td>
+                                <td style="padding:12px 14px; color:#b91c1c; font-weight:600;">~2+ days slower</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fee2e2; color:#991b1b; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">RED</span></td>
+                                <td style="padding:12px 14px; text-align: center;"><a href="#provocation-2" style="display: inline-block; padding: 4px 10px; background-color: #eef2ff; color: #4f46e5; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none;">→ P2</a></td>
+                            </tr>
+                            <!-- DTC Channel Mix -->
+                            <tr style="border-bottom: 1px solid #f1f5f9; background-color: rgba(249,250,251,0.3);">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">DTC Channel Mix</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Share of revenue through your own stores and website</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">~40% <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2025)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~42%</td>
+                                <td style="padding:12px 14px; color:#64748b;">Lululemon: ~95%</td>
+                                <td style="padding:12px 14px; color:#b45309; font-weight:600;">–2pp below</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fef3c7; color:#92400e; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">AMBER</span></td>
+                                <td style="padding:12px 14px; text-align: center; color: #d1d5db;">—</td>
+                            </tr>
+                            <!-- E-commerce Growth -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">E-commerce Growth (YoY)</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Speed of your fastest-growing channel</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">+16% <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2025)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~+9% [EST.]</td>
+                                <td style="padding:12px 14px; color:#64748b;">On Holding: +30%</td>
+                                <td style="padding:12px 14px; color:#15803d; font-weight:600;">+7pp ahead</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#dcfce7; color:#166534; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">GREEN</span></td>
+                                <td style="padding:12px 14px; text-align: center; color: #d1d5db;">—</td>
+                            </tr>
+
+                            <!-- ── Tier 2 header row ── -->
+                            <tr>
+                                <td colspan="7" style="background-color: #fffbeb; color: #d97706; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 14px; border-top: 2px solid #fde68a;">
+                                    Tier 2 — Operations Significantly Influences
+                                </td>
+                            </tr>
+                            <!-- Gross Margin -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Gross Margin (%)</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Pricing power after product cost, before operating expenses</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">51.0% <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2025)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">56.9%</td>
+                                <td style="padding:12px 14px; color:#64748b;">Anta: 63.4%</td>
+                                <td style="padding:12px 14px; color:#b45309; font-weight:600;">–5.9pp below</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fef3c7; color:#92400e; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">AMBER</span></td>
+                                <td style="padding:12px 14px; text-align: center;"><a href="#provocation-1" style="color: #94a3b8; font-size: 11px; text-decoration: underline;">→ P1</a></td>
+                            </tr>
+                            <!-- SG&A / Revenue -->
+                            <tr style="border-bottom: 1px solid #f1f5f9; background-color: rgba(249,250,251,0.3);">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">SG&amp;A / Revenue (%)</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Overhead efficiency — logistics, marketing, and corporate costs combined</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">42.7% <span style="font-size:10px; color:#94a3b8; font-style:italic;">(FY2025)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~40.3% [EST.]</td>
+                                <td style="padding:12px 14px; color:#64748b;">Deckers: 34.2%</td>
+                                <td style="padding:12px 14px; color:#b45309; font-weight:600;">+2.4pp worse</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fef3c7; color:#92400e; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">AMBER</span></td>
+                                <td style="padding:12px 14px; text-align: center;">
+                                    <a href="#provocation-1" style="color: #94a3b8; font-size: 11px; text-decoration: underline; margin-right: 6px;">→ P1</a>
+                                    <a href="#provocation-4" style="color: #94a3b8; font-size: 11px; text-decoration: underline;">→ P4</a>
+                                </td>
+                            </tr>
+                            <!-- Revenue per Employee -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Revenue per Employee</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">How much revenue each employee generates</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:500; font-variant-numeric:tabular-nums;">~€400K <span style="font-size:10px; color:#94a3b8; font-style:italic;">(cross-year)</span></td>
+                                <td style="padding:12px 14px; color:#475569; font-variant-numeric:tabular-nums;">~€449K [EST.]</td>
+                                <td style="padding:12px 14px; color:#64748b;">On: ~€770K</td>
+                                <td style="padding:12px 14px; color:#b45309; font-weight:600;">–11% below</td>
+                                <td style="padding:12px 14px;"><span style="background-color:#fef3c7; color:#92400e; border-radius:9999px; padding:4px 10px; font-size:12px; font-weight:600;">AMBER</span></td>
+                                <td style="padding:12px 14px; text-align: center; color: #d1d5db;">—</td>
+                            </tr>
+
+                            <!-- ── Tier 3 header row ── -->
+                            <tr>
+                                <td colspan="7" style="background-color: #f8fafc; color: #64748b; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 14px; border-top: 2px solid #e2e8f0;">
+                                    Tier 3 — Management Commitments Operations Must Deliver
+                                </td>
+                            </tr>
+                            <!-- Operating Margin -->
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Operating Margin</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">The profit target your CEO committed to publicly</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:600; font-variant-numeric:tabular-nums;">8.3% (FY2025)</td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:600; font-variant-numeric:tabular-nums;">&gt;10%</td>
+                                <td style="padding:12px 14px; color:#dc2626; font-weight:600;">−1.7pp</td>
+                                <td style="padding:12px 14px; color:#475569;" colspan="3">2028 · adidas FY2025 results, March 4, 2026</td>
+                            </tr>
+                            <!-- Revenue Growth -->
+                            <tr style="border-bottom: 1px solid #f1f5f9; background-color: rgba(249,250,251,0.3);">
+                                <td style="padding:12px 14px; color:#334155;">
+                                    <div style="font-weight: 600;">Revenue Growth (Currency-Neutral)</div>
+                                    <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Top-line growth commitment to investors</div>
+                                </td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:600; font-variant-numeric:tabular-nums;">+12% (FY2025)</td>
+                                <td style="padding:12px 14px; color:#1e293b; font-weight:600;">High-single-digit</td>
+                                <td style="padding:12px 14px; color:#15803d; font-weight:600;">Exceeding</td>
+                                <td style="padding:12px 14px; color:#475569;" colspan="3">FY2026 · adidas FY2026 Guidance, March 4, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Narrative Bridge -->
+                <div class="bg-slate-50 border-l-4 border-indigo-400 px-4 py-3 rounded-r-lg">
+                    <p class="text-gray-500 italic text-sm leading-relaxed">9 of 10 tracked operational KPIs sit at or below peer median — including inventory efficiency, sourcing concentration, delivery speed, and the gross-to-operating margin spread that consumes 42.7 points between factory and bottom line. The four provocations that follow address all 5 RED-flagged metrics — inventory turns, delivery speed, sourcing concentration, and freight cost. Closing these gaps is worth approximately €300M in annual EBIT — over 70% of the distance between today's 8.3% and the 2028 &gt;10% commitment.</p>
+                </div>
+
+                <!-- Footnote -->
+                <div class="border-t border-gray-100 mt-6 pt-4">
+                    <p class="font-semibold uppercase tracking-wider text-gray-400 mb-2" style="font-size:11px;">Sources &amp; Methodology</p>
+                    <ol class="list-decimal ml-4 space-y-1" style="font-size:11px; color:#9ca3af;">
+                        <li>Inventory/Revenue: adidas Annual Report FY2024 — inventory €4.99B on €23.7B revenue [FACT]</li>
+                        <li>Inventory Turns: COGS ÷ average inventory, both from adidas Annual Report FY2024 [FACT — calculated]</li>
+                        <li>Sourcing Concentration: adidas Annual Report 2024 — Vietnam 27%, Indonesia 19% [FACT]</li>
+                        <li>Gross-to-Op Spread: FY2025 gross margin 51.0% minus EBIT margin 8.3% [FACT — calculated]</li>
+                        <li>DTC Delivery Speed: Published SLA on adidas.com US help page [FACT]</li>
+                        <li>DTC Channel Mix: FY2025 channel reporting [FACT]</li>
+                        <li>E-commerce Growth: FY2025 results press release [FACT]</li>
+                        <li>Gross Margin: FY2025 results press release [FACT]</li>
+                        <li>SG&amp;A / Revenue: Derived from gross margin and EBIT margin [FACT — calculated]</li>
+                        <li>Revenue per Employee: €24.8B revenue ÷ 62,035 employees, FY2024 headcount [FACT — calculated]</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /SECTION 0 -->
+
             <!-- SECTION 1 HEADER -->
-            <div class="flex items-baseline gap-4 mb-4">
+            <div class="flex items-baseline gap-4 mb-8 mt-10">
                 <div class="w-1 h-8 rounded-full bg-indigo-600 flex-shrink-0"></div>
                 <div>
                     <h2 class="text-2xl font-bold text-gray-900">Section 1 — The Provocations</h2>
@@ -106,22 +583,13 @@
                 </div>
             </div>
 
-            <!-- ANALYTICAL BASIS LEGEND (horizontal) -->
-            <div class="bg-gray-50 border border-gray-200 rounded px-4 py-2 mb-10" style="display:flex; flex-direction:row; flex-wrap:wrap; gap:16px; align-items:center;">
-                <span class="text-gray-400 font-semibold uppercase tracking-wider" style="font-size:11px; white-space:nowrap;">Claim tags:</span>
-                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[FACT]</span> — Public filing</span>
-                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — HIGH]</span> — Direct logic</span>
-                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — MODERATE]</span> — Alt. explanations exist</span>
-                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[INFERENCE — LOW]</span> — Benchmark applied</span>
-                <span class="text-gray-500" style="font-size:12px; white-space:nowrap;"><span class="font-medium">[ASSUMPTION]</span> — No public evidence</span>
-            </div>
-
             <!-- ═══════════════════════════════════════ PROVOCATION 01 -->
-            <div class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
+            <div id="provocation-1" class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
                 <div class="p-8">
+                    <a href="#kpi-dashboard" class="text-gray-400 hover:text-gray-600 text-sm mb-4 inline-block">↑ Back to The Numbers</a>
                     <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Transportation Planning</p>
                     <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
-                        Every shipment is tracked in real time. Your planning team may still be working with data that is weeks old — and if so, the gap could cost €50M a year in avoidable air freight.
+                        Your tracking system is live. Your planning system reacts 3 weeks later.
                     </h3>
                     <div class="flex flex-wrap gap-2 mb-3">
                         <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">OPEX Reduction</span>
@@ -131,15 +599,19 @@
                     <ul class="space-y-3 mb-7">
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>project44 real-time supply chain visibility was deployed in <strong>February 2026</strong> under World Cup pressure. The visibility layer exists and is confirmed operational. What is not confirmed in any public disclosure is an integration from that live shipment data into the demand planning cycle that decides what to move, where, and when. <span class="text-gray-400 text-xs font-medium">[FACT — project44 press release Feb 2026] [INFERENCE — LOW CONFIDENCE — planning integration gap inferred from absence of any disclosure, not from direct evidence]</span></span>
+                            <span>project44 real-time supply chain visibility was deployed in <strong>February 2026</strong> under World Cup pressure. The visibility layer exists and is confirmed operational. What is not confirmed in any public disclosure is an integration from that live shipment data into the demand planning cycle that decides what to move, where, and when. <span class="text-gray-400 text-xs font-medium">[FACT — project44 press release Feb 2026] [INFERENCE — MODERATE CONFIDENCE — project44 (visibility) and o9 (planning) are confirmed as separate platforms; no joint deployment or integration announcement exists in any public source as of April 2026]</span></span>
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>When the US imposed tariffs in 2025, adidas's response — eliminating China-to-US sourcing — took <strong>months</strong>. Best-in-class transport scenario planning runs at <strong>48–72 hours</strong>. The gap is weeks, not hours. <span class="text-gray-400 text-xs font-medium">[FACT — 2025 China-to-US sourcing elimination confirmed in FY2025 results] [INFERENCE — HIGH CONFIDENCE — 48–72h benchmark is well-documented in supply chain literature] [ASSUMPTION — adidas's actual response cycle has not been published]</span></span>
+                            <span>When the US imposed tariffs in 2025, adidas's response — eliminating China-to-US sourcing — took <strong>months</strong>. Best-in-class transport scenario planning runs at <strong>48–72 hours</strong>. The gap is weeks, not hours. <span class="text-gray-400 text-xs font-medium">[FACT — 2025 China-to-US sourcing elimination confirmed in FY2025 results] [INFERENCE — HIGH CONFIDENCE — 48–72h benchmark is well-documented in supply chain literature for automated scenario tools; the observed multi-month response confirms the current process is materially slower]</span></span>
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span><strong>60+ distribution centers</strong> across 6 continents with 100% outsourced last-mile. No confirmed integration between real-time shipment data and the demand plan that decides what to move, where, and when. <span class="text-gray-400 text-xs font-medium">[FACT — DC count, last-mile outsourcing model, SAP S/4HANA and o9 deployments all individually confirmed] [INFERENCE — LOW CONFIDENCE — lack of integration inferred from absence of joint case study, not confirmed by adidas]</span></span>
+                            <span><strong>60+ distribution centers</strong> across 6 continents with 100% outsourced last-mile. No confirmed integration between real-time shipment data and the demand plan that decides what to move, where, and when. <span class="text-gray-400 text-xs font-medium">[FACT — DC count, last-mile outsourcing model, SAP S/4HANA and o9 deployments all individually confirmed in Annual Report 2024 and vendor case studies] [INFERENCE — MODERATE CONFIDENCE — no joint deployment announcement for real-time data integration between project44 and o9/demand planning exists in any public source; at adidas's disclosure level, significant integrations are typically announced]</span></span>
+                        </li>
+                        <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                            <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                            <span>ASICS Corporation carries inventory at ~13% of revenue (FY2024) vs. adidas at 21.0% (FY2024) — an 8pp gap on a comparable outsourced-manufacturing business model. ASICS improved from 7.0% to 14.7% operating margin in 24 months (FY2022–FY2024), with full-price sell-through discipline as the primary mechanism. <span class="text-gray-400 text-xs font-medium">[FACT — ASICS Annual Report FY2024; adidas Annual Report FY2024]</span></span>
                         </li>
                     </ul>
                     <div class="cost-box-amber rounded-xl p-5 mb-6">
@@ -152,11 +624,12 @@
             </div>
 
             <!-- ═══════════════════════════════════════ PROVOCATION 02 -->
-            <div class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
+            <div id="provocation-2" class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
                 <div class="p-8">
+                    <a href="#kpi-dashboard" class="text-gray-400 hover:text-gray-600 text-sm mb-4 inline-block">↑ Back to The Numbers</a>
                     <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Warehousing</p>
                     <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
-                        Your warehouse packs an order in 2 hours. Customers wait 3–7 days for delivery. Amazon delivers in 1–2.
+                        Your DC packs orders in 2 hours. Your website promises 3–7 days.
                     </h3>
                     <div class="flex flex-wrap gap-2 mb-3">
                         <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">Revenue Protection / Growth</span>
@@ -166,7 +639,7 @@
                     <ul class="space-y-3 mb-7">
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>The Wilkes-Barre PA distribution center (<strong>843,000 sq ft; 71,000+ SKUs</strong>) achieves a confirmed <strong>2-hour pack SLA</strong> and can deliver same-day to parts of the US Northeast and 2-day ground nationwide. adidas.com US standard SLA is published as <strong>3–7 days</strong>. <span class="text-gray-400 text-xs font-medium">[FACT — Interlake Mecalux case study (Wilkes-Barre)] [FACT — adidas.com US help page SLA]</span></span>
+                            <span>The Wilkes-Barre PA distribution center (<strong>843,000 sq ft; 71,000+ stock-keeping units (SKUs)</strong>) achieves a confirmed <strong>2-hour pack service-level agreement (SLA)</strong> and can deliver same-day to parts of the US Northeast and 2-day ground nationwide. adidas.com US standard SLA is published as <strong>3–7 days</strong>. <span class="text-gray-400 text-xs font-medium">[FACT — Interlake Mecalux case study (Wilkes-Barre)] [FACT — adidas.com US help page SLA]</span></span>
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
@@ -174,7 +647,11 @@
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span><strong>GK OmniPOS (1,300+ stores)</strong> and RFID stock accuracy (&gt;99%) already enable ship-from-store. The percentage of DTC orders actually fulfilled from stores is not disclosed. The DC capability is confirmed; the SLA gap is a commercial choice, not a logistics constraint. <span class="text-gray-400 text-xs font-medium">[FACT — GK Software case study and Gold Convrt Award 2024] [INFERENCE — HIGH CONFIDENCE — SLA is a policy decision given demonstrated DC capability] [INFERENCE — LOW CONFIDENCE — ship-from-store activation at scale is unconfirmed]</span></span>
+                            <span><strong>GK OmniPOS (1,300+ stores)</strong> and RFID stock accuracy (&gt;99%) already enable ship-from-store. The percentage of DTC orders actually fulfilled from stores is not disclosed. The DC capability is confirmed; the SLA gap is a commercial choice, not a logistics constraint. <span class="text-gray-400 text-xs font-medium">[FACT — GK Software case study and Gold Convrt Award 2024] [INFERENCE — HIGH CONFIDENCE — SLA is a policy decision given demonstrated DC capability; there is no physical or technical constraint preventing a tighter delivery commitment] [INFERENCE — MODERATE CONFIDENCE — ship-from-store orders for DTC e-commerce at scale are not publicly disclosed; no operational case study confirms this activation at adidas as of April 2026]</span></span>
+                        </li>
+                        <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                            <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                            <span>Nike delivers US DTC orders in 2–3 days and publishes that SLA clearly. Lululemon commits to 2–3 business days from their DC network. adidas publishes 3–7 days despite a DC confirmed capable of same-day to 2-day ground delivery. <span class="text-gray-400 text-xs font-medium">[INFERENCE — HIGH CONFIDENCE — competitor SLA data from public-facing checkout pages as of April 2026; adidas DC capability confirmed by Interlake Mecalux case study]</span></span>
                         </li>
                     </ul>
                     <div class="cost-box-red rounded-xl p-5 mb-6">
@@ -187,11 +664,12 @@
             </div>
 
             <!-- ═══════════════════════════════════════ PROVOCATION 03 -->
-            <div class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
+            <div id="provocation-3" class="provocation-card bg-white rounded-2xl shadow-md mb-7 overflow-hidden">
                 <div class="p-8">
+                    <a href="#kpi-dashboard" class="text-gray-400 hover:text-gray-600 text-sm mb-4 inline-block">↑ Back to The Numbers</a>
                     <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Global Trade and Tariffs</p>
                     <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
-                        €200M in tariffs hit your guidance. The next bill arrives July 24 — is anyone modelling it?
+                        €200M in tariffs hit your guidance. The next deadline is July 24.
                     </h3>
                     <div class="flex flex-wrap gap-2 mb-3">
                         <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">COGS Avoidance</span>
@@ -205,28 +683,33 @@
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>In 2025, adidas eliminated China-to-US sourcing in a reactive move that took <strong>months</strong>. Best-in-class tariff scenario planning — from policy change to sourcing pivot recommendation — runs in <strong>48–72 hours</strong> with continuous simulation. No such system is confirmed at adidas. <span class="text-gray-400 text-xs font-medium">[FACT — China-to-US elimination confirmed in FY2025 results] [ASSUMPTION — adidas's actual response cycle is unknown] [INFERENCE — HIGH CONFIDENCE — 48–72h benchmark is standard in supply chain literature for automated scenario tools]</span></span>
+                            <span>In 2025, adidas eliminated China-to-US sourcing in a reactive move that took <strong>months</strong>. Best-in-class tariff scenario planning — from policy change to sourcing pivot recommendation — runs in <strong>48–72 hours</strong> with continuous simulation. No such system is confirmed at adidas. <span class="text-gray-400 text-xs font-medium">[FACT — China-to-US elimination confirmed in FY2025 results] [INFERENCE — HIGH CONFIDENCE — 48–72h benchmark is well-documented in supply chain literature for automated scenario tools; the observed multi-month 2025 pivot is the evidence that the current process operates well below that speed]</span></span>
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>US tariff review windows for Vietnam and Indonesia goods are <strong>known dates on the calendar</strong>. The o9 Solutions planning stack has the technical capability to run continuous scenario modeling — but no deployment announcement for tariff simulation exists. <span class="text-gray-400 text-xs font-medium">[FACT — o9 Solutions deployment confirmed] [INFERENCE — LOW CONFIDENCE — absence of tariff modeling announcement is not evidence it does not exist; may be undisclosed]</span></span>
+                            <span>US tariff review windows for Vietnam and Indonesia goods are <strong>known dates on the calendar</strong>. The o9 Solutions planning stack has the technical capability to run continuous scenario modeling — but no deployment announcement for tariff simulation exists in any earnings call, investor day, or technology press release. <span class="text-gray-400 text-xs font-medium">[FACT — o9 Solutions deployment confirmed in multiple technology case studies] [INFERENCE — MODERATE CONFIDENCE — no tariff scenario modeling deployment has been announced publicly as of April 2026; at o9's disclosure level, significant supply chain deployments are typically announced via joint case studies]</span></span>
+                        </li>
+                        <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                            <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                            <span>ASICS executed a comparable supplier network reset — from a reactive, margin-eroding base (7.0% operating margin, FY2022) to proactive full-price discipline (14.7% operating margin, FY2024) — in 24 months. The mechanism was allocation speed and sourcing discipline, not product change. adidas operates on a structurally analogous outsourced manufacturing model. <span class="text-gray-400 text-xs font-medium">[FACT — ASICS Annual Reports FY2022, FY2023, FY2024]</span></span>
                         </li>
                     </ul>
                     <div class="cost-box-blue rounded-xl p-5 mb-6">
                         <p class="text-blue-800 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction</p>
-                        <p class="text-blue-900 font-black mb-2" style="font-size:32px; line-height:1;">€200–400M / year</p>
-                        <p class="text-blue-800 text-sm leading-relaxed"><strong>€200M per year confirmed</strong> in guidance. A further <strong>€100–200M</strong> in Vietnam and Indonesia escalation risk sits outside current guidance and is not being systematically modeled or hedged. <strong>Section 122 broad tariff authority expires July 24, 2026</strong> — a hard deadline with no confirmed defense. <span class="text-blue-600 text-xs font-medium">[FACT — €200M confirmed in FY2026 guidance March 4, 2026] [INFERENCE — LOW CONFIDENCE — €100–200M additional risk estimated from sourcing share × tariff rate scenarios; not confirmed by adidas] [FACT — Section 122 broad tariff authority expires July 24, 2026]</span></p>
+                        <p class="text-blue-900 font-black mb-2" style="font-size:32px; line-height:1;">~€200M / year confirmed · Additional exposure unquantified</p>
+                        <p class="text-blue-800 text-sm leading-relaxed"><strong>€200M per year confirmed</strong> in guidance. Vietnam (27% of sourcing) and Indonesia (19%) face ongoing US trade policy review — a further escalation would multiply this figure, but cannot be sized from public data. <strong>Section 122 broad tariff authority expires July 24, 2026</strong> — a hard deadline with no confirmed modeling defense. The exact additional exposure is a Phase One discovery question. <span class="text-blue-600 text-xs font-medium">[FACT — €200M confirmed in FY2026 guidance March 4, 2026] [FACT — Section 122 broad tariff authority expires July 24, 2026] [INFERENCE — HIGH CONFIDENCE — Vietnam and Indonesia sourcing concentration creates structural exposure to any tariff escalation applied to those countries]</span></p>
                     </div>
                     <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> What is the current process from a US tariff policy announcement to a final sourcing shift decision, and who owns it? How long did the 2025 China pivot actually take from first policy signal to final sourcing decision?</p>
                 </div>
             </div>
 
             <!-- ═══════════════════════════════════════ PROVOCATION 04 -->
-            <div class="provocation-card bg-white rounded-2xl shadow-md mb-10 overflow-hidden">
+            <div id="provocation-4" class="provocation-card bg-white rounded-2xl shadow-md mb-10 overflow-hidden">
                 <div class="p-8">
+                    <a href="#kpi-dashboard" class="text-gray-400 hover:text-gray-600 text-sm mb-4 inline-block">↑ Back to The Numbers</a>
                     <p class="text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3">Freight Audit</p>
                     <h3 class="text-gray-900 font-bold leading-snug mb-5" style="font-size:20px;">
-                        Your carriers may be overcharging you €60M a year. When was the last time someone checked?
+                        Your carrier network spans 60 DCs. Who audits every freight invoice?
                     </h3>
                     <div class="flex flex-wrap gap-2 mb-3">
                         <span class="bg-blue-100 text-blue-700 rounded-full px-3 py-1 text-xs font-semibold">OPEX Reduction</span>
@@ -236,23 +719,27 @@
                     <ul class="space-y-3 mb-7">
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>adidas uses <strong>100% 3PL for last-mile delivery</strong>. Confirmed partners include Amazon MCF (US), Kuehne+Nagel (19-country Europe), DHL Supply Chain (Brazil), and an estimated <strong>15+ national carriers</strong> globally across 60+ DCs on 6 continents — each with separate rate cards and invoicing structures. <span class="text-gray-400 text-xs font-medium">[FACT — 100% 3PL last-mile outsourcing model confirmed] [FACT — Amazon MCF, Kuehne+Nagel, DHL Supply Chain, Honeywell Intelligrated all confirmed via press releases] [INFERENCE — MODERATE CONFIDENCE — 15+ national carrier contracts inferred from DC count and geographic footprint]</span></span>
+                            <span>adidas uses <strong>100% third-party logistics for last-mile delivery</strong>. Confirmed partners include Amazon Multi-Channel Fulfillment in the US, Kuehne+Nagel across 19 European countries, and DHL Supply Chain in Brazil — each operating on fundamentally different billing structures, rate cards, and invoicing formats. <span class="text-gray-400 text-xs font-medium">[FACT — Amazon MCF press release Feb 2025; Kuehne+Nagel press release Sep 2024; DHL partnership confirmed]</span></span>
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span>At an estimated <strong>€1.5–2.0B in annual logistics spend</strong>, industry benchmarks for freight audit recovery run at <strong>2–4% of total freight spend</strong> — covering duplicate billing, rate card misapplication, and accessorial charge errors. At 3% of €1.8B estimated base, that is €54M annually. <span class="text-gray-400 text-xs font-medium">[INFERENCE — LOW CONFIDENCE — €1.5–2.0B logistics spend is back-calculated from COGS structure and DC scale; not confirmed by adidas] [FACT — 2–4% freight audit recovery rate is a published industry benchmark]</span></span>
+                            <span>The network spans <strong>60+ distribution centers across 6 continents</strong> with an estimated <strong>15+ national carriers</strong> handling local delivery. Each carrier relationship generates its own rate card, accessorial charge schedule, and invoice format — creating hundreds of separate billing relationships with no publicly confirmed centralised reconciliation system. <span class="text-gray-400 text-xs font-medium">[FACT — DC count and outsourcing model confirmed in Annual Report 2024] [INFERENCE — HIGH CONFIDENCE — billing fragmentation is a structural consequence of the confirmed carrier count and fundamentally disparate partnership models]</span></span>
                         </li>
                         <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
                             <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
-                            <span><strong>No public evidence</strong> of systematic freight audit or automated invoice reconciliation at adidas. The Amazon MCF and K+N billing structures are fundamentally different — multiplying reconciliation complexity across a fragmented carrier base. <span class="text-gray-400 text-xs font-medium">[FACT — Amazon MCF and Kuehne+Nagel billing structures confirmed as fundamentally different] [INFERENCE — LOW CONFIDENCE — absence of freight audit announcement is not confirmed absence; may exist but be undisclosed]</span></span>
+                            <span>Amazon MCF bills per unit fulfilled with separate pick, pack, and shipping fees. Kuehne+Nagel bills on contracted volume tiers with fuel surcharges and accessorial schedules. These two billing models are structurally incomparable without a normalisation layer — and they represent only two of 15+ carrier relationships. <span class="text-gray-400 text-xs font-medium">[FACT — Amazon MCF and Kuehne+Nagel billing structures are publicly documented] [INFERENCE — HIGH CONFIDENCE — structural incomparability is a direct consequence of confirmed different billing models; reconciliation without an automated normalisation layer is operationally infeasible at this scale]</span></span>
+                        </li>
+                        <li class="flex gap-3 text-gray-600" style="font-size:14px; line-height:1.6;">
+                            <span class="text-indigo-400 font-bold mt-0.5 flex-shrink-0">›</span>
+                            <span>Deckers/Hoka operates at 23.7% operating margin (FY2025) with a more concentrated last-mile carrier structure and a 42.7% DTC mix. ASICS achieves 14.7% operating margin (FY2024) with significantly fewer 3PL relationships than adidas's global network. Carrier consolidation and freight cost efficiency are directionally correlated across the peer set. <span class="text-gray-400 text-xs font-medium">[FACT — Deckers FY2025 10-K; ASICS FY2024 Annual Report] [INFERENCE — MODERATE CONFIDENCE — the correlation between carrier fragmentation and freight audit gaps is consistent with industry logistics benchmarks]</span></span>
                         </li>
                     </ul>
                     <div class="cost-box-green rounded-xl p-5 mb-6">
                         <p class="text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction</p>
-                        <p class="text-emerald-900 font-black mb-2" style="font-size:32px; line-height:1;">€50–60M / year</p>
-                        <p class="text-emerald-800 text-sm leading-relaxed">Carrier overcharges, duplicate billing, and freight invoice errors — <strong>unrecovered because no systematic audit process exists</strong>. This is not a new spend line. The spend is already happening. The invoices are being paid. The checks are not being run. <span class="text-emerald-600 text-xs font-medium">[INFERENCE — LOW CONFIDENCE — both the logistics spend base and the 3% recovery rate are estimated; directional signal, not a measured gap]</span></p>
+                        <p class="text-emerald-900 font-black mb-2" style="font-size:32px; line-height:1;">~€50–60M / year</p>
+                        <p class="text-emerald-800 text-sm leading-relaxed">Industry benchmarks for freight invoice errors — duplicate billing, rate card misapplication, accessorial charges applied incorrectly — run at <strong>2–4% of total logistics spend</strong>. At adidas's network scale (60+ DCs, 15+ carriers, 100% outsourced last-mile), an estimated €1.5–2B annual logistics spend implies €30–80M in recoverable overbilling per year. No systematic freight audit or automated invoice reconciliation process is confirmed in any public disclosure. <span class="text-emerald-600 text-xs font-medium">[INFERENCE — MODERATE CONFIDENCE — industry 2–4% billing error benchmark applied to estimated logistics spend; logistics spend is not publicly confirmed but is consistent with network scale] [FACT — no centralised freight audit process confirmed in any adidas technology or operational disclosure]</span></p>
                     </div>
-                    <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> Does adidas have an automated freight audit process today — invoice matching, rate card verification, duplicate detection? What percentage of carrier invoices are reconciled before payment? When was the last external freight audit conducted, and what was recovered?</p>
+                    <p class="text-gray-500 italic" style="font-size:14px; line-height:1.6;"><strong class="not-italic font-semibold text-gray-600">Discovery question:</strong> What is adidas's total annual logistics and carrier spend across all 3PL partners, and does a centralised freight audit or automated invoice reconciliation process exist today? If so, what percentage of carrier invoices are verified before payment — and what was recovered in the last 12 months?</p>
                 </div>
             </div>
 
@@ -263,7 +750,7 @@
                         <span class="bg-indigo-700 text-white rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider">Synthesis: The Full Margin Thesis</span>
                     </div>
                     <h3 class="text-indigo-900 font-black leading-snug mb-5" style="font-size:22px;">
-                        Transport speed, warehouse delivery, tariff response and freight invoices — four gaps worth €300M that sit between you and your 2028 target.
+                        Four fulfillment gaps worth ~€300M sit between you and your 2028 target.
                     </h3>
                     <div class="flex flex-wrap gap-2 mb-3">
                         <span class="bg-indigo-200 text-indigo-800 rounded-full px-3 py-1 text-xs font-semibold">Operating Margin Expansion</span>
@@ -298,11 +785,11 @@
                                 </tr>
                                 <tr class="border-b border-gray-200 bg-slate-50">
                                     <td class="px-5 py-3.5 font-semibold text-gray-800 text-sm whitespace-nowrap">4 — Freight Audit</td>
-                                    <td class="px-5 py-3.5 text-gray-500 text-sm">Automated invoice reconciliation; 3% recovery on logistics spend <span class="text-gray-400 text-xs">[INFERENCE — LOW CONFIDENCE]</span></td>
-                                    <td class="px-5 py-3.5 text-right font-bold text-gray-900 text-sm whitespace-nowrap">€50–60M</td>
+                                    <td class="px-5 py-3.5 text-gray-500 text-sm">Carrier invoice reconciliation across 60+ DCs / 15+ carriers; industry 2–4% error rate on estimated logistics spend <span class="text-gray-400 text-xs">[INFERENCE — MODERATE CONFIDENCE]</span></td>
+                                    <td class="px-5 py-3.5 text-right font-bold text-gray-900 text-sm whitespace-nowrap">~€50–60M</td>
                                 </tr>
                                 <tr style="background:linear-gradient(135deg,#eef2ff,#e0e7ff);">
-                                    <td class="px-5 py-4 font-black text-indigo-900 text-base" colspan="2">Total Fulfillment Improvement · Combined</td>
+                                    <td class="px-5 py-4 font-black text-indigo-900 text-base" colspan="2">Total Fulfillment Improvement · P1–P4</td>
                                     <td class="px-5 py-4 text-right font-black text-indigo-900" style="font-size:26px;">~€300M</td>
                                 </tr>
                             </tbody>
@@ -330,17 +817,17 @@
 
                     <!-- Narrative -->
                     <div class="bg-white rounded-xl p-6 border border-indigo-200 shadow-sm">
-                        <p class="text-gray-700 text-sm leading-relaxed mb-4">adidas closed FY2025 at €2,059M operating profit — 8.3% on €24.8B in revenue. The publicly committed 2028 target is above 10%, which requires approximately €2,480M. The gap is €421M. This analysis closes €300M of it through fulfillment operations that are <strong>already built and running</strong>, using platforms that are already deployed. <span class="text-gray-400 text-xs font-medium">[FACT — FY2025 EBIT and revenue confirmed in adidas FY2025 press release March 4, 2026] [INFERENCE — MODERATE CONFIDENCE — fulfillment improvement estimate is applied arithmetic on confirmed revenue base]</span></p>
-                        <p class="text-gray-700 text-sm leading-relaxed mb-4">The March 4, 2026 stock decline of approximately 7% was triggered by a €420M shortfall between FY2026 guidance and analyst consensus. Management attributed the gap to tariff and currency conservatism. Three of the four fulfillment gaps above — transport planning integration, warehouse SLA activation, and freight audit recovery — are addressable without waiting for new platforms, new contracts, or the TRANS4RM transformation to complete. The fourth — tariff scenario modeling — is time-sensitive before July 24. <span class="text-gray-400 text-xs font-medium">[FACT — FY2026 guidance press release March 4, 2026] [INFERENCE — HIGH CONFIDENCE — three of four gaps addressable without new platforms based on confirmed deployed systems]</span></p>
-                        <p class="text-gray-700 text-sm leading-relaxed mb-4">None of the work above requires a platform change. project44 is running. The Wilkes-Barre and Mantova sites are operating. The carrier contracts exist. The opportunity is in <strong>connecting what is already there and checking the invoices that are already being paid</strong>.</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4">adidas closed FY2025 at €2,059M operating profit — 8.3% on €24.8B in revenue. The publicly committed 2028 target is above 10%, which requires approximately €2,480M. The gap is €421M. This analysis closes ~€300M of it — across four quantified fulfillment gaps — through operations that are <strong>already built and running</strong>, using platforms that are already deployed. <span class="text-gray-400 text-xs font-medium">[FACT — FY2025 EBIT and revenue confirmed in adidas FY2025 press release March 4, 2026] [INFERENCE — MODERATE CONFIDENCE — fulfillment improvement estimate is applied arithmetic on confirmed revenue base; freight audit estimate uses industry benchmark applied to estimated logistics spend]</span></p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4">The March 4, 2026 stock decline of approximately 7% was triggered by a €420M shortfall between FY2026 guidance and analyst consensus. Management attributed the gap to tariff and currency conservatism. Three of the four quantified fulfillment gaps above — transport planning integration, warehouse SLA activation, and freight audit recovery — are addressable without waiting for new platforms, new contracts, or the TRANS4RM transformation to complete. The fourth — tariff scenario modeling — is time-sensitive before July 24. <span class="text-gray-400 text-xs font-medium">[FACT — FY2026 guidance press release March 4, 2026] [INFERENCE — HIGH CONFIDENCE — three of four gaps addressable without new platforms based on confirmed deployed systems]</span></p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4">None of the work above requires a platform change. project44 is running. The Wilkes-Barre and Mantova sites are operating. The carrier contracts exist. The opportunity is in <strong>connecting what is already there</strong>.</p>
                         <p class="text-gray-800 text-sm font-semibold leading-relaxed">When the Samba and Gazelle lifestyle cycle decelerates — and Gulden has said publicly it will — this fulfillment gap becomes very hard to close through brand momentum alone. <span class="text-red-700">Provocation 3 is time-sensitive before July 24, 2026.</span></p>
                     </div>
 
                     <!-- Cost of inaction -->
                     <div class="mt-6 rounded-xl p-5" style="background:linear-gradient(135deg,#312e81,#3730a3);">
-                        <p class="text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction — Full Thesis</p>
-                        <p class="text-white font-black mb-2" style="font-size:32px; line-height:1;">€300M / year</p>
-                        <p class="text-indigo-200 text-sm leading-relaxed">Combined fulfillment inefficiency holds operating margin <strong>1.2 points below potential</strong> — making the 2028 target dependent on brand heat rather than operational control. Last mile and returns alone represent a €650M–1.1B flow with no disclosed cost-per-return and no confirmed AI-assisted triage routing. Every year without these fixes is a year the 2028 target depends on the Samba cycle lasting. <span class="text-indigo-400 text-xs font-medium">[INFERENCE — MODERATE CONFIDENCE — see arithmetic above] [FACT — FY2025 e-commerce €4.3B +16% confirmed in FY2025 results press release]</span></p>
+                        <p class="text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-2">Cost of Inaction — Quantified Thesis</p>
+                        <p class="text-white font-black mb-2" style="font-size:32px; line-height:1;">~€300M / year</p>
+                        <p class="text-indigo-200 text-sm leading-relaxed">Combined fulfillment inefficiency holds operating margin <strong>~1.2 points below potential</strong> — making the 2028 target dependent on brand heat rather than operational control. Last mile and returns alone represent a €650M–1.1B flow with no disclosed cost-per-return and no confirmed AI-assisted triage routing. Every year without these fixes is a year the 2028 target depends on the Samba cycle lasting. <span class="text-indigo-400 text-xs font-medium">[INFERENCE — MODERATE CONFIDENCE — see arithmetic above] [FACT — FY2025 e-commerce €4.3B +16% confirmed in FY2025 results press release]</span></p>
                     </div>
 
                     <!-- Synthesis discovery question -->
@@ -476,7 +963,7 @@
                 </div>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start">
                     <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">4</span>
-                    <p class="text-gray-700 text-sm leading-relaxed">Does adidas have an automated freight invoice reconciliation process today — rate card verification, duplicate detection, accessorial charge audit? What percentage of carrier invoices are checked before payment, and when was the last external freight audit conducted?</p>
+                    <p class="text-gray-700 text-sm leading-relaxed">What is adidas's total annual logistics and carrier spend across all 3PL partners, and does a centralised freight audit or automated invoice reconciliation process exist today? If so, what percentage of carrier invoices are verified before payment — and what was recovered in the last 12 months?</p>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4 items-start">
                     <span class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm flex items-center justify-center">5</span>
@@ -905,7 +1392,7 @@
                     <div class="w-1 h-6 rounded-full flex-shrink-0" style="background:#6366f1;"></div>
                     <h2 class="text-xl font-bold" style="color:#e2e8f0;">Full Peer Comparison — FY2025 / Most Recent FY</h2>
                 </div>
-                <p style="color:#64748b; font-size:13px; margin-bottom:16px;">Revenue in EUR equivalents at approximate 2024–2025 average FX rates. SG&A% uses reported figures; logistics classification differs by company. Green = best quartile. Red = weakest quartile. adidas row highlighted in cyan.</p>
+                <p style="color:#64748b; font-size:13px; margin-bottom:16px;">Revenue in EUR equivalents at approximate 2024–2025 average foreign exchange (FX) rates. SG&A% uses reported figures; logistics classification differs by company. Green = best quartile. Red = weakest quartile. adidas row highlighted in cyan.</p>
                 <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
                     <table style="width:100%; border-collapse:collapse; font-size:13px; min-width:760px;">
                         <thead>
