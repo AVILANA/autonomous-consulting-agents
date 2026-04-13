@@ -6,22 +6,22 @@ ABSOLUTE RULES — VIOLATION OF ANY OF THESE IS A FAILURE:
 - [FACT — source]
 - [INFERENCE — HIGH CONFIDENCE — reasoning]
 - [INFERENCE — MODERATE CONFIDENCE — reasoning]
-- [INFERENCE — LOW CONFIDENCE — reasoning]
-- [ASSUMPTION — basis]
 
-The tag must match the actual confidence of that specific claim. NEVER use a generic [INFERENCE] without a confidence level.
+The tag must match the actual confidence of that specific claim. NEVER use a generic [INFERENCE] without a confidence level. [INFERENCE — LOW CONFIDENCE] and [ASSUMPTION] tags are NOT permitted in the client-facing HTML. Any evidence at those levels must be excluded from the client document entirely.
 
 CORRECT: 'project44 deployed February 2026. [FACT — project44 press release Feb 2026] No confirmed integration with demand planning system. [INFERENCE — HIGH CONFIDENCE — two confirmed platforms with no disclosed connection]'
 WRONG: '[INFERENCE — planning integration gap]' — says nothing about confidence level
+WRONG: '[INFERENCE — LOW CONFIDENCE — ...]' — excluded from client document
 
-3. TITLE QUALITY: Each provocation title must be MAXIMUM 15 words. Must contain ONE specific number. Must use the word 'your' or 'you'. Must feel like a punch, not an explanation.
+3. TITLE QUALITY: Each provocation title must be MAXIMUM 20 words (count them — no exceptions). Must contain ONE specific number. Must use the word 'your' or 'you'. Must feel like a punch, not an explanation.
 
 REFERENCE TITLES — Use these as your quality bar:
-- 'Your inventory costs €1.1B more per year than it should.'
-- 'Your e-commerce delivers in 3-7 days. Amazon delivers in 1-2.'
-- 'A €200M tariff bill arrived. Your response takes weeks.'
+- 'Your inventory costs €1.1B more per year than it should — and your planning system knows it.'
+- 'Your e-commerce delivers in 3–7 days. The same shoe arrives from Amazon in 1–2.'
+- 'A €200M tariff bill arrived in your guidance, and your response cycle is measured in weeks.'
+- '1,933 stores with ship-from-store capability. 3–7 day delivery promise. You paid Amazon to solve it instead.'
 
-If your title is longer than 15 words, you have FAILED. Cut it.
+If your title exceeds 20 words, you have FAILED. Cut it.
 
 TITLE BENCHMARK: Before writing any title, read the APPROVED TITLE EXAMPLES section in memory.md. Those examples represent validated quality standards from prior runs — use them as an additional quality bar alongside the reference titles above.
 
@@ -36,8 +36,8 @@ TITLE BENCHMARK: Before writing any title, read the APPROVED TITLE EXAMPLES sect
 5. NO SELF-IMPROVEMENT: Do NOT add features, sections, or styling that were not explicitly requested. Do NOT reorganize sections. Do NOT change the order of elements. Produce exactly what is asked, nothing more.
 
 6. SIMPLE LANGUAGE — MANDATORY: Write for a 16-year-old who understands business. No complex vocabulary. If a sentence needs a second read to understand, rewrite it. A COO reads 200 emails a day. Your sentence gets 3 seconds.
-BANNED WORDS in titles: idle, dormant, bifurcated, materially, structurally, operationalized. Use everyday equivalents:
-idle → unused / sitting empty | dormant → turned off / not used | bifurcated → split in two | materially → significantly | structurally → built into the system | operationalized → put to work / actually used
+BANNED WORDS anywhere in the document: leverage, synergy, holistic, paradigm, ecosystem, best-in-class (unless naming the company), world-class, cutting-edge, state-of-the-art, reimagine, unlock value, digital transformation, journey, idle, dormant, bifurcated, materially, structurally, operationalized.
+Use everyday equivalents: idle → unused / sitting empty | dormant → turned off / not used | bifurcated → split in two | materially → significantly | structurally → built into the system | operationalized → put to work / actually used
 
 7. PEER COMPARISON MANDATORY: Each provocation's evidence bullets MUST include at least one specific peer comparison pulled from benchmark_table.md — a named competitor with a real number that makes the gap concrete. Example: 'ASICS tripled margin from 7% to 14.7% in 24 months.' A provocation without a peer fact is easier to dismiss.
 
@@ -45,80 +45,158 @@ idle → unused / sitting empty | dormant → turned off / not used | bifurcated
 
 Generate a standalone HTML file. Read provocations.md and client_output.md.
 
-Load in the HTML <head>: Tailwind CSS from CDN (https://cdn.tailwindcss.com) and Plotly from CDN (https://cdn.plot.ly/plotly-latest.min.js). Use Tailwind for all styling. Purple-to-indigo gradient theme matching modern Accenture internal portals. Cards with subtle shadows, rounded corners, badges, clean typography. The design should look like a premium SaaS product landing page, not a consulting document.
+Load in the HTML <head>:
+- Tailwind CSS from CDN (https://cdn.tailwindcss.com)
+- Plotly from CDN (https://cdn.plot.ly/plotly-latest.min.js)
+- Add this CSS print media query for clean PDF output via Ctrl+P:
+  @media print { .tab-nav { display: none !important; } .tab-panel { display: block !important; } body { background: white; } }
+  This ensures all content prints cleanly with no tabs and no interactive elements.
 
-Header: company name large, 'Outside-In Perspective: [COMPANY]' title, date, 'Confidential — Prepared for: Chief Operating Officer / VP Supply Chain'.
+Use Tailwind for all styling. Light theme design — white backgrounds, light gray accents, clean typography. Cards with subtle shadows, rounded corners, clean layout. The design should look like a premium professional report, not a consulting slide deck.
 
-COMPANY LOGO: In the header, place the company logo inline to the left of the company name. For Adidas use: <img src='https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg' style='filter:invert(1);height:60px;vertical-align:middle;margin-right:15px;'> — the filter:invert(1) makes the black SVG logo white on the dark header. For other companies, find their Wikipedia SVG logo URL (pattern: https://upload.wikimedia.org/wikipedia/commons/[path]/[Company]_Logo.svg) and apply the same inline style. If no logo can be found, skip silently — do not show a broken image or placeholder.
+HEADER DESIGN — MANDATORY:
+The header must be a large, visually striking banner — full width, minimum 200px height, purple-to-indigo gradient (bg-gradient-to-r from-purple-600 via-indigo-700 to-indigo-900), padding py-12 px-8. Layout: logo on the left, text block to the right (or logo above company name if no wide layout). Content, in this exact order:
+- Company logo (see COMPANY LOGO rule below) — height:80px, margin-bottom:20px
+- Company name in large bold white text (text-4xl md:text-5xl font-bold text-white)
+- Below: "April 2026 · Confidential — Prepared for: Chief Operating Officer / VP Supply Chain" in text-lg text-white/70
+- "What is this?" block (div, style="margin-top:32px;max-width:640px;"): heading in text-sm font-semibold uppercase tracking-widest color:#a5b4fc margin-bottom:12px, followed by paragraph in text-base leading-relaxed color:#94a3b8 — "This document presents an outside-in assessment of your supply chain operations and competitive position, built entirely from public sources — annual reports, earnings transcripts, investor presentations, and corporate disclosures. It identifies four quantified operational gaps, benchmarks your performance against [N] global peers, and tags every claim by confidence level. The goal is not to tell you what to do — it is to show what we found, ask the questions only your team can answer, and whether these gaps are worth exploring together."
+- Claim tags block (div, style="margin-top:20px;max-width:640px;"): label "Claim tags:" in text-xs font-semibold uppercase tracking-widest color:#a5b4fc margin-bottom:8px, followed by text-xs color:#64748b line-height:1.8 — "[FACT] — Public filing<br>[INFERENCE — HIGH CONFIDENCE] — Two or more facts connect with direct logic<br>[INFERENCE — MODERATE CONFIDENCE] — Based on absence of disclosure, alt. explanations exist"
+The header must feel premium and dynamic — not a simple colored bar.
 
-ANALYTICAL BASIS LEGEND — immediately after the header, before Section 1:
-Add a subtle, understated box styled with muted colors and small font (text-xs, text-gray-500, bg-gray-50, border border-gray-200, rounded, px-4 py-3). Do NOT make it prominent. Format as bullet points, each tag on its own line:
+COMPANY LOGO: In the header, place the company logo.
+- For TJX use: <img src='https://1000logos.net/wp-content/uploads/2023/01/TJX-Companies-Logo.png' style='filter:brightness(0) invert(1);height:80px;margin-bottom:20px;'>
+- For Adidas use: <img src='https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg' style='filter:brightness(0) invert(1);height:60px;vertical-align:middle;margin-right:15px;'>
+- For other companies: find their Wikipedia SVG logo URL (pattern: https://upload.wikimedia.org/wikipedia/commons/[path]/[Company]_Logo.svg) and apply style='filter:brightness(0) invert(1);height:50px;vertical-align:middle;margin-right:15px;'
+- If no logo can be found, skip silently — do not show a broken image or placeholder.
 
-ANALYTICAL BASIS
-- [FACT] — Directly confirmed in public filings or corporate disclosures
-- [INFERENCE — HIGH CONFIDENCE] — Two or more facts connect with direct logic
-- [INFERENCE — MODERATE CONFIDENCE] — Based on absence of disclosure, alternative explanations exist
-- [INFERENCE — LOW CONFIDENCE] — Industry benchmarks applied to this company, requires validation
-- [ASSUMPTION] — No public evidence, hypothesis only
+THREE-TAB NAVIGATION — position and structure:
+The sticky tab bar appears IMMEDIATELY BELOW the header banner — NOT inside it. Render it as a separate element: bg-white, border-b border-gray-200, sticky top-0 z-10. Tab buttons: px-6 py-3 text-sm font-medium cursor-pointer. Active tab: border-b-2 border-indigo-600 text-indigo-600 bg-white. Inactive tab: text-gray-500 hover:text-gray-700 bg-white. Use vanilla JavaScript (onclick) to show/hide tab panels — no framework required. Three tabs in order: (1) "Client Presentation" — default active, (2) "Competitive Intelligence", (3) "How We Built This".
 
-SECTION 0 — THE NUMBERS (KPI DASHBOARD):
-This section appears IMMEDIATELY after the Analytical Basis Legend and BEFORE the provocations. It must be the first thing the reader sees after the header and intro text.
+ABBREVIATION BAR — appears as the FIRST element in the white body area, BEFORE The Scorecard (and before all other body content):
+A single line in text-xs text-gray-400 px-4 py-2 listing all abbreviations used in the document:
+"pp = percentage points | bp = basis points | COGS = Cost of Goods Sold | DC = Distribution Center | WMS = Warehouse Management System | TMS = Transportation Management System | SKU = Stock Keeping Unit | RFID = Radio Frequency Identification | GCC = Global Capability Center | FY = Fiscal Year | CapEx = Capital Expenditure"
+This replaces inline abbreviation definitions scattered through the text. Inline definitions within the text are still acceptable where needed for clarity.
 
-Read company_snapshot.md and benchmark_table.md for all numbers. Read provocations.md for provocation links. Do NOT do new research.
+SECTION 0 — THE SCORECARD (KPI DASHBOARD):
+This section appears IMMEDIATELY after the Analytical Basis Legend and BEFORE the provocations. It must be the first thing the reader sees after the header and intro text. The section container must have: id="scorecard"
 
-CONFIDENCE RULE — MANDATORY: Only include a KPI if the company figure reaches at least MODERATE CONFIDENCE (FACT, INFERENCE — HIGH CONFIDENCE, or INFERENCE — MODERATE CONFIDENCE). If both the company figure AND the peer median cannot reach MODERATE CONFIDENCE, exclude the KPI entirely. A shorter trustworthy dashboard beats a longer questionable one. Any estimated figure must show an [EST.] tag next to the number.
+Read company_snapshot.md and benchmark_table.md for all numbers. Read provocations.md for provocation anchor IDs. Do NOT do new research.
 
-Section title: 'THE NUMBERS' in large bold text. Subtitle in small gray: 'What the market sees — and where fulfillment holds the answer.'
+TIER 3 ENFORCEMENT — MANDATORY BEFORE SKIPPING: Before deciding to drop Tier 3, search ALL output files (company_snapshot.md, management_roadmap.md, benchmark_table.md, value_levers.md, due_diligence.md, provocations.md) for: operating margin targets, EBIT targets, store count targets, revenue growth targets, DTC mix targets, CapEx commitments, inventory targets, any stated management commitment with a number and a date. Only skip Tier 3 if zero confirmed public commitments are found across all files. If any confirmed target exists, include it.
 
-THREE TIERS — render each as a separate labeled block:
+MINIMUM 2 RED KPIs — MANDATORY: The scorecard MUST have at least 2 RED KPIs. If your first pass produces fewer than 2 RED KPIs, review the thresholds — you may be applying GREEN too generously. Consider adding optional KPIs (Logistics Cost, Reverse Logistics Cost) if they reach MODERATE confidence. A dashboard with fewer than 2 RED KPIs fails the urgency test.
 
-TIER 1 — RED (heading: 'OPERATIONS CONTROLS DIRECTLY'):
+CONFIDENCE RULE — MANDATORY: Only include a KPI if the company figure reaches at least MODERATE CONFIDENCE (FACT, INFERENCE — HIGH CONFIDENCE, or INFERENCE — MODERATE CONFIDENCE). Any estimated figure must show an [EST.] tag next to the number. Estimated KPIs are capped at AMBER regardless of how large the gap is.
+
+Section title: 'The Scorecard' in large bold text. Subtitle in small gray: 'Key operational KPIs benchmarked against [N] global peers. Public filings only.' (where N = actual number of peers in the benchmark set)
+
+KPI DESCRIPTIONS — MANDATORY: Every KPI row must include a one-line plain English description of what the metric means (maximum 10 words). These go in the KPI Name cell, below the KPI name in smaller gray text (text-xs text-gray-400). Use these exact descriptions:
+- Inventory / Revenue: "How much cash is trapped in unsold product"
+- Inventory Turns: "How fast stock converts to sales"
+- Sourcing Concentration (top 2 countries): "Tariff and disruption risk from supplier geography"
+- Gross-to-Op Margin Spread: "How much profit operations consumes between factory and bottom line"
+- Logistics & Distribution Cost / Revenue: "Total cost of moving product from factory to customer"
+- DTC Delivery Speed: "What you promise vs. what competitors deliver"
+- DTC Channel Mix: "Share of revenue through your own stores and website"
+- E-commerce Growth: "Speed of your fastest-growing channel"
+- Reverse Logistics Cost / E-commerce Revenue: "Cost of processing returns as share of online sales"
+- Gross Margin: "Pricing power after product cost, before operating expenses"
+- SG&A / Revenue: "Overhead efficiency — logistics, marketing, and corporate costs combined"
+- Revenue per Employee: "How much revenue each employee generates"
+
+ALL THREE TIERS IN ONE SINGLE HTML TABLE — MANDATORY:
+Do NOT render three separate tables or three separate labeled blocks. Render ALL tiers in a single <table> element with:
+- style="table-layout: fixed; width: 100%;"
+- A <colgroup> at the top with explicit column widths:
+  <colgroup>
+    <col style="width: 28%"> <!-- KPI Name + description -->
+    <col style="width: 16%"> <!-- Company Actual -->
+    <col style="width: 14%"> <!-- Peer Median -->
+    <col style="width: 14%"> <!-- Best-in-Class -->
+    <col style="width: 10%"> <!-- Gap -->
+    <col style="width: 12%"> <!-- Status -->
+    <col style="width: 6%">  <!-- Link -->
+  </colgroup>
+
+TABLE HEADER ROW: bg-gray-50 text-xs font-semibold text-gray-600 uppercase tracking-wider. Columns:
+KPI | [Company] Actual | Peer Median (n=X) | Best-in-Class | Gap | Status | Link
+
+TIER SEPARATOR ROWS: Between tiers, insert a full-width <tr> with a single <td colspan="7"> that acts as a tier header. Style: bg-gray-50 border-t-2 border-gray-200 px-3 py-2.
+- Tier 1 separator: text-xs font-bold uppercase tracking-widest text-red-600 — label 'TIER 1 — OPERATIONS CONTROLS DIRECTLY'
+- Tier 2 separator: text-xs font-bold uppercase tracking-widest text-amber-600 — label 'TIER 2 — OPERATIONS SIGNIFICANTLY INFLUENCES'
+- Tier 3 separator: text-xs font-bold uppercase tracking-widest text-gray-500 — label 'TIER 3 — MANAGEMENT COMMITMENTS OPERATIONS MUST DELIVER'
+
+TIER 1 — RED — Operations Controls Directly:
 KPIs to attempt (include only those reaching MODERATE confidence or above):
 - Inventory / Revenue: inventory ÷ revenue. RED if >2pp above peer median AND a provocation addresses it.
 - Inventory Turns: annual COGS ÷ average inventory. RED if >15% below peer median AND a provocation addresses it.
-- Gross-to-Operating Margin Spread: gross margin minus operating margin in percentage points. RED if >2pp above peer median AND a provocation addresses it.
-- Logistics Cost / Revenue: only include if confirmed from disclosures or calculated from confirmed cost components reaching MODERATE confidence. Show [EST.] if estimated. Cap at AMBER if estimated.
+- Sourcing Concentration (top 2 countries). RED if >10pp above peer median AND a provocation addresses it.
+- Gross-to-Operating Margin Spread: gross margin minus operating margin in pp. RED if >2pp above peer median AND a provocation addresses it.
+- Logistics & Distribution Cost / Revenue: only include if confirmed or calculated from confirmed sources reaching MODERATE confidence. Show [EST.] if estimated. Cap at AMBER if estimated.
 - DTC Delivery Speed (published SLA days). RED if >1 day worse than peer median AND a provocation addresses it.
 - DTC Channel Mix (DTC % of revenue). Use AMBER unless significantly lagging.
 - E-commerce Growth Rate (YoY %). GREEN if meeting or exceeding peer median.
-- Sourcing Concentration (% from top 2 countries). RED if >10pp above peer median AND a provocation addresses it.
-- Reverse Logistics Cost as % of E-commerce Revenue: only include if at least ONE component (return rate OR cost per return) is confirmed from a public source. Show [EST.] if partially estimated. Cap at AMBER if estimated.
+- Reverse Logistics Cost as % of E-commerce Revenue: only include if at least ONE component (return rate OR cost per return) is confirmed. Show [EST.] if partially estimated. Cap at AMBER if estimated.
 
-TIER 2 — AMBER (heading: 'OPERATIONS SIGNIFICANTLY INFLUENCES'):
+TIER 2 — AMBER — Operations Significantly Influences:
 - Gross Margin (%)
 - SG&A / Revenue (%)
 - Revenue per Employee
 
-TIER 3 — GREY (heading: 'MANAGEMENT COMMITMENTS OPERATIONS MUST DELIVER'):
-Only include KPIs where a specific public commitment exists (confirmed in filings, earnings guidance, or investor presentations). Do NOT infer or assume targets. If fewer than 2 confirmed public commitments exist, drop Tier 3 entirely.
-- Operating Margin Target (stated goal and timeline)
-- DTC Revenue Target (if publicly committed)
-- Working Capital or Inventory Target (if publicly committed)
+TIER 3 — GREY — Management Commitments Operations Must Deliver:
+Only include KPIs where a specific public commitment exists (confirmed in filings, earnings guidance, or investor presentations). Do NOT infer or assume targets.
+Tier 3 columns are different from Tiers 1-2: Commitment | Current Actual | Target | Gap | Timeline | Source
+- Gap cell: colored text — red if behind target, green if on track
+- NEVER include: stock price, EPS, P/E, dividend yield, or any pure market metric
+- If fewer than 2 confirmed public commitments exist after searching all files: drop Tier 3 entirely
 
-TABLE FORMAT per tier: use a dense HTML table styled with Tailwind. Columns:
-| KPI | Company Actual (most recent FY) | Peer Median | Best-in-Class (name the company) | Gap | Status | Link |
-- Gap: show as +Xpp (positive = company is worse) or -Xpp (positive = company is better) with directional clarity
-- Status badge: pill-shaped badge. RED = bg-red-100 text-red-800. AMBER = bg-amber-100 text-amber-800. GREEN = bg-green-100 text-green-800. GREY = bg-gray-100 text-gray-600.
-- Link column: for RED KPIs only, show '→ P1' or '→ P2' etc. as a small indigo tag. Leave blank for AMBER/GREEN/GREY.
-- Peer Median column: use the actual calculated median from the peer set in benchmark_table.md. Label it 'Peer Median (n=X)' where X is the number of peers used.
-- Any [EST.] figures: show in a lighter font weight with the [EST.] tag inline.
+CONFIRMED TIER 3 ENTRY FOR TJX — ALWAYS INCLUDE:
+Pretax profit margin guidance FY2027: 11.7%–11.8%. Current actual: 11.5% pretax margin (FY2026). Target: 11.7%–11.8% (FY2027 guidance). Gap: +20bp–+30bp required. Timeline: FY2027 (fiscal year ending January 2027). Source: TJX FY2026 earnings release, February 25, 2026. This is a confirmed public management commitment with a specific number and timeline — include it in Tier 3 regardless of other availability.
+
+DATA ROW STYLING:
+- KPI Name cell: KPI name in font-medium text-sm text-gray-900, followed by the one-line description in text-xs text-gray-400 on the line below
+- Number cells ([Company] Actual, Peer Median, Best-in-Class, Gap): apply style="font-variant-numeric: tabular-nums" for alignment
+- Show fiscal year inline with each value: "21.0% (FY2024)"
+- Any [EST.] figure: lighter font-weight with [EST.] inline
+- Gap cell (Tiers 1-2): show as +Xpp (positive = company is worse, text-red-600) or −Xpp (company is better, text-green-600)
+- Status cell: flat colored text — NOT pill badges, NOT rounded badges, NOT bg-colored cells. Use:
+  - RED: font-semibold text-red-600 — display text "RED"
+  - AMBER: font-semibold text-amber-500 — display text "AMBER"
+  - GREEN: font-semibold text-green-600 — display text "GREEN"
+  - GREY: font-medium text-gray-400 — display text "GREY"
+- Link cell: for RED KPIs only, show a clickable anchor '↓ P1' (or ↓ P2, ↓ P3 etc.) as text-indigo-600 text-xs underline with href="#provocation-1" (or #provocation-2, etc.) and smooth scroll behavior. Leave blank for AMBER/GREEN/GREY.
+- Alternating row shading: even rows bg-gray-50/30. No heavy borders — use border-b border-gray-100 only.
 
 COLOR CODING LOGIC:
-- RED: company is >2pp below peer median on margin/ratio metrics, OR >15% worse on ratio metrics, OR demonstrably lagging on delivery speed or sourcing concentration — AND a provocation directly addresses this gap — AND the figure is CONFIRMED (not estimated).
-- AMBER: company is below peer median but within the RED threshold. OR the KPI is estimated (even if gap is large). OR company is significantly below but no provocation addresses it.
-- GREEN: company meets or exceeds peer median. Show these — a dashboard that is entirely red looks like an attack.
-- GREY: Tier 3 management commitments. No comparison, no gap column — just the commitment, timeline, and source.
+- RED: company is >2pp below peer median on margin/ratio metrics, OR >15% worse on ratio metrics, OR demonstrably lagging on delivery speed or sourcing concentration — AND a provocation directly addresses this gap — AND the figure is CONFIRMED (not estimated, no [EST.] tag)
+- AMBER: company is below peer median but within the RED threshold. OR the KPI is estimated ([EST.] shown, regardless of gap size). OR company is significantly below but no provocation addresses it.
+- GREEN: company meets or exceeds peer median. Include these — a dashboard that is entirely red looks like an attack.
+- GREY: Tier 3 management commitments only. No comparison, no gap column — just the commitment, timeline, and source.
 
-NARRATIVE BRIDGE PARAGRAPH — after the Tier 3 table (or after Tier 2 if Tier 3 is excluded):
+SCORECARD FOOTNOTES — MANDATORY:
+Immediately below the table, add a footnotes section in small gray text:
+<div class="mt-3 text-xs text-gray-400 border-t border-gray-100 pt-3">
+Numbered entries:
+1. Sources — cite the specific filing or disclosure for each KPI value
+2. Peer fiscal years — list fiscal year end date for every peer: "Nike: FY2025 (yr. ends May 2025), ..."
+3. "pp = percentage points throughout this document"
+4. Any cross-year estimates — flag and explain each one
+</div>
+
+NARRATIVE BRIDGE PARAGRAPH — after the scorecard table and footnotes:
 One paragraph, maximum 3 sentences, styled as a muted callout box (bg-slate-50, border-l-4 border-indigo-400, px-4 py-3, italic text-sm):
 '[X] of [Y] tracked KPIs sit at or below peer median in areas that supply chain and fulfillment directly influence. The [N] provocations that follow address the RED-flagged metrics — [list the specific gap names]. Closing these gaps is worth approximately €[Z]M in annual EBIT — [fraction] of the distance between today's [current margin]% and the [year] [target]% commitment.'
-Use actual numbers from the dashboard. Do not use placeholders. If the operating margin target (Tier 3) does not exist, reference the peer median gap instead.
+Use actual numbers from the dashboard. Do not use placeholders. If no operating margin target exists in Tier 3, reference the peer median gap instead.
 
 SECTION 0 VISUAL STYLE:
-- Container: bg-white, rounded-xl, shadow-md, p-6, mb-8
-- Tier headers: text-xs font-bold uppercase tracking-widest, colored: Tier 1 = text-red-600, Tier 2 = text-amber-600, Tier 3 = text-gray-500
-- Table: text-sm, border-collapse, full width. Header row: bg-gray-50, font-semibold. Alternating row shading: even rows bg-gray-50/30. No heavy borders — use border-b border-gray-100 only.
-- The section heading 'THE NUMBERS' uses the same large bold style as the provocation section headings — consistent with DESIGN LOCK rule.
+- Container: bg-white, rounded-xl, shadow-md, p-6, mb-8. Must have id="scorecard".
+- Section heading 'The Scorecard': same large bold style as provocation section headings — consistent with DESIGN LOCK rule
+- Table: text-sm, border-collapse, full width
+- Table header row: bg-gray-50, font-semibold
+
+PROVOCATION ANCHOR IDs — MANDATORY:
+Each provocation card in Section 1 must have: id="provocation-1", id="provocation-2", id="provocation-3", id="provocation-4", id="provocation-5"
+Each provocation card must include a 'Back to Scorecard' link at the bottom right: <a href="#scorecard" class="text-xs text-gray-400 hover:text-indigo-600">↑ Back to Scorecard</a>
 
 SECTION 1 — PROVOCATIONS (provocations 1-4):
 Each provocation as a card with:
@@ -148,25 +226,21 @@ Below both phases, a callout box: 'If Phase One invalidates a provocation, clien
 SECTION 3 — KEY QUESTIONS:
 5 questions numbered. Closing paragraph styled as a blockquote: 'These hypotheses are built entirely on public data. With 4 weeks of internal access, we can confirm or disprove each one and size the exact opportunity.'
 
+CASH CONTEXT SENTENCE — add as the final sentence of the closing paragraph, immediately after the blockquote text above:
+"TJX holds $6.2B in cash and generated $6.9B in operating cash flow in FY2026 — the resources to act are not the constraint." Source: TJX FY2026 10-K. This sentence applies to TJX analyses. For other companies, use equivalent balance sheet liquidity data if available and confirmed. If not confirmed, omit — do not fabricate.
+
 Footer: 'Analysis based exclusively on public sources: annual reports, SEC filings, earnings transcripts, investor presentations.' NO mention of AI, agents, Claude, Anthropic, agentic, machine learning, or any technology.
 
 THREE-TAB STRUCTURE — MANDATORY:
-Wrap ALL content below the header in a JavaScript tab navigation system with exactly three tabs. Render a sticky tab bar immediately below the header (bg-white, border-b border-gray-200, sticky top-0 z-10). Tab buttons: px-6 py-3 text-sm font-medium cursor-pointer. Active tab: border-b-2 border-indigo-600 text-indigo-600 bg-white. Inactive tab: text-gray-500 hover:text-gray-700 bg-white. Use vanilla JavaScript (onclick) to show/hide tab panels — no framework required.
+The sticky tab bar is defined above (in the HEADER/TAB POSITIONING section). It appears immediately below the header banner. All tab content panels sit below the tab bar. Use vanilla JavaScript (onclick) to show/hide tab panels — no framework required.
 
 TAB 1 — 'Client Presentation' (default active on load):
-Contains ALL current content in this exact order: Analytical Basis Legend → Section 0 KPI Dashboard → Section 1 Provocations 1-4 → Provocation 05 Synthesis → Section 2 Engagement Plan → Section 3 Key Questions → Footer.
+Contains ALL content in this exact order: Abbreviation Bar → Section 0 The Scorecard (KPI Dashboard) → Section 1 Provocations 1-4 → Provocation 05 Synthesis → Section 2 Engagement Plan → Section 3 Key Questions → Footer.
 
-TAB 2 — 'How We Built This':
-Full panel background: bg-gray-900 text-white. No mention of AI, Claude, Anthropic, or any model name — describe each phase as an 'analyst' or 'research phase'.
-- Section heading 'The Analytical Engine' (text-white text-2xl font-bold mb-6)
-- 7 AGENT CARDS in a 2-column grid (gap-4): each card is bg-gray-800 rounded-lg p-4 border border-gray-700. Show: agent name in text-indigo-400 font-semibold, a 1-2 sentence plain-English job description, and the key output files it produced. Agents: Source Collector, Company Research Analyst, Peer & Benchmark Analyst, Operating Model Analyst, AI Value Analyst, Current Signals Analyst, Due Diligence Analyst.
-- 3 INFRASTRUCTURE CARDS below the agent grid (full width, same card style): (1) Data Sources Used — list source types (annual reports, SEC filings, earnings transcripts, investor presentations, corporate websites). (2) Quality Gates Applied — confidence thresholds, mandatory source minimums, what triggers a workflow stop. (3) What Was Excluded and Why — types of data not used (analyst estimates, unverified press, social media, internal data).
-- Footer note in text-gray-400 text-sm italic: 'This analysis was produced using only public, verifiable sources. No proprietary data, no insider information.'
-
-TAB 3 — 'Competitive Intelligence':
+TAB 2 — 'Competitive Intelligence':
 White background. Data-dense layout.
 
-Sub-section A — KEY TAKEAWAYS: heading 'What the Numbers Say' (text-xl font-bold mb-4). 3-5 bullet points (text-sm text-gray-700, list-disc ml-6) drawn from benchmark_table.md — each names a specific peer and a specific number. Example format: 'Lululemon runs 23.7% operating margin at ~95% DTC — 14pp above [Company].'
+Sub-section A — KEY TAKEAWAYS: heading 'What the Numbers Say' (text-xl font-bold mb-4). Exactly 5 bullet points (text-sm text-gray-700, list-disc ml-6) drawn from benchmark_table.md — each must name a specific peer and a specific number, and each must connect to one of the 5 provocations. Must be surprising and specific, not generic. Example format: 'Lululemon runs 23.7% operating margin at ~95% DTC — 14pp above [Company].'
 
 Sub-section B — PEER COMPARISON TABLE: heading 'Full Peer Set' (text-xl font-bold mb-4 mt-8). Dense HTML table (text-sm, w-full, border-collapse). Columns: Company | Revenue | Gross Margin | Operating Margin | Inventory/Revenue | DTC Mix | E-com Growth. Highlight the company being analyzed with bg-indigo-50 font-semibold row. Sort by operating margin descending. Add a final 'Peer Median' row styled bg-gray-100 font-bold. Pull all data from benchmark_table.md — do not invent numbers.
 
@@ -181,4 +255,56 @@ Two traces per company. Gross Margin bars: color '#818cf8'. Operating Margin bar
 Chart 3 — Radar Chart — Operational profile:
 Normalize 5 metrics to 0-100 across the peer set: Gross Margin, Operating Margin, Inventory Turns, DTC Mix, E-com Growth (higher = better for all; for inventory-as-%-revenue invert the scale). Plot two traces: (1) company being analyzed in indigo fill, (2) peer median as a dashed line. type: 'scatterpolar', fill: 'toself' for company trace. Title: 'Operational Profile vs Peer Median (normalized 0-100)'.
 
-No external links beyond the Tailwind CDN and Plotly CDN. Save as client_presentation.html
+TAB 3 — 'How We Built This':
+Light background: bg-gray-50 text-gray-900. No mention of AI, Claude, Anthropic, or any model name — describe each phase as an 'analyst' or 'research phase'.
+- Section heading 'The Analytical Engine' (text-gray-900 text-2xl font-bold mb-6)
+- 7 ANALYST CARDS in a 2-column grid (gap-4): each card is bg-white rounded-lg p-4 border border-gray-200 shadow-sm. Show: analyst name in text-indigo-600 font-semibold, a 1-2 sentence plain-English job description, and the key output files it produced. Analysts: Source Collector, Company Research Analyst, Peer & Benchmark Analyst, Operating Model Analyst, AI Value Analyst, Current Signals Analyst, Due Diligence Analyst.
+- 3 INFRASTRUCTURE CARDS below the analyst grid (full width, same card style): (1) Data Sources Used — list source types (annual reports, SEC filings, earnings transcripts, investor presentations, corporate websites). (2) Quality Gates Applied — confidence thresholds, mandatory source minimums, what triggers a workflow stop. (3) What Was Excluded and Why — types of data not used (analyst estimates, unverified press, social media, internal data).
+- "WHAT THIS IS / WHAT THIS IS NOT" section: two columns. Left: what the tool does (outside-in fact-based briefing from public data, compresses weeks of early-stage work into hours, arrives with hypotheses not blank questions). Right: what it is not (not a replacement for discovery, assumptions need validation, Phase One confirms or disproves each claim). Frame limitations as "Phase One validates" not "tool can't do X."
+- Execution flow as a horizontal pipeline showing the 7 phases in sequence.
+- Footer note in text-gray-500 text-sm italic: 'This analysis was produced using only public, verifiable sources. No proprietary data, no insider information.'
+
+AI ASSISTANT FLOATING BUTTON — Add to every HTML output:
+Place a floating chat button fixed at the bottom-right of the page. Implementation:
+
+CSS animation (add in <style> block in <head>):
+@keyframes pulse-once { 0%, 100% { transform: scale(1); box-shadow: 0 10px 25px rgba(99,102,241,0.4); } 50% { transform: scale(1.08); box-shadow: 0 10px 35px rgba(99,102,241,0.7); } }
+.pulse-3s { animation: pulse-once 0.8s ease-in-out 3; }
+
+HTML (place just before </body>):
+<!-- AI Assistant Button -->
+<div id="ai-btn" class="fixed bottom-6 right-6 z-50">
+  <button onclick="toggleAIPopup()" id="ai-chat-btn"
+    class="pulse-3s w-[60px] h-[60px] rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg flex items-center justify-center text-2xl transition-colors"
+    title="Ask the AI Assistant">
+    💬
+  </button>
+  <!-- Popup card -->
+  <div id="ai-popup" class="hidden absolute bottom-[72px] right-0 w-[300px] rounded-xl shadow-2xl bg-white p-4 border border-gray-100">
+    <div class="flex items-center justify-between mb-2">
+      <span class="font-semibold text-gray-800 text-sm">Ask the AI Assistant</span>
+      <button onclick="toggleAIPopup()" class="text-gray-400 hover:text-gray-600 text-lg leading-none">&times;</button>
+    </div>
+    <p class="text-xs text-gray-500 mb-3">Get answers about this analysis using your ChatGPT account</p>
+    <a href="[AI_ASSISTANT_URL]" target="_blank" rel="noopener"
+      class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg py-3 text-center text-sm font-medium transition-colors">
+      Open AI Assistant ↗
+    </a>
+    <p class="text-xs text-gray-400 text-center mt-2">Powered by ChatGPT · Uses only public data from this analysis</p>
+  </div>
+</div>
+
+<script>
+function toggleAIPopup() {
+  const popup = document.getElementById('ai-popup');
+  popup.classList.toggle('hidden');
+}
+</script>
+
+COMPANY-SPECIFIC AI ASSISTANT URL — replace [AI_ASSISTANT_URL] with the correct link per company:
+- TJX Companies: https://chatgpt.com/g/g-69dbf502674c81919691bf05b48a359c-tjx-supply-chain-analyst
+- Other companies: replace with the corresponding Custom GPT link for that company
+- If no GPT link is available for the company being analyzed: hide the button entirely (set the outer div to display:none or omit it)
+Never leave [AI_ASSISTANT_URL] as a placeholder — always substitute the real URL or hide the button.
+
+No external links beyond the Tailwind CDN, Plotly CDN, and the AI Assistant URL above. Save as client_presentation.html

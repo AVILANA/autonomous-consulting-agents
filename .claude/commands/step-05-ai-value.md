@@ -33,3 +33,12 @@ The output must clearly separate: (A) Supply Chain Deep Dive (detailed) from (B)
 - Body = the PHYSICAL network topology: warehouses, suppliers, factories, distribution channels, transportation routes, hubs, nodes. Changing body means opening/closing facilities, switching suppliers, redesigning routes. Expensive, slow, strategic.
 - Brain = how you OPERATE within the physical network: process design, standardization, decisioning, planning, forecasting, orchestration, systems, data flows, automation. Changing brain means improving processes, deploying AI, connecting systems. Faster, cheaper, immediate AI impact.
 - KEY RULE: If you can change it without physically moving, building, or closing something, it is BRAIN not body. Process design and standardization are BRAIN.
+
+## DATA FRESHNESS RULE — MANDATORY
+For every KPI and every data point used in any output:
+
+1. Always use the most recent available figure. If FY2025 data exists for a metric (even from a press release or earnings transcript), use FY2025. Only fall back to FY2024 if the specific metric was not disclosed in any FY2025 source.
+2. Every number must show its fiscal year in parentheses. Not just "21.0%" but "21.0% (FY2024)" or "€24.8B (FY2025)". The year is mandatory. No exceptions.
+3. If a KPI uses an older fiscal year than the most recent results, add a small note explaining why: "(FY2024 — FY2025 breakdown not yet published)". This tells the reader you looked for newer data and it wasn't available, not that you were lazy.
+4. Never mix fiscal years within a single calculation without flagging it. If you must cross years, state it explicitly as a cross-year estimate.
+5. Value opportunity sizing must reference the fiscal year of the baseline used. If you estimate "€X in annual EBIT improvement", state which year's financials were the baseline: "based on FY2025 revenue of €24.8B".

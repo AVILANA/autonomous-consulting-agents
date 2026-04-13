@@ -64,6 +64,15 @@ MEMO STRUCTURE:
 
 BEFORE writing conclusions, read due_diligence.md. Let it inform your judgment without mentioning it explicitly.
 
+## DATA FRESHNESS RULE — MANDATORY
+For every KPI and every data point used in any output:
+
+1. Always use the most recent available figure. If FY2025 data exists for a metric (even from a press release or earnings transcript), use FY2025. Only fall back to FY2024 if the specific metric was not disclosed in any FY2025 source.
+2. Every number must show its fiscal year in parentheses. Not just "21.0%" but "21.0% (FY2024)" or "€24.8B (FY2025)". The year is mandatory. No exceptions.
+3. If a KPI uses an older fiscal year than the most recent results, add a small note explaining why: "(FY2024 — FY2025 breakdown not yet published)". This tells the reader you looked for newer data and it wasn't available, not that you were lazy.
+4. Never mix fiscal years within a single calculation without flagging it. If you must cross years, state it explicitly: "[Company] FY2024 metric on FY2025 revenue base (cross-year estimate)."
+5. In the KPI table, the column header must show the year: "[Company] Actual (FY2025)" for FY2025 metrics. If the dashboard mixes years, add the year next to each individual number.
+
 ---
 
 CLIENT VERSION GUIDANCE. After the main memo, add a section separated by --- titled 'Client-Facing Preview Version'. Rewrite the key findings as if presenting TO the client, not about the client. Change tone from 'we believe Adidas should...' to 'based on public analysis, here are insights about your business that may be valuable...'. Remove any internal pursuit language, pricing, or engagement framing. Keep it as a demonstration of analytical capability — a preview of what deeper engagement could uncover.

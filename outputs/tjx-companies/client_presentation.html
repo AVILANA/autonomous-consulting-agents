@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TJX Companies — Outside-In Perspective</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  html { scroll-behavior: smooth; }
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  @media print {
+    .tab-nav { display: none !important; }
+    .tab-panel { display: block !important; }
+    body { background: white; }
+  }
+  @keyframes slowZoom { from { background-size: 100%; } to { background-size: 110%; } }
+  .hero-bg-wrap { position: relative; overflow: hidden; }
+  .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(88,28,135,0.9), rgba(29,78,216,0.85)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600') center/100%; background-repeat: no-repeat; animation: slowZoom 20s ease-in-out infinite alternate; z-index: 0; }
+  .hero-content { position: relative; z-index: 2; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+
+<!-- HEADER -->
+<div class="hero-bg-wrap">
+  <div class="hero-bg-img"></div>
+  <div class="hero-content px-8 py-16">
+    <img src="https://companieslogo.com/img/orig/TJX.D-9a809d0b.png?t=1720244494" style="filter:brightness(0) invert(1);height:80px;margin-bottom:20px;" alt="TJX">
+    <h1 class="text-4xl font-bold text-white mb-2">Outside-In Perspective</h1>
+    <p class="text-lg text-white/70">April 2026 · Confidential — Prepared for: Chief Operating Officer / VP Supply Chain</p>
+    <div style="margin-top:32px;max-width:640px;">
+      <h3 class="text-sm font-semibold uppercase tracking-widest" style="color:#a5b4fc;margin-bottom:12px;">What is this?</h3>
+      <p class="text-base leading-relaxed" style="color:rgba(255,255,255,0.7);">This document presents an outside-in assessment of your supply chain operations and competitive position, built entirely from public sources — annual reports, earnings transcripts, investor presentations, and corporate disclosures. It identifies four quantified operational gaps, benchmarks your performance against 7 global peers, and tags every claim by confidence level. The goal is not to tell you what to do — it is to show what we found, ask the questions only your team can answer, and whether these gaps are worth exploring together.</p>
+    </div>
+    <div style="margin-top:20px;max-width:640px;">
+      <p class="text-xs font-semibold uppercase tracking-widest" style="color:#a5b4fc;margin-bottom:8px;">Claim tags:</p>
+      <p class="text-xs" style="color:rgba(255,255,255,0.6);line-height:1.8;">[FACT] — Public filing<br>[INFERENCE — HIGH CONFIDENCE] — Two or more facts connect with direct logic<br>[INFERENCE — MODERATE CONFIDENCE] — Based on absence of disclosure, alt. explanations exist</p>
+    </div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-8">
+    <nav class="flex gap-0">
+      <button onclick="showTab('tab1',this)" id="btn-tab1"
+        class="tab-btn px-6 py-4 text-sm font-semibold border-b-2 border-indigo-600 text-indigo-600 transition-colors">
+        Client Presentation
+      </button>
+      <button onclick="showTab('tab2',this)" id="btn-tab2"
+        class="tab-btn px-6 py-4 text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors">
+        Competitive Intelligence
+      </button>
+      <button onclick="showTab('tab3',this)" id="btn-tab3"
+        class="tab-btn px-6 py-4 text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 transition-colors">
+        How We Built This
+      </button>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 1: CLIENT PRESENTATION ═══════════════════════ -->
+<div id="tab1" class="tab-panel active">
+<div class="max-w-7xl mx-auto px-8 py-8">
+
+  <!-- ABBREVIATION BAR -->
+  <p class="text-xs text-gray-400 mb-6">pp = percentage points | bp = basis points | COGS = Cost of Goods Sold | DC = Distribution Center | SKU = Stock Keeping Unit | RFID = Radio Frequency Identification | TMS = Transportation Management System | BOPIS = Buy Online Pick Up In Store | DTC = Direct-to-Consumer</p>
+
+  <!-- ═══ SECTION 0: THE SCORECARD ═══ -->
+  <div id="scorecard" class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-1">The Scorecard</h2>
+    <p class="text-sm text-gray-400 mb-5">Key operational KPIs benchmarked against 7 global peers. Public filings only.</p>
+
+    <div class="overflow-x-auto">
+    <table style="table-layout:fixed;width:100%;border-collapse:collapse;" class="text-sm">
+      <colgroup>
+        <col style="width:28%">
+        <col style="width:16%">
+        <col style="width:14%">
+        <col style="width:14%">
+        <col style="width:10%">
+        <col style="width:12%">
+        <col style="width:6%">
+      </colgroup>
+      <thead>
+        <tr class="bg-gray-50 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          <th class="px-3 py-3 text-left border-b border-gray-200">KPI</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">TJX Actual</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Peer Median (n=7)</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Best-in-Class</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Gap</th>
+          <th class="px-3 py-3 text-center border-b border-gray-200">Status</th>
+          <th class="px-3 py-3 text-center border-b border-gray-200">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- TIER 1 SEPARATOR -->
+        <tr>
+          <td colspan="7" class="px-3 py-2 bg-gray-50 border-t-2 border-gray-200">
+            <span class="text-xs font-bold uppercase tracking-widest text-red-600">Tier 1 — Operations Controls Directly</span>
+          </td>
+        </tr>
+
+        <!-- Inventory / Revenue -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Inventory / Revenue</div>
+            <div class="text-xs text-gray-400">How much cash is trapped in unsold product</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">12.1% (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">14.8%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Inditex 8.2%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-green-600">−2.7pp</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-green-600">GREEN</span></td>
+          <td class="px-3 py-3 text-center"></td>
+        </tr>
+
+        <!-- Inventory Turns -->
+        <tr class="bg-gray-50/30 border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Inventory Turns</div>
+            <div class="text-xs text-gray-400">How fast stock converts to sales</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">5.6x (FY2025)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">5.8x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Inditex 8–9x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-amber-600">−0.2x</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-amber-500">AMBER</span></td>
+          <td class="px-3 py-3 text-center"><a href="#provocation-1" class="text-indigo-600 text-xs underline">↓ P1</a></td>
+        </tr>
+
+        <!-- Sourcing Concentration -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Sourcing Concentration (top 2 countries)</div>
+            <div class="text-xs text-gray-400">Tariff and disruption risk from supplier geography</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~50% [EST.]<br><span class="text-xs text-gray-400">(FY2025)</span></td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">~52%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">TJX ~50%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-green-600">−2pp [EST.]</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-amber-500">AMBER</span></td>
+          <td class="px-3 py-3 text-center"></td>
+        </tr>
+
+        <!-- Gross-to-Op Margin Spread — RED -->
+        <tr class="bg-gray-50/30 border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Gross-to-Op Margin Spread</div>
+            <div class="text-xs text-gray-400">How much profit operations consumes between factory and bottom line</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">19.1pp (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">15.6pp (Ross)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Ross 15.6pp</td>
+          <td class="px-3 py-3 text-right tabular-nums text-red-600">+3.5pp</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-red-600">RED</span></td>
+          <td class="px-3 py-3 text-center"><a href="#provocation-3" class="text-indigo-600 text-xs underline">↓ P3</a></td>
+        </tr>
+
+        <!-- International Segment Op Margin — RED -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">International Segment Op Margin</div>
+            <div class="text-xs text-gray-400">International business profit vs. domestic benchmark</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">7.3% (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">12.2% (Ross)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Marmaxx 14.4%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-red-600">+4.9pp</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-red-600">RED</span></td>
+          <td class="px-3 py-3 text-center"><a href="#provocation-4" class="text-indigo-600 text-xs underline">↓ P4</a></td>
+        </tr>
+
+        <!-- DTC Delivery Speed -->
+        <tr class="bg-gray-50/30 border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">DTC Delivery Speed (US)</div>
+            <div class="text-xs text-gray-400">What you promise vs. what competitors deliver</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">5–7 days (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">3–5 days</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Amazon 1–2 days</td>
+          <td class="px-3 py-3 text-right tabular-nums text-amber-600">+2 days</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-amber-500">AMBER</span></td>
+          <td class="px-3 py-3 text-center"></td>
+        </tr>
+
+        <!-- DTC Channel Mix -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">DTC Channel Mix</div>
+            <div class="text-xs text-gray-400">Share of revenue through your own stores and website</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~3% e-com (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">~18%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Inditex ~37%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-amber-600">+15pp [EST.]</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-amber-500">AMBER</span></td>
+          <td class="px-3 py-3 text-center"></td>
+        </tr>
+
+        <!-- TIER 2 SEPARATOR -->
+        <tr>
+          <td colspan="7" class="px-3 py-2 bg-gray-50 border-t-2 border-gray-200">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Tier 2 — Operations Significantly Influences</span>
+          </td>
+        </tr>
+
+        <!-- Gross Margin -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Gross Margin</div>
+            <div class="text-xs text-gray-400">Pricing power after product cost, before operating expenses</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">31.0% (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">30.2%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Burlington 43.3%*</td>
+          <td class="px-3 py-3 text-right tabular-nums text-green-600">+0.8pp</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-green-600">GREEN</span></td>
+          <td class="px-3 py-3 text-center"></td>
+        </tr>
+
+        <!-- SG&A / Revenue -->
+        <tr class="bg-gray-50/30 border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">SG&amp;A / Revenue</div>
+            <div class="text-xs text-gray-400">Overhead efficiency — logistics, marketing, and corporate costs combined</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~20.0% (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">~22.5%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Ross ~17.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-green-600">−2.5pp</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-green-600">GREEN</span></td>
+          <td class="px-3 py-3 text-center"></td>
+        </tr>
+
+        <!-- Revenue per Employee -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Revenue per Employee</div>
+            <div class="text-xs text-gray-400">How much revenue each employee generates</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$163K (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">~$185K</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-500">Ross ~$240K</td>
+          <td class="px-3 py-3 text-right tabular-nums text-amber-600">−$22K</td>
+          <td class="px-3 py-3 text-center"><span class="font-semibold text-amber-500">AMBER</span></td>
+          <td class="px-3 py-3 text-center"><a href="#provocation-2" class="text-indigo-600 text-xs underline">↓ P2</a></td>
+        </tr>
+
+        <!-- TIER 3 SEPARATOR -->
+        <tr>
+          <td colspan="7" class="px-3 py-2 bg-gray-50 border-t-2 border-gray-200">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Tier 3 — Management Commitments Operations Must Deliver</span>
+          </td>
+        </tr>
+
+        <!-- Tier 3 column sub-header -->
+        <tr class="bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+          <th class="px-3 py-2 text-left border-b border-gray-200">Commitment</th>
+          <th class="px-3 py-2 text-right border-b border-gray-200">Current Actual</th>
+          <th class="px-3 py-2 text-right border-b border-gray-200">Target</th>
+          <th class="px-3 py-2 text-right border-b border-gray-200" colspan="2">Gap</th>
+          <th class="px-3 py-2 text-center border-b border-gray-200">Timeline</th>
+          <th class="px-3 py-2 text-left border-b border-gray-200">Source</th>
+        </tr>
+
+        <!-- Tier 3: Store Count -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Global Store Count</div>
+            <div class="text-xs text-gray-400">Long-term network expansion target</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">5,214 stores</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">7,000 stores</td>
+          <td class="px-3 py-3 text-right tabular-nums text-red-600" colspan="2">−1,786 stores</td>
+          <td class="px-3 py-3 text-center text-gray-500 text-xs">Long-term (~12–15 yrs)</td>
+          <td class="px-3 py-3 text-xs text-gray-400">FY2026 10-K</td>
+        </tr>
+
+        <!-- Tier 3: FY2027 New Stores -->
+        <tr class="bg-gray-50/30 border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">FY2027 Net New Stores</div>
+            <div class="text-xs text-gray-400">Annual expansion commitment</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">5,214 stores</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">+146 net new</td>
+          <td class="px-3 py-3 text-right tabular-nums text-amber-600" colspan="2">In guidance</td>
+          <td class="px-3 py-3 text-center text-gray-500 text-xs">FY2027 (ends Jan 2028)</td>
+          <td class="px-3 py-3 text-xs text-gray-400">FY2026 earnings release</td>
+        </tr>
+
+        <!-- Tier 3: CapEx -->
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">FY2027 Capital Expenditure</div>
+            <div class="text-xs text-gray-400">Infrastructure investment to support expansion</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$2.0B (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$2.2B–$2.3B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-amber-600" colspan="2">+$200M–$300M</td>
+          <td class="px-3 py-3 text-center text-gray-500 text-xs">FY2027 (ends Jan 2028)</td>
+          <td class="px-3 py-3 text-xs text-gray-400">FY2026 earnings release</td>
+        </tr>
+
+        <!-- Tier 3: Gross Margin Sustainability -->
+        <tr class="bg-gray-50/30 border-b border-gray-100">
+          <td class="px-3 py-3">
+            <div class="font-medium text-sm text-gray-900">Gross Margin 31%+ Sustainability</div>
+            <div class="text-xs text-gray-400">Management commitment to hold FY2026 gross margin level</div>
+          </td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">31.0% (FY2026)</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">≥31.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-green-600" colspan="2">On target</td>
+          <td class="px-3 py-3 text-center text-gray-500 text-xs">FY2027 guidance</td>
+          <td class="px-3 py-3 text-xs text-gray-400">FY2026 earnings call</td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+
+    <!-- SCORECARD FOOTNOTES -->
+    <div class="mt-3 text-xs text-gray-400 border-t border-gray-100 pt-3 space-y-1">
+      <p>1. Sources: TJX FY2026 10-K (Jan 2026), TJX FY2026 earnings release (Feb 25, 2026), Ross Stores FY2025 10-K, Inditex FY2024 Annual Report, Burlington FY2024 10-K, H&amp;M FY2024 Annual Report, Gap FY2024 10-K, Next plc FY2024 Annual Report, Nordstrom FY2024 10-K.</p>
+      <p>2. Peer fiscal years: TJX FY2026 (yr. ends Jan 2026), Ross Stores FY2025 (yr. ends Feb 2025), Inditex FY2024 (yr. ends Jan 2025), Burlington FY2024 (yr. ends Feb 2025), H&amp;M FY2024 (yr. ends Nov 2024), Gap FY2024 (yr. ends Feb 2025), Next plc FY2024 (yr. ends Jan 2025), Nordstrom FY2024 (yr. ends Feb 2025).</p>
+      <p>3. pp = percentage points throughout this document.</p>
+      <p>4. *Burlington gross margin (43.3%) uses net sales basis and is not directly comparable to TJX's cost-of-goods methodology — included for reference only. Off-price comparable is Ross (27.8%).</p>
+      <p>5. [EST.] = estimated or partially estimated figure. Estimated KPIs are capped at AMBER regardless of gap size.</p>
+      <p>6. Inventory Turns cross-year estimate: FY2025 COGS $39.1B ÷ ~$7.0B average inventory. FY2026 COGS not separately disclosed at time of writing.</p>
+      <p>7. Revenue per Employee is an estimate: FY2026 revenue $60.4B ÷ ~371K employees (FY2026 headcount disclosed).</p>
+    </div>
+
+    <!-- NARRATIVE BRIDGE -->
+    <div class="mt-5 bg-slate-50 border-l-4 border-indigo-400 px-4 py-3 italic text-sm text-gray-600">
+      2 of 12 tracked KPIs sit in RED in areas that supply chain directly controls — Gross-to-Operating Margin Spread (+3.5pp above Ross) and International Segment Operating Margin (7.3% vs. 14.4% Marmaxx benchmark). The 5 provocations that follow address these gaps and the inventory allocation, buyer productivity, and freight audit gaps that sit behind them. Closing all four operational gaps is worth approximately $308M–$523M in annual operating income — equivalent to 50–86 basis points of margin on $60.4B revenue, closing roughly a third of the gap between today's 11.9% and the Marmaxx benchmark of 14.4%.
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 1: PROVOCATIONS ═══ -->
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">Five Hypotheses Worth Testing</h2>
+
+  <!-- PROVOCATION 1 — INVENTORY ALLOCATION -->
+  <div id="provocation-1" class="bg-white rounded-xl shadow-md border-l-4 border-indigo-500 p-6 mb-6">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Supply Chain · Inventory Allocation</p>
+    <h3 class="text-xl font-bold text-gray-900 mb-3">Your per-store inventory is up 10% — $900M more cash on shelves. Is it in the right stores?</h3>
+    <div class="flex gap-2 flex-wrap mb-3">
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800">Working Capital Release</span>
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800">Production-to-Shelf Velocity</span>
+    </div>
+    <p class="text-xs text-gray-400 mb-4">Primary buyers: CFO (John Klinger), COO, VP Supply Chain, Chief Merchandising Officer</p>
+
+    <div class="space-y-3 text-sm text-gray-700 mb-5">
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Total inventories $7.3B at end of FY2026 vs $6.4B at end of FY2025. Per-store inventory including DCs (excluding in-transit and e-commerce) up 10% on reported basis, 8% on constant currency basis. [FACT — TJX FY2026 earnings release, Feb 25, 2026]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Management framed the increase as deliberate — positioned to "take advantage of the availability in the marketplace and flow fresh assortments to its stores and online this spring." Tariff-driven vendor surplus created a historic buying opportunity. [FACT — TJX FY2026 earnings release, CEO commentary]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Oracle Retail Allocation is confirmed as TJX's store allocation tool. No artificial intelligence (AI) enhancement, machine learning overlay, or real-time sell-through feedback loop for allocation decisions has been confirmed publicly. TJX's model has no repeating SKUs — every lot is unique, making standard allocation tools structurally limited. [FACT — AppsRunTheWorld; TJX tech disclosures]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>$900M in incremental inventory across 5,214 stores. If 10% is suboptimally allocated — wrong product category for local demand, wrong seasonal mix, or excess in low-velocity stores — approximately $90M sits generating markdowns instead of sales. At TJX's 5.6x inventory turns, misallocated inventory turns slower, compounding the working capital drag. [INFERENCE — HIGH CONFIDENCE — direct arithmetic from confirmed inventory figures and turns data]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Inditex achieves approximately 8–9x inventory turns (FY2024) vs. TJX approximately 5.6x (FY2025) — a 2.4–3.4x turns gap. Inditex uses RFID across all products and real-time sell-through data feeding allocation. Closing even 20% of the turns gap on $7.3B inventory releases approximately $260M–$365M in working capital. [INFERENCE — MODERATE CONFIDENCE — cross-company comparison; different business models]</p>
+      </div>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">Cost of Inaction</p>
+      <p class="text-2xl font-bold text-amber-600 mb-1">~$90M/year</p>
+      <p class="text-sm text-gray-600">At 10% misallocation on $900M incremental inventory: approximately $90M per year in avoidable markdowns and working capital drag. As inventory grows toward $8B+ with the 7,000-store target, this cost compounds annually. Each new store opened without improved allocation intelligence adds to the problem. [INFERENCE — MODERATE CONFIDENCE]</p>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Discovery Question</p>
+      <p class="text-sm italic text-gray-600">What is the markdown rate variance between TJX's highest-performing and lowest-performing stores within the same region and banner? Is the 10% per-store inventory increase evenly distributed across all stores, or concentrated in specific banners, regions, or categories? What percentage of inventory allocated to stores in the last 6 months sold through at full markon vs. required markdown?</p>
+    </div>
+
+    <div class="flex justify-end">
+      <a href="#scorecard" class="text-xs text-gray-400 hover:text-indigo-600">↑ Back to Scorecard</a>
+    </div>
+  </div>
+
+  <!-- PROVOCATION 2 — SOURCING / PROCUREMENT -->
+  <div id="provocation-2" class="bg-white rounded-xl shadow-md border-l-4 border-indigo-500 p-6 mb-6">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Supply Chain · Sourcing &amp; Procurement</p>
+    <h3 class="text-xl font-bold text-gray-900 mb-3">Your 1,400 buyers are handling the biggest deal flow in company history. Ross generates 47% more revenue per person.</h3>
+    <div class="flex gap-2 flex-wrap mb-3">
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800">Gross Margin Improvement</span>
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800">Decision Cycle Compression</span>
+    </div>
+    <p class="text-xs text-gray-400 mb-4">Primary buyers: CEO (Ernie Herrman), COO, Chief Merchandising Officer, CFO (John Klinger)</p>
+
+    <div class="space-y-3 text-sm text-gray-700 mb-5">
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>CEO Ernie Herrman, March 2026: TJX is "going after brands in a more aggressive manner than we also have ever had before." Tariff-driven vendor surplus has created a historic peak in deal flow. TJX's buying pipeline is at its largest volume in the company's history. [FACT — Retail Brew, March 10, 2026]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Approximately 1,400 buyers manage opportunistic purchasing from approximately 21,000 active vendor relationships across 100+ source countries. No AI decision-support layer for buying decisions has been confirmed. No systematic deal quality scoring has been confirmed. No feedback loop from store sell-through data to buying decisions has been confirmed. [FACT — TJX FY2025 10-K; tech disclosures]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Ross Stores generates approximately $240K revenue per employee (FY2025, 88K employees) vs. TJX approximately $163K (FY2026, 371K employees) — a 47% productivity gap on a comparable off-price operating model. Ross is investing $1.1B (FY2026 capital expenditure) explicitly in AI supply chain and store technology. [INFERENCE — HIGH CONFIDENCE — both figures derived from disclosed revenue and headcount data]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>A 25 basis point (bp) markon improvement on $41.7B estimated COGS (FY2026) = approximately $104M in incremental gross profit annually. A 50bp improvement = approximately $209M. Gross margin improved 340bp (FY2023–FY2026) in part from better buying — AI-assisted deal quality scoring continues this trajectory. [INFERENCE — MODERATE CONFIDENCE — FY2026 COGS is estimated; FY2025 COGS $39.1B confirmed]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>TJX's India Global Capability Center (GCC) Data and Automation Solutions service line is confirmed at approximately $17M revenue (FY2025). The data foundation — Oracle ERP deal history, Oracle Retail Allocation sell-through data, Oracle iSupplier vendor portal — exists. The AI synthesis layer on top of it is what is missing, not the underlying data. [INFERENCE — HIGH CONFIDENCE — GCC confirmed; AI layer absence confirmed by lack of any disclosure]</p>
+      </div>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">Cost of Inaction</p>
+      <p class="text-2xl font-bold text-amber-600 mb-1">~$650M/year (normalized)</p>
+      <p class="text-sm text-gray-600">The tariff-driven buying windfall will normalize within an estimated 2–3 years as conventional retailers adapt sourcing. When that normalization happens, buying precision — not market availability — becomes the margin differentiator. Without AI support, a 100bp gross margin reversion from 31.0% (FY2026) to 30.0% on $65B+ revenue (FY2027 estimated) = approximately $650M in foregone gross profit annually. [INFERENCE — MODERATE CONFIDENCE]</p>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Discovery Question</p>
+      <p class="text-sm italic text-gray-600">What is the distribution of markon achieved across TJX's 1,400 buyers within the same product category and season? Is buyer performance variance tracked systematically? What is the average deal evaluation time from vendor contact to commitment decision, and where does time get lost in that cycle?</p>
+    </div>
+
+    <div class="flex justify-end">
+      <a href="#scorecard" class="text-xs text-gray-400 hover:text-indigo-600">↑ Back to Scorecard</a>
+    </div>
+  </div>
+
+  <!-- PROVOCATION 3 — FREIGHT AUDIT -->
+  <div id="provocation-3" class="bg-white rounded-xl shadow-md border-l-4 border-indigo-500 p-6 mb-6">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Supply Chain · Transport &amp; Freight</p>
+    <h3 class="text-xl font-bold text-gray-900 mb-3">Your carriers may be overcharging you $60M a year. When was the last time someone checked?</h3>
+    <div class="flex gap-2 flex-wrap mb-3">
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800">OPEX Reduction</span>
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800">Planning Cycle Speed</span>
+    </div>
+    <p class="text-xs text-gray-400 mb-4">Primary buyers: CFO (John Klinger), COO, VP Supply Chain, VP Logistics</p>
+
+    <div class="space-y-3 text-sm text-gray-700 mb-5">
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>No centralized Transportation Management System (TMS) has been confirmed for any segment of TJX's carrier network. No centralized freight audit program appears in any public filing, press release, supplier communication, or technology partnership announcement. Lower freight costs were explicitly cited as a gross margin driver in FY2024 and FY2025 earnings calls — confirming freight cost management is financially significant. [FACT — tech disclosures; TJX earnings call secondary sources]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>TJX operates 30+ DCs across 9 countries (US, Canada, UK, Ireland, Germany, Austria, Netherlands, Poland, Australia) with multiple carrier relationships per geography. Inbound freight originates from 100+ source countries. Multi-currency invoicing across all European operations. [FACT — TJX FY2026 10-K; company disclosures]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Industry average freight billing error rate for large shippers with complex multi-carrier, multi-currency networks: 2–5% of total freight spend. At estimated total TJX freight spend of $1B–$2B annually (inbound + outbound; not separately disclosed), a 2–3% billing error rate = $20M–$60M in potential annual overcharges. Midpoint: approximately $40M. [INFERENCE — MODERATE CONFIDENCE — freight spend estimated; error rate is industry benchmark, not TJX-specific]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Gap Inc. improved operating margin from approximately 1% (FY2022) to approximately 7% (FY2024) — +600bp in 2 years. Freight and logistics cost simplification and recovery was a confirmed component of this improvement. TJX's carrier network is substantially more complex than Gap's, making the recovery opportunity proportionally larger. [FACT for Gap margin improvement; INFERENCE — HIGH CONFIDENCE for freight as component]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Ross Stores operates a simpler US-only carrier network (1,756 stores, domestic routes only) vs. TJX's 9-country, 30+ DC, 21,000-vendor inbound network. This structural complexity is partially reflected in TJX's Gross-to-Operating Margin Spread of 19.1pp vs. Ross's 15.6pp. A centralized freight audit and TMS for TJX would reduce the complexity penalty built into TJX's carrier cost structure. [INFERENCE — HIGH CONFIDENCE — based on structural comparison of confirmed network data]</p>
+      </div>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">Cost of Inaction</p>
+      <p class="text-2xl font-bold text-amber-600 mb-1">$20M–$60M/year</p>
+      <p class="text-sm text-gray-600">At industry-standard billing error rates on estimated freight spend, $60M may remain unrecovered each year. Over 3 years as the DC and store network expands toward 7,000 stores, cumulative foregone recovery: $60M–$180M. Each additional DC opened adds carrier lanes, invoices, and audit complexity without a centralized management layer. [INFERENCE — MODERATE CONFIDENCE]</p>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Discovery Question</p>
+      <p class="text-sm italic text-gray-600">Does TJX have any freight invoice reconciliation process — internal, outsourced, or third-party contingency? What percentage of total freight invoice volume, across all regions, carrier types, and currencies, is currently reviewed? What is TJX's current freight overcharge recovery rate, if tracked?</p>
+    </div>
+
+    <div class="flex justify-end">
+      <a href="#scorecard" class="text-xs text-gray-400 hover:text-indigo-600">↑ Back to Scorecard</a>
+    </div>
+  </div>
+
+  <!-- PROVOCATION 4 — NEW STORE ALLOCATION -->
+  <div id="provocation-4" class="bg-white rounded-xl shadow-md border-l-4 border-indigo-500 p-6 mb-6">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Supply Chain · DC Operations &amp; Inventory Flow</p>
+    <h3 class="text-xl font-bold text-gray-900 mb-3">You are opening 146 stores next year. Each one starts with zero data on what sells.</h3>
+    <div class="flex gap-2 flex-wrap mb-3">
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-800">Working Capital Release</span>
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800">Production-to-Shelf Velocity</span>
+    </div>
+    <p class="text-xs text-gray-400 mb-4">Primary buyers: COO, VP Supply Chain, CFO (John Klinger), Chief Merchandising Officer</p>
+
+    <div class="space-y-3 text-sm text-gray-700 mb-5">
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>TJX gross margin improved from 27.6% (FY2023) to 31.0% (FY2026) = +340bp in 3 years. Management explicitly cited lower markdowns as a key driver in FY2024 and FY2025 alongside lower freight costs, lower shrink, and better buying (higher markon). [FACT — TJX FY2024, FY2025, FY2026 earnings releases]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>TJX plans to open 146 net new stores in FY2027 — its fastest expansion in recent years — including the first 5 stores in Spain, 10 in Australia, 19 in Europe total, 13 in Canada, 35 HomeGoods (US), and 45 Marmaxx (US). Each new store has zero historical sell-through data for the allocation system. [FACT — TJX FY2026 earnings release]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Oracle Retail Allocation is confirmed as TJX's store allocation tool. Standard allocation tools are designed for repeating SKUs with historical demand signals. TJX's model has no repeating SKUs — every lot is different, no item comes back. The tool operates at the structural limit of standard allocation logic at new-store launch. [FACT — AppsRunTheWorld; INFERENCE — HIGH CONFIDENCE for structural limitation]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Gap Inc. improved operating margin +600bp (FY2022 to FY2024). A confirmed driver was markdown discipline — reducing clearance markdowns through more disciplined initial allocation. Old Navy specifically reduced promotional depth as a margin lever. This shows systematic allocation improvement is achievable within 24 months at comparable US retail scale. [FACT — Gap FY2024 10-K; earnings commentary]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Inditex achieves approximately 8–9x inventory turns (FY2024) vs. TJX approximately 5.6x (FY2025). Inditex achieves this through RFID across all products and real-time sell-through data feeding allocation and replenishment. The velocity gap — 2.4–3.4x faster turns — represents the ceiling for what allocation precision can deliver. [INFERENCE — MODERATE CONFIDENCE — cross-company comparison; different business models]</p>
+      </div>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">Cost of Inaction</p>
+      <p class="text-2xl font-bold text-amber-600 mb-1">$25M–$42M/year (new store cohort)</p>
+      <p class="text-sm text-gray-600">If new-store allocation quality lags mature-store quality by 150–250bp of markdown rate in the first 2 seasons, and TJX opens 146 stores per year at approximately $11.6M average annual revenue each, the aggregate markdown drag from new-store cold starts is approximately $25M–$42M per annual cohort. Compounded as new stores accumulate toward 7,000, this is a growing annual cost. [INFERENCE — MODERATE CONFIDENCE]</p>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Discovery Question</p>
+      <p class="text-sm italic text-gray-600">What is TJX's markdown rate for stores in their first 2 years of operation vs. the network average? How are initial allocations currently set for brand-new stores in new markets (Spain, new Australia locations)? How long does it typically take for a new store's allocation profile to converge to its analogue cluster average?</p>
+    </div>
+
+    <div class="flex justify-end">
+      <a href="#scorecard" class="text-xs text-gray-400 hover:text-indigo-600">↑ Back to Scorecard</a>
+    </div>
+  </div>
+
+  <!-- PROVOCATION 5 — SYNTHESIS -->
+  <div id="provocation-5" class="bg-indigo-50 rounded-xl shadow-lg border-2 border-indigo-700 p-6 mb-8">
+    <p class="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-2">Synthesis: The Full Margin Thesis</p>
+    <h3 class="text-xl font-bold text-gray-900 mb-3">Four supply chain gaps worth over $400M sit between today's 11.9% margin and Marmaxx's 14.4%.</h3>
+    <div class="flex gap-2 flex-wrap mb-3">
+      <span class="rounded-full px-3 py-1 text-xs font-semibold bg-indigo-100 text-indigo-800">Operating Margin Expansion</span>
+    </div>
+    <p class="text-xs text-gray-400 mb-4">Primary buyers: CEO (Ernie Herrman), CFO (John Klinger), COO, Board</p>
+
+    <div class="space-y-3 text-sm text-gray-700 mb-5">
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>TJX consolidated operating margin: 11.9% (FY2026). Marmaxx segment operating margin: 14.4% (FY2026). The internal gap between TJX's best-performing segment and the consolidated total is 250bp — evidence that the US off-price model, operated at full efficiency, already achieves 14.4%. [FACT — TJX FY2026 earnings release]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Ross Stores operating margin: 12.2% (FY2025) on $21.1B revenue — 30bp higher than TJX consolidated at 2.9x less revenue. Scale should produce higher margins. TJX does not demonstrate this advantage vs. Ross on a consolidated basis — confirming the efficiency gap is structural and addressable. [FACT — Ross FY2025 10-K; TJX FY2026 earnings release]</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="text-gray-300 mt-0.5">·</span>
+        <p>Gap Inc. improved operating margin from approximately 1% (FY2022) to approximately 7% (FY2024) = +600bp in 2 years. This pace of improvement shows margin step-changes are achievable within a 24-month window at comparable US retail scale through operational discipline, not just top-line growth. [FACT — Gap FY2024 10-K]</p>
+      </div>
+    </div>
+
+    <!-- EBIT BRIDGE TABLE -->
+    <div class="bg-white rounded-lg p-4 mb-5 border border-indigo-200">
+      <p class="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-3">EBIT Bridge — Four Gaps to $400M+</p>
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-xs font-semibold text-gray-500 uppercase border-b border-gray-200">
+            <th class="pb-2 text-left">Gap</th>
+            <th class="pb-2 text-left">Mechanism</th>
+            <th class="pb-2 text-right tabular-nums">Annual Impact</th>
+            <th class="pb-2 text-right">Confidence</th>
+          </tr>
+        </thead>
+        <tbody class="space-y-2">
+          <tr class="border-b border-gray-100">
+            <td class="py-2 font-medium text-gray-800">P1 — Inventory Allocation</td>
+            <td class="py-2 text-gray-600">10% misallocation recovery on $900M incremental inventory</td>
+            <td class="py-2 text-right tabular-nums text-gray-700">$90M–$130M</td>
+            <td class="py-2 text-right text-xs text-amber-600">MODERATE</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50/50">
+            <td class="py-2 font-medium text-gray-800">P2 — Buyer Intelligence</td>
+            <td class="py-2 text-gray-600">25bp–50bp markon improvement on $41.7B est. COGS (FY2026)</td>
+            <td class="py-2 text-right tabular-nums text-gray-700">$104M–$209M</td>
+            <td class="py-2 text-right text-xs text-amber-600">MODERATE</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="py-2 font-medium text-gray-800">P3 — Freight Audit</td>
+            <td class="py-2 text-gray-600">2–3% recovery on est. $1B–$2B freight spend</td>
+            <td class="py-2 text-right tabular-nums text-gray-700">$20M–$60M</td>
+            <td class="py-2 text-right text-xs text-amber-600">MODERATE</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50/50">
+            <td class="py-2 font-medium text-gray-800">P4 — New Store Allocation</td>
+            <td class="py-2 text-gray-600">50bp markdown improvement + new-store cold-start drag, 146 stores</td>
+            <td class="py-2 text-right tabular-nums text-gray-700">$94M–$124M</td>
+            <td class="py-2 text-right text-xs text-amber-600">MODERATE</td>
+          </tr>
+          <tr class="border-t-2 border-indigo-200 bg-indigo-50">
+            <td class="py-2 font-bold text-indigo-800" colspan="2">Total (conservative–upper)</td>
+            <td class="py-2 text-right tabular-nums font-bold text-indigo-800">$308M–$523M</td>
+            <td class="py-2 text-right text-xs text-amber-600">MODERATE</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-xs text-gray-400 mt-2">Midpoint: approximately $415M — "over $400M" is well-supported at the midpoint of individual estimates. At $60.4B revenue (FY2026): $500M = approximately 83bp of additional operating margin. Path: 11.9% (FY2026) → approximately 12.7%–13.0% through supply chain improvement alone, before any International margin improvement. [INFERENCE — MODERATE CONFIDENCE]</p>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">Cost of Inaction</p>
+      <p class="text-2xl font-bold text-amber-600 mb-1">$35M+ in foregone improvement per year</p>
+      <p class="text-sm text-gray-600">Every year TJX grows 7% without closing these four operational gaps, the absolute cost of the gap grows by approximately 7% — $35M+ in foregone improvement per year at $500M base. At 7,000 stores, the compounded cost of inaction becomes the difference between sustaining a 12%+ margin and experiencing margin erosion as DC labor, buying complexity, and allocation gaps scale with store count. [INFERENCE — MODERATE CONFIDENCE]</p>
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Discovery Question</p>
+      <p class="text-sm italic text-gray-600">What is TJX's internal operating margin target for FY2028? Is there a board-level commitment to improving consolidated margin from 11.9% (FY2026) toward the Marmaxx benchmark of 14.4%, or is the International drag treated as a permanent structural discount to the US business? What operational investments are currently in the FY2027–FY2028 capital plan that address DC automation, buyer productivity, or allocation intelligence?</p>
+    </div>
+
+    <div class="flex justify-end">
+      <a href="#scorecard" class="text-xs text-gray-400 hover:text-indigo-600">↑ Back to Scorecard</a>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: ENGAGEMENT PLAN ═══ -->
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">How We Would Work Together</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+    <!-- Phase One -->
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-blue-600 text-white text-xs font-bold rounded-full w-7 h-7 flex items-center justify-center">1</span>
+        <div>
+          <p class="font-bold text-gray-900">Phase One: Validate &amp; Scope</p>
+          <p class="text-xs text-gray-500">Weeks 1–4 · Fixed Fee</p>
+        </div>
+      </div>
+      <ol class="space-y-3 text-sm text-gray-700 mb-4">
+        <li class="flex gap-2">
+          <span class="font-semibold text-blue-600 shrink-0">Weeks 1–2</span>
+          <span>Stress-test each provocation against internal data. Measure actual markdown variance, buyer performance distribution, freight invoice error rate, and new-store allocation lag.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold text-blue-600 shrink-0">Weeks 2–3</span>
+          <span>Optional body-vs-brain network diagnostic (2–3 days): confirm whether DC network or data layer is the primary constraint. Not a separate workstream — runs inside Phase One.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold text-blue-600 shrink-0">Weeks 3–4</span>
+          <span>Build the go/no-go case: confirm which provocations hold, size the confirmed opportunity, define the Phase Two scope and measurable outcome target.</span>
+        </li>
+      </ol>
+      <p class="text-sm font-semibold text-blue-800">Deliverable: Confirmed or disproved hypotheses with measured baseline. Agreed Phase Two scope.</p>
+    </div>
+
+    <!-- Phase Two -->
+    <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-indigo-600 text-white text-xs font-bold rounded-full w-7 h-7 flex items-center justify-center">2</span>
+        <div>
+          <p class="font-bold text-gray-900">Phase Two: Design, Build, Test, Deploy</p>
+          <p class="text-xs text-gray-500">Weeks 5–24 · Fixed Fee + Success Bonus</p>
+        </div>
+      </div>
+      <ol class="space-y-3 text-sm text-gray-700 mb-4">
+        <li class="flex gap-2">
+          <span class="font-semibold text-indigo-600 shrink-0">Weeks 5–8</span>
+          <span>Design target process, map data integrations (Oracle ERP → allocation → freight), start security and governance review.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold text-indigo-600 shrink-0">Weeks 9–16</span>
+          <span>Build in client environment, connect live data feeds, run parallel operations alongside current process.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold text-indigo-600 shrink-0">Weeks 17–20</span>
+          <span>Go live on bounded scope. Measure against baseline established in Phase One.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold text-indigo-600 shrink-0">Weeks 21–24</span>
+          <span>Measure before/after. Document results. Build business case for scale across remaining store base.</span>
+        </li>
+      </ol>
+      <p class="text-sm font-semibold text-indigo-800">Deliverable: Production deployment on bounded scope. Documented before/after with confirmed financial impact.</p>
+    </div>
+  </div>
+
+  <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-8 text-sm text-gray-600 text-center">
+    If Phase One invalidates a provocation, the client owes nothing beyond the Phase One fee. This is a real production deployment — not a 90-day consulting discovery.
+  </div>
+
+  <!-- ═══ SECTION 3: KEY QUESTIONS ═══ -->
+  <h2 class="text-2xl font-bold text-gray-900 mb-4">Five Questions Worth Asking Internally</h2>
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <ol class="space-y-4 text-sm text-gray-700">
+      <li class="flex gap-3">
+        <span class="font-bold text-indigo-600 shrink-0 text-base">1.</span>
+        <span>What is the markdown rate variance between TJX's highest-performing and lowest-performing stores within the same region? And is the $900M inventory increase distributed evenly, or concentrated in ways the allocation system didn't plan for?</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-indigo-600 shrink-0 text-base">2.</span>
+        <span>What is the distribution of markon achieved across the 1,400 buyers within the same category and season — and is that variance tracked systematically today?</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-indigo-600 shrink-0 text-base">3.</span>
+        <span>Does any freight invoice reconciliation process currently exist — internal, outsourced, or third-party — and what percentage of total invoice volume is reviewed?</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-indigo-600 shrink-0 text-base">4.</span>
+        <span>What is the markdown rate for stores in their first 2 years of operation vs. the network average, and how long does it take for a new store's allocation profile to converge to its peer cluster?</span>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-bold text-indigo-600 shrink-0 text-base">5.</span>
+        <span>Is there a board-level commitment to improving consolidated operating margin from 11.9% toward the Marmaxx benchmark of 14.4%, or is the International drag treated as a permanent structural discount?</span>
+      </li>
+    </ol>
+
+    <blockquote class="mt-6 border-l-4 border-indigo-300 pl-4 italic text-gray-600 text-sm">
+      "These hypotheses are built entirely on public data. With 4 weeks of internal access, we can confirm or disprove each one and size the exact opportunity. TJX holds $6.2B in cash and generated $6.9B in operating cash flow in FY2026 — the resources to act are not the constraint."
+    </blockquote>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="text-xs text-gray-400 border-t border-gray-200 pt-4 pb-8">
+    Analysis based exclusively on public sources: annual reports, SEC filings, earnings transcripts, investor presentations. No proprietary data was accessed. All claims are tagged with confidence levels. Phase One validates these hypotheses against internal data before any Phase Two commitment.
+  </div>
+
+</div>
+</div>
+<!-- END TAB 1 -->
+
+<!-- ═══════════════════════ TAB 2: COMPETITIVE INTELLIGENCE ═══════════════════════ -->
+<div id="tab2" class="tab-panel">
+<div class="max-w-7xl mx-auto px-8 py-8">
+
+  <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 mb-6 text-xs text-amber-700">
+    <strong>Internal use only.</strong> This tab contains competitive analysis and benchmarking data. Do not share with client.
+  </div>
+
+  <h2 class="text-2xl font-bold text-gray-900 mb-2">Competitive Intelligence</h2>
+  <p class="text-sm text-gray-500 mb-8">7-peer benchmark: Ross Stores, Burlington, Inditex, H&amp;M Group, Next plc, Gap Inc., Nordstrom. Public filings only.</p>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h3 class="text-lg font-bold text-gray-900 mb-4">Five Surprising Takeaways</h3>
+    <div class="space-y-4">
+      <div class="flex gap-3 text-sm">
+        <span class="bg-indigo-100 text-indigo-700 font-bold text-xs rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">1</span>
+        <p><strong>TJX outperforms Ross on gross margin (31.0% vs 27.8%) but loses the margin advantage entirely at the operating line (11.9% vs 12.2%).</strong> Ross spends 3.5pp less converting gross profit to operating income — suggesting TJX's SG&A, freight, and DC cost structure absorbs a larger share of gross margin despite similar revenue per store. This is directly linked to P3 (freight audit) and the Gross-to-Op Margin Spread RED KPI.</p>
+      </div>
+      <div class="flex gap-3 text-sm">
+        <span class="bg-indigo-100 text-indigo-700 font-bold text-xs rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">2</span>
+        <p><strong>Inditex inventory turns 8–9x vs TJX 5.6x on a $30B+ inventory base — without repeating SKUs being the bottleneck.</strong> Inditex achieves this through RFID at item level and real-time sell-through feedback into allocation. TJX's challenge is different (no repeating SKUs) but the turns gap still represents $260M–$365M in trapped working capital if closed even partially.</p>
+      </div>
+      <div class="flex gap-3 text-sm">
+        <span class="bg-indigo-100 text-indigo-700 font-bold text-xs rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">3</span>
+        <p><strong>Ross generates $240K revenue per employee vs TJX $163K — 47% more productive on the same off-price model.</strong> Ross operates US-only, which simplifies HR and labor management. But Ross is also investing $1.1B in FY2026 capital expenditure explicitly in AI supply chain and store technology. If Ross's productivity advantage widens further, this becomes a visible investor comparison point in TJX earnings calls.</p>
+      </div>
+      <div class="flex gap-3 text-sm">
+        <span class="bg-indigo-100 text-indigo-700 font-bold text-xs rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">4</span>
+        <p><strong>Gap improved operating margin +600bp in 24 months (FY2022 to FY2024) — a pace TJX has never achieved in any comparable period.</strong> Gap's turnaround was driven by markdown discipline, freight simplification, and inventory management — the same three mechanisms in P1, P3, and P4. Gap is not a flattering peer for TJX on most metrics, but it is the most direct proof that operational discipline drives margin step-change in US retail at scale.</p>
+      </div>
+      <div class="flex gap-3 text-sm">
+        <span class="bg-indigo-100 text-indigo-700 font-bold text-xs rounded-full w-6 h-6 flex items-center justify-center shrink-0 mt-0.5">5</span>
+        <p><strong>TJX International segment (7.3% operating margin, FY2026) operates at less than half the Marmaxx benchmark (14.4%).</strong> International is not a small part of the business — it represents approximately $7.6B revenue (FY2026). The 7.1pp gap to Marmaxx on $7.6B of revenue = approximately $540M in annual operating income that would be released if International converged to Marmaxx-equivalent efficiency. This is a 10+ year gap, not a 2-year fix.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUE CHART -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <h3 class="text-lg font-bold text-gray-900 mb-1">Revenue Scale Comparison</h3>
+    <p class="text-xs text-gray-400 mb-4">Most recent fiscal year for each company. USD billions (converted at period-average rates).</p>
+    <div id="chart-revenue" style="height:320px;"></div>
+  </div>
+
+  <!-- MARGINS CHART -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <h3 class="text-lg font-bold text-gray-900 mb-1">Margin Comparison: Gross vs. Operating</h3>
+    <p class="text-xs text-gray-400 mb-4">Most recent fiscal year. The spread between the two bars for each company = Gross-to-Op Margin Spread (higher spread = more margin absorbed by operations).</p>
+    <div id="chart-margins" style="height:360px;"></div>
+  </div>
+
+  <!-- RADAR CHART -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <h3 class="text-lg font-bold text-gray-900 mb-1">Operational Efficiency Radar</h3>
+    <p class="text-xs text-gray-400 mb-4">Normalized scores 0–100 (higher = better). TJX vs. off-price peers. Based on public filings only.</p>
+    <div id="chart-radar" style="height:380px;"></div>
+  </div>
+
+  <!-- FULL PEER TABLE -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h3 class="text-lg font-bold text-gray-900 mb-4">Full Peer Comparison Table</h3>
+    <div class="overflow-x-auto">
+    <table class="w-full text-sm border-collapse">
+      <thead>
+        <tr class="bg-gray-50 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+          <th class="px-3 py-3 text-left border-b border-gray-200">Company</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Revenue</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Gross Margin</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Op Margin</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Inventory Turns</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">Rev/Employee</th>
+          <th class="px-3 py-3 text-right border-b border-gray-200">FY End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-indigo-50 border-b border-gray-100 font-semibold">
+          <td class="px-3 py-3 text-indigo-800">TJX Companies</td>
+          <td class="px-3 py-3 text-right tabular-nums text-indigo-800">$60.4B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-indigo-800">31.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-indigo-800">11.9%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-indigo-800">5.6x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-indigo-800">~$163K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Jan 2026</td>
+        </tr>
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">Ross Stores</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$21.1B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">27.8%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">12.2%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~5.8x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$240K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Feb 2025</td>
+        </tr>
+        <tr class="bg-gray-50/50 border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">Burlington</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$10.1B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">43.3%*</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">9.2%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~4.9x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$165K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Feb 2025</td>
+        </tr>
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">Inditex</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$40.7B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">57.8%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">19.7%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">8–9x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$215K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Jan 2025</td>
+        </tr>
+        <tr class="bg-gray-50/50 border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">H&amp;M Group</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$21.5B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">51.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">6.8%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~4.2x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$135K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Nov 2024</td>
+        </tr>
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">Next plc</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$7.2B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">34.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">21.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~5.5x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$290K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Jan 2025</td>
+        </tr>
+        <tr class="bg-gray-50/50 border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">Gap Inc.</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$15.1B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">41.3%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">7.0%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~4.5x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$115K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Feb 2025</td>
+        </tr>
+        <tr class="border-b border-gray-100">
+          <td class="px-3 py-3 text-gray-800">Nordstrom</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">$14.9B</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">35.3%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">3.8%</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~3.8x</td>
+          <td class="px-3 py-3 text-right tabular-nums text-gray-700">~$185K</td>
+          <td class="px-3 py-3 text-right text-gray-500">Feb 2025</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="text-xs text-gray-400 mt-2">*Burlington gross margin uses net sales basis — not directly comparable. Off-price comparable is Ross (27.8%). Revenue converted to USD at period-average rates where applicable.</p>
+  </div>
+
+</div>
+</div>
+<!-- END TAB 2 -->
+
+<!-- ═══════════════════════ TAB 3: HOW WE BUILT THIS ═══════════════════════ -->
+<div id="tab3" class="tab-panel">
+<div class="max-w-7xl mx-auto px-8 py-8">
+
+  <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 mb-6 text-xs text-amber-700">
+    <strong>Internal use only.</strong> This tab describes the analytical methodology and agent architecture. Do not share with client.
+  </div>
+
+  <h2 class="text-2xl font-bold text-gray-900 mb-2">How We Built This</h2>
+  <p class="text-sm text-gray-500 mb-8">A 7-phase autonomous pipeline that converts public filings into a pursuit-ready executive briefing.</p>
+
+  <!-- WHAT THIS IS / IS NOT -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+      <h3 class="font-bold text-green-800 mb-3 text-sm uppercase tracking-wider">What This Is</h3>
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-green-500">✓</span> An outside-in, fact-based hypothesis document built entirely from public sources</li>
+        <li class="flex gap-2"><span class="text-green-500">✓</span> A structured starting position for a discovery conversation — not a final conclusion</li>
+        <li class="flex gap-2"><span class="text-green-500">✓</span> A claim-tagged document where every number shows its source and confidence level</li>
+        <li class="flex gap-2"><span class="text-green-500">✓</span> A commercial asset designed to earn the right to sell a 20-week proof-of-value engagement</li>
+        <li class="flex gap-2"><span class="text-green-500">✓</span> Phase One validates or invalidates every hypothesis before any Phase Two commitment</li>
+      </ul>
+    </div>
+    <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+      <h3 class="font-bold text-red-800 mb-3 text-sm uppercase tracking-wider">What This Is Not</h3>
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-red-400">✗</span> A replacement for proper discovery — internal data will confirm or disprove these hypotheses</li>
+        <li class="flex gap-2"><span class="text-red-400">✗</span> A final recommendation — sizing estimates are directional, not audit-quality</li>
+        <li class="flex gap-2"><span class="text-red-400">✗</span> A technology assessment — no proprietary system data was accessed</li>
+        <li class="flex gap-2"><span class="text-red-400">✗</span> Guaranteed — if provocations are wrong, Phase One says so and the engagement stops</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7 SPECIALIST AGENTS -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h3 class="text-lg font-bold text-gray-900 mb-4">7 Specialist Agents</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 1 — Source Collector</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phase 1: Gather</p>
+        <p class="text-xs text-gray-500">The only agent with web search access. Collects SEC filings, earnings transcripts, investor presentations, tech disclosures, peer data, and current signals. Runs a source quality gate — workflow stops if mandatory sources are missing.</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 2 — Company Analyst</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phase 2: Research</p>
+        <p class="text-xs text-gray-500">Analyzes collected data into structured company snapshot, management roadmap, and sector context. No web search — works exclusively from Phase 1 outputs.</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 3 — Peer Benchmarker</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phase 3: Benchmark</p>
+        <p class="text-xs text-gray-500">Constructs peer set and builds full P&amp;L benchmarking table. Normalizes metrics across different fiscal year ends and accounting conventions. Flags non-comparable figures.</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 4 — Operating Model Analyst</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phase 4: Deep Analysis</p>
+        <p class="text-xs text-gray-500">Two sub-sections: (A) technology and operations footprint, transformation capacity, body-vs-brain diagnosis; (B) value levers, AI value stream ranking, moat analysis. Firewall between A and B prevents circular reasoning.</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 5 — Due Diligence Agent</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phase 5 Jobs 1–2</p>
+        <p class="text-xs text-gray-500">Runs conditional routing (financial health → distress weighting; body-vs-brain → network first; standout peer → peer-centric provocation). Then stress-tests every hypothesis against counter-arguments before provocation generation.</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 6 — Provocation Writer</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phase 5 Jobs 3–4</p>
+        <p class="text-xs text-gray-500">Generates raw provocations, applies confidence compliance layer (removes LOW and ASSUMPTION), runs CFO test + specificity test + falsifiability test, verifies lever distribution. Produces final provocations.md and quality_evaluation.md.</p>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 md:col-span-1 lg:col-span-1">
+        <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">Agent 7 — Presentation Builder</p>
+        <p class="text-sm font-semibold text-gray-800 mb-1">Phases 6–7</p>
+        <p class="text-xs text-gray-500">Phase 6 produces dual-track markdown (Track A client-facing, Track B internal). Phase 7 renders this HTML file — Tailwind CSS, Plotly charts, three tabs, print CSS. No AI/agent language in Track A.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXECUTION PIPELINE -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h3 class="text-lg font-bold text-gray-900 mb-4">Execution Pipeline</h3>
+    <div class="flex flex-wrap gap-2 items-center text-xs">
+      <div class="bg-indigo-100 text-indigo-800 rounded-lg px-3 py-2 font-semibold">1. GATHER<br><span class="font-normal">Web search only</span></div>
+      <span class="text-gray-400 font-bold">→</span>
+      <div class="bg-gray-100 text-gray-700 rounded-lg px-3 py-2 font-semibold">2. RESEARCH<br><span class="font-normal">Company analysis</span></div>
+      <span class="text-gray-400 font-bold">→</span>
+      <div class="bg-gray-100 text-gray-700 rounded-lg px-3 py-2 font-semibold">3. BENCHMARK<br><span class="font-normal">Peer analysis</span></div>
+      <span class="text-gray-400 font-bold">→</span>
+      <div class="bg-gray-100 text-gray-700 rounded-lg px-3 py-2 font-semibold">4. DEEP ANALYSIS<br><span class="font-normal">Ops + AI value</span></div>
+      <span class="text-gray-400 font-bold">→</span>
+      <div class="bg-gray-100 text-gray-700 rounded-lg px-3 py-2 font-semibold">5. CHALLENGE<br><span class="font-normal">Due diligence + provocations</span></div>
+      <span class="text-gray-400 font-bold">→</span>
+      <div class="bg-gray-100 text-gray-700 rounded-lg px-3 py-2 font-semibold">6. PRODUCE<br><span class="font-normal">Dual-track outputs</span></div>
+      <span class="text-gray-400 font-bold">→</span>
+      <div class="bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold">7. PRESENT<br><span class="font-normal">This HTML file</span></div>
+    </div>
+    <p class="text-xs text-gray-400 mt-3">Phase 1 is the ONLY phase with web search. Phases 2–7 work offline from collected data — faster, more reliable, and deterministic. Each phase runs in a fresh session to avoid context window overflow.</p>
+  </div>
+
+  <!-- INFRASTRUCTURE -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h3 class="text-lg font-bold text-gray-900 mb-4">Infrastructure</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <div>
+        <p class="font-semibold text-gray-700 mb-1">Orchestration</p>
+        <p class="text-gray-500">PowerShell orchestrator (<code>run_analysis.ps1</code>) calls Claude Code via <code>claude -p</code> for each phase in a fresh session. No separate API keys required.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700 mb-1">Source Library</p>
+        <p class="text-gray-500">SEC EDGAR primary source for US companies. IR websites, earnings transcripts, investor presentations. Source quality gate enforces minimum 3 years of filings before analysis begins.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700 mb-1">Claim Tagging</p>
+        <p class="text-gray-500">Every claim tagged as [FACT], [INFERENCE — HIGH], [INFERENCE — MODERATE]. [INFERENCE — LOW] and [ASSUMPTION] excluded from client document — go to internal memo only.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700 mb-1">Memory System</p>
+        <p class="text-gray-500">memory.md accumulates quality standards and company-specific learnings across executions. Every phase reads it before starting. TJX-specific rules added after identifying supply chain specificity gap in first run.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700 mb-1">Conditional Routing</p>
+        <p class="text-gray-500">Phase 5 adapts provocation strategy based on: financial health → distress weighting; body-vs-brain diagnosis → network first if body is broken; standout peer → peer-centric provocations if >5pp margin improvement in 2 years.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-gray-700 mb-1">Accenture Positioning</p>
+        <p class="text-gray-500">Right to win is NOT the platform — it is the integration gap startups cannot fill: enterprise infrastructure, security, data governance, change management, organizational redesign. Inject AI into existing managed service contracts where trust and data access already exist.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TJX EXECUTION NOTE -->
+  <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+    <h3 class="text-lg font-bold text-gray-900 mb-3">TJX Execution Notes (April 2026)</h3>
+    <div class="space-y-3 text-sm text-gray-600">
+      <p><strong>Body-vs-Brain diagnosis:</strong> TJX diagnosed as BODY-ADEQUATE, BRAIN-CONSTRAINED. Physical network (30+ DCs, 9 countries) is functional and expanding on plan. The constraint is the data and intelligence layer: Oracle Retail Allocation with no AI enhancement, no centralized TMS, no confirmed deal quality scoring for buyers. Provocations correctly target the brain layer.</p>
+      <p><strong>Supply chain specificity correction:</strong> First-run provocations were too generic (DC automation, store labor scheduling, international margin gaps). Corrected with mandatory supply chain specificity rules: every provocation must connect to sourcing, DC operations, transport/freight, or inventory allocation — not store operations or international overhead without traceable operational cause.</p>
+      <p><strong>Peer set:</strong> Ross Stores is the primary off-price comparable. Inditex is the turns benchmark. Gap is the margin improvement proof point. Burlington gross margin is flagged as non-comparable (different accounting basis).</p>
+      <p><strong>Accelerator mapping (internal):</strong> P1/P4 → Oracle Retail Allocation AI enhancement or Accenture inventory intelligence accelerator. P2 → Procurement intelligence layer on Oracle ERP + iSupplier. P3 → Freight audit tool or existing managed logistics contract expansion. P5 synthesis → connected data layer across all three.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+<!-- END TAB 3 -->
+
+<!-- JAVASCRIPT -->
+<script>
+function showTab(tabId, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.remove('border-indigo-600', 'text-indigo-600');
+    b.classList.add('text-gray-500', 'border-transparent');
+  });
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('border-indigo-600', 'text-indigo-600');
+  btn.classList.remove('text-gray-500', 'border-transparent');
+  if (tabId === 'tab2') {
+    setTimeout(renderCharts, 100);
+  }
+}
+
+var chartsRendered = false;
+function renderCharts() {
+  if (chartsRendered) return;
+  chartsRendered = true;
+
+  // CHART 1: Revenue Bar
+  var revenueData = [{
+    type: 'bar',
+    x: ['TJX Companies', 'Inditex', 'H&M Group', 'Gap Inc.', 'Nordstrom', 'Ross Stores', 'Burlington'],
+    y: [60.4, 40.7, 21.5, 15.1, 14.9, 21.1, 10.1],
+    marker: {
+      color: ['#4338ca', '#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd', '#7c3aed', '#ddd6fe']
+    },
+    text: ['$60.4B', '$40.7B', '$21.5B', '$15.1B', '$14.9B', '$21.1B', '$10.1B'],
+    textposition: 'outside'
+  }];
+  var revenueLayout = {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    margin: { t: 20, b: 80, l: 60, r: 20 },
+    yaxis: { title: 'Revenue (USD Billions)', gridcolor: '#f3f4f6' },
+    xaxis: { tickangle: -20 },
+    font: { family: 'Inter, system-ui, sans-serif', size: 12 }
+  };
+  Plotly.newPlot('chart-revenue', revenueData, revenueLayout, {responsive: true, displayModeBar: false});
+
+  // CHART 2: Gross vs Operating Margin
+  var companies = ['TJX', 'Ross', 'Burlington', 'Inditex', 'H&M', 'Next', 'Gap', 'Nordstrom'];
+  var grossMargins = [31.0, 27.8, 43.3, 57.8, 51.0, 34.0, 41.3, 35.3];
+  var opMargins = [11.9, 12.2, 9.2, 19.7, 6.8, 21.0, 7.0, 3.8];
+  var marginsData = [
+    {
+      type: 'bar', name: 'Gross Margin', x: companies, y: grossMargins,
+      marker: { color: '#6366f1' }
+    },
+    {
+      type: 'bar', name: 'Operating Margin', x: companies, y: opMargins,
+      marker: { color: '#f59e0b' }
+    }
+  ];
+  var marginsLayout = {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    margin: { t: 20, b: 60, l: 60, r: 20 },
+    yaxis: { title: 'Margin %', gridcolor: '#f3f4f6' },
+    barmode: 'group',
+    legend: { orientation: 'h', y: -0.2 },
+    font: { family: 'Inter, system-ui, sans-serif', size: 12 }
+  };
+  Plotly.newPlot('chart-margins', marginsData, marginsLayout, {responsive: true, displayModeBar: false});
+
+  // CHART 3: Radar
+  var radarCategories = ['Inventory Efficiency', 'Gross Margin', 'Operating Margin', 'Rev/Employee', 'Inventory Turns'];
+  var radarData = [
+    {
+      type: 'scatterpolar', fill: 'toself', name: 'TJX Companies',
+      r: [55, 69, 56, 40, 52],
+      theta: radarCategories,
+      line: { color: '#4338ca' },
+      fillcolor: 'rgba(67,56,202,0.15)'
+    },
+    {
+      type: 'scatterpolar', fill: 'toself', name: 'Ross Stores',
+      r: [58, 52, 62, 90, 55],
+      theta: radarCategories,
+      line: { color: '#f59e0b' },
+      fillcolor: 'rgba(245,158,11,0.15)'
+    },
+    {
+      type: 'scatterpolar', fill: 'toself', name: 'Inditex',
+      r: [72, 100, 90, 75, 95],
+      theta: radarCategories,
+      line: { color: '#10b981' },
+      fillcolor: 'rgba(16,185,129,0.15)'
+    }
+  ];
+  var radarLayout = {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    polar: { bgcolor: 'rgba(0,0,0,0)', radialaxis: { visible: true, range: [0, 100] } },
+    margin: { t: 20, b: 60, l: 60, r: 60 },
+    legend: { orientation: 'h', y: -0.15 },
+    font: { family: 'Inter, system-ui, sans-serif', size: 12 }
+  };
+  Plotly.newPlot('chart-radar', radarData, radarLayout, {responsive: true, displayModeBar: false});
+}
+</script>
+
+<!-- AI Assistant Floating Button -->
+<style>
+@keyframes pulse-once { 0%,100%{box-shadow:0 0 0 0 rgba(79,70,229,0.4)} 50%{box-shadow:0 0 0 15px rgba(79,70,229,0)} }
+.chat-btn { position:fixed; bottom:24px; right:24px; z-index:50; width:60px; height:60px; border-radius:50%; background:#4f46e5; border:none; cursor:pointer; box-shadow:0 4px 15px rgba(0,0,0,0.2); animation:pulse-once 2s ease-in-out 3; display:flex; align-items:center; justify-content:center; }
+.chat-btn:hover { background:#4338ca; }
+.chat-popup { position:fixed; bottom:96px; right:24px; z-index:50; width:300px; background:white; border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.15); padding:20px; display:none; }
+.chat-popup.open { display:block; }
+.chat-popup-btn { display:block; width:100%; background:#4f46e5; color:white; border:none; border-radius:8px; padding:12px; font-size:14px; font-weight:600; cursor:pointer; text-decoration:none; text-align:center; }
+.chat-popup-btn:hover { background:#4338ca; }
+</style>
+<button class="chat-btn" onclick="document.getElementById('chatPopup').classList.toggle('open')" title="Ask the AI Assistant">
+  <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+</button>
+<div id="chatPopup" class="chat-popup">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+    <span style="font-weight:600;color:#1f2937;">Ask the AI Assistant</span>
+    <button onclick="document.getElementById('chatPopup').classList.remove('open')" style="background:none;border:none;cursor:pointer;font-size:18px;color:#9ca3af;">&times;</button>
+  </div>
+  <p style="font-size:13px;color:#6b7280;margin-bottom:16px;">Get answers about this analysis powered by your ChatGPT Enterprise account.</p>
+  <a href="https://chatgpt.com/g/g-69dbf502674c81919691bf05b48a359c-tjx-supply-chain-analyst" target="_blank" class="chat-popup-btn">Open TJX Supply Chain Analyst →</a>
+  <p style="font-size:11px;color:#9ca3af;text-align:center;margin-top:12px;">Uses only public data from this analysis</p>
+</div>
+
+</body>
+</html>

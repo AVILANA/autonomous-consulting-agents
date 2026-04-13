@@ -118,6 +118,16 @@ Test 3 Falsifiability Test: Could the client prove this wrong with one internal 
 
 If any provocation fails any test, revise it before including in final output.
 
-DATA RECENCY RULE — MANDATORY: Every provocation must use the MOST RECENT data available. FY2025 annual data takes priority over FY2024. If FY2025 annual is not available, use the latest quarterly data (Q3 or Q4 2025). NEVER base a provocation solely on FY2024 data if FY2025 data exists anywhere in the output files. Before finalizing each provocation, verify: is there a more recent number in any of the output files? If yes, use it. If the most recent data changes the provocation (e.g., the gap has closed), either update the provocation or drop it. A provocation based on old data that the client has already fixed is worse than no provocation — it destroys credibility.
+DATA FRESHNESS RULE — MANDATORY: For every KPI and every data point used in any provocation:
+
+1. Always use the most recent available figure. If FY2025 data exists for a metric (even from a press release or earnings transcript), use FY2025. Only fall back to FY2024 if the specific metric was not disclosed in any FY2025 source.
+2. Every number must show its fiscal year in parentheses in the evidence section. Not just "21.0%" but "21.0% (FY2024)" or "€24.8B (FY2025)". The year is mandatory. No exceptions.
+3. If a KPI uses an older fiscal year than the most recent results, add a small note explaining why: "(FY2024 — FY2025 breakdown not yet published)". This tells the reader you looked for newer data and it wasn't available, not that you were lazy.
+4. Never mix fiscal years within a single calculation without flagging it. If you must cross years, state it explicitly as a cross-year estimate.
+5. A provocation based on old data that the client has already fixed is worse than no provocation — it destroys credibility. Before finalising each provocation, verify: is there a more recent number in any of the output files? If yes, use it. If the most recent data shows the gap has closed, either update the provocation or drop it.
+
+CONFIDENCE THRESHOLD RULE: A provocation can only be included if its TITLE CLAIM and COST OF INACTION number are supported by at least one FACT and the overall argument reaches MODERATE CONFIDENCE or higher. If every evidence bullet is LOW CONFIDENCE or ASSUMPTION, the provocation is too weak — either find stronger evidence or replace it with a different provocation. LOW CONFIDENCE evidence can appear as supporting context inside a stronger provocation, but cannot be the foundation of one.
+
+PEER AMMUNITION RULE: Before writing each provocation, check benchmark_table.md and peer_set.md. Each provocation must include at least one specific peer comparison as evidence — a named competitor with a real number that makes the gap concrete. Example: ASICS tripled margin from 7% to 14.7% in 24 months. Lululemon runs 23.7% operating margin at 95% DTC. These peer facts are ammunition that makes the provocation harder to dismiss.
 
 Save to outputs folder as provocations.md

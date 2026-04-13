@@ -184,13 +184,36 @@ Each provocation in the internal memo must identify the specific Accenture capab
 - Reframe limitations as "Phase One validates" not "tool can't do X"
 
 ## 21. ARCHITECTURE
-6-phase optimized pipeline:
+7-phase optimized pipeline:
 1. Phase 1 GATHER: ONLY phase with web search — collects everything
 2. Phase 2 RESEARCH: no web — company analysis
 3. Phase 3 BENCHMARK: no web — peer analysis
 4. Phase 4 DEEP ANALYSIS: no web — merged operating model + AI value (sub-sections with firewall)
 5. Phase 5 CHALLENGE: no web — due diligence + routing + provocations + quality tests
 6. Phase 6 PRODUCE: no web — dual track outputs + KPI scorecard + HTML generation
+7. Phase 7 PRESENT: no web — standalone HTML client presentation (Tailwind + Plotly, 3 tabs)
+
+## 21B. PROVOCATION SUPPLY CHAIN SPECIFICITY (learned from TJX April 2026)
+
+### Company Supply Chain Model Identification — MANDATORY
+Before writing ANY provocation, write one paragraph identifying: (1) What makes this company's supply chain unique? (2) What is the core operational differentiator? (3) What are the 3 most critical supply chain decisions this company makes every day? (4) What supply chain processes handle the most money? Every provocation MUST connect to at least one of these.
+
+### What Counts as Supply Chain — STRICT DEFINITION
+YES: sourcing, procurement, inbound transport, freight consolidation, freight audit, DC operations, outbound transport, last mile, returns, demand/supply planning, inventory optimization, tariff/trade response, supplier management, DC-to-store allocation.
+NO: store labor scheduling, store layout, marketing, e-commerce UX, international margin gaps (unless traced to specific operational cause), HR, real estate, corporate overhead.
+TEST: If it would make sense in a board presentation, too generic. If it only makes sense talking to VP Supply Chain about a specific process, it is right.
+
+### Mandatory Coverage Check
+Before finalizing 5 provocations, verify ALL THREE covered: at least ONE on transport/freight, at least ONE on sourcing/procurement, at least ONE on DC operations or inventory flow. If any missing, replace the weakest.
+
+### KPI Dashboard Urgency Rule
+Must have at least 2 RED KPIs. If fewer than 2, review thresholds and consider additional KPIs.
+
+### Tier 3 Management Commitments — NEVER SKIP
+Before skipping Tier 3, search ALL output files for margin targets, store count targets, revenue growth targets, CapEx commitments. Only skip if genuinely ZERO confirmed.
+
+### Role-Specific Language Clarity
+Never use terms with dual meaning without defining them. "Buyers" in retail = purchasing agents NOT end customers. "Allocation" = which products go to which stores NOT budget allocation.
 
 ## 22. DOCUMENT STRUCTURE (client-facing)
 Header → "What is this?" intro → The Scorecard (KPI dashboard) → Provocations (4-5 with dual levers, evidence, cost of inaction, discovery question) → Engagement Plan (Phase One + Phase Two) → Discovery Questions → Closing paragraph.
@@ -214,7 +237,24 @@ For any company that operates across multiple major regions (US, Europe, Asia-Pa
 The goal: a European COO should never feel the analysis only covered the US. A US COO should never feel it only covered Europe. The document must demonstrate global awareness.
 
 ## Execution History
-(This section is updated automatically after each run)
+- April 2026: Adidas — Full pipeline v2 (8-step then migrated to 6-phase). Source gate PASS. HTML produced. Deployed on GitHub Pages.
+- April 2026: TJX Companies — Full pipeline v3 (7-phase). Source gate PASS. QUALITY ISSUE: First run provocations too generic (DCs, store labor, international margin) instead of actual supply chain. Corrected with supply chain specificity rules.
 
 ## Company-Specific Learnings
-(This section stores learnings per company for future re-runs)
+
+### Adidas
+- European company, Frankfurt-listed. IR website primary source.
+- Peer set: Nike, Puma, ASICS, Under Armour, Lululemon, VF Corp.
+- Key finding: ASICS tripled operating margin in 2 years.
+- Technology: o9 Solutions, project44 (Feb 2026).
+- Supply chain: 60+ DCs, 15+ carriers, no confirmed centralized freight reconciliation.
+
+### TJX Companies
+- US company, NYSE-listed. SEC EDGAR primary source.
+- Off-price model: NO traditional demand planning. Opportunistic buying from 21,000 vendors, 100+ countries.
+- Core differentiator: speed of buying decisions + DC-to-store allocation accuracy.
+- Peer set: Ross Stores, Burlington Stores, Inditex, H&M, Next, Gap, Nordstrom.
+- Key numbers: $60.4B revenue FY2026, 11.9% op margin, 14.4% Marmaxx, 7.3% International.
+- Technology: Oracle E-Business Suite, Oracle Retail Allocation, UKG Workforce Central, KODE Labs EMIS.
+- MISSED in first run: tariff arbitrage, freight consolidation, DC-to-store allocation intelligence, freight audit.
+- Public targets: 7,000 stores long-term (currently 5,214), 146 net new stores FY2027.

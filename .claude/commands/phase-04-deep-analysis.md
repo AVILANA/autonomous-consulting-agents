@@ -49,3 +49,12 @@ Also assess: velocity per supply chain area — can body keep up with brain spee
 
 ### moat_analysis.md
 Current advantages. Where competitors attack with AI. Where company deepens moat. Strategic risk of inaction.
+
+## DATA FRESHNESS RULE — MANDATORY
+For every KPI and every data point used in any output:
+
+1. Always use the most recent available figure. If FY2025 data exists for a metric (even from a press release or earnings transcript), use FY2025. Only fall back to FY2024 if the specific metric was not disclosed in any FY2025 source.
+2. Every number must show its fiscal year in parentheses. Not just "21.0%" but "21.0% (FY2024)" or "€24.8B (FY2025)". The year is mandatory. No exceptions.
+3. If a KPI uses an older fiscal year than the most recent results, add a small note explaining why: "(FY2024 — FY2025 breakdown not yet published)". This tells the reader you looked for newer data and it wasn't available, not that you were lazy.
+4. Never mix fiscal years within a single calculation without flagging it. If you must cross years, state it explicitly as a cross-year estimate.
+5. Technology implementations must be dated. Note the announced or known timeline for each system (e.g., "deployed Q1 2025", "announced FY2024 Annual Report"). Do not present historical announcements as current status without confirming the most recent update. Value opportunity sizing must state which fiscal year's financials were used as the baseline.

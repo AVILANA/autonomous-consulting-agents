@@ -44,3 +44,12 @@ This is essential because knowing what systems are already being implemented cha
 2. Identify core systems, integration maturity, ownership model, and process standardization.
 3. Assess transformation constraints: capital, contracts, labor, data maturity, outsourcing.
 4. Recommend the sequencing posture: body-first, brain-first, or two-speed.
+
+## DATA FRESHNESS RULE — MANDATORY
+For every KPI and every data point used in any output:
+
+1. Always use the most recent available figure. If FY2025 data exists for a metric (even from a press release or earnings transcript), use FY2025. Only fall back to FY2024 if the specific metric was not disclosed in any FY2025 source.
+2. Every number must show its fiscal year in parentheses. Not just "21.0%" but "21.0% (FY2024)" or "€24.8B (FY2025)". The year is mandatory. No exceptions.
+3. If a KPI uses an older fiscal year than the most recent results, add a small note explaining why: "(FY2024 — FY2025 breakdown not yet published)". This tells the reader you looked for newer data and it wasn't available, not that you were lazy.
+4. Never mix fiscal years within a single calculation without flagging it. If you must cross years, state it explicitly: "[Company] FY2024 metric on FY2025 revenue base (cross-year estimate)."
+5. Technology implementations and system rollouts must be dated. For each confirmed or likely implementation, note the announced or known timeline (e.g., "deployed Q1 2025", "announced FY2024 Annual Report"). Do not present historical system announcements as current status without checking for more recent updates.
