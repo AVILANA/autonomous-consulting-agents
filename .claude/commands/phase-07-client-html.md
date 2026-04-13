@@ -43,6 +43,65 @@ Use everyday equivalents: idle → unused / sitting empty | dormant → turned o
 
 ---
 
+## UI DESIGN STANDARDS — MANDATORY FOR ALL RUNS
+These design elements must appear in every HTML output regardless of company. They were validated through user feedback and are now locked.
+
+### HEADER BANNER
+- Full width, tall (py-20 minimum), animated background with slow zoom
+- Background: linear-gradient overlay on a relevant Unsplash image. Use: linear-gradient(135deg, rgba(88,28,135,0.9), rgba(29,78,216,0.85)) over the image
+- CSS animation: @keyframes slowZoom { from { background-size: 100%; } to { background-size: 110%; } } with 20s infinite alternate
+- All header content centered (text-center, margin auto)
+- Company logo: large (height:80px), white (filter:brightness(0) invert(1)), centered, margin-bottom:20px
+- Title "Outside-In Perspective" in text-4xl font-bold text-white
+- Date and confidential line in text-lg text-white/70
+- "What is this?" section inside the header with heading in text-sm font-semibold uppercase tracking-widest color:#a5b4fc and paragraph in text-base leading-relaxed color:rgba(255,255,255,0.7) max-width:900px centered
+- Claim tags legend inside the header below "What is this?" in text-xs color:rgba(255,255,255,0.6). Show ONLY three levels: [FACT] — Public filing, [INFERENCE — HIGH CONFIDENCE] — Two or more facts connect with direct logic, [INFERENCE — MODERATE CONFIDENCE] — Based on absence of disclosure, alt. explanations exist. NEVER show LOW CONFIDENCE or ASSUMPTION in client-facing output.
+- "What is this?" text: "This document presents an outside-in assessment of your supply chain operations and competitive position, built entirely from public sources — annual reports, earnings transcripts, investor presentations, and corporate disclosures. It identifies [N] quantified operational gaps, benchmarks your performance against [N] global peers, and tags every claim by confidence level. The goal is not to tell you what to do — it is to show what we found, ask the questions only your team can answer, and whether these gaps are worth exploring together." Replace [N] with actual numbers per company.
+
+### TABS
+- Three tabs positioned BELOW the header in a separate white bar (NOT inside the header)
+- White background, sticky positioning, clean border-bottom
+- Active tab: border-b-2 border-indigo-600 text-indigo-600
+- Inactive tab: text-gray-500 hover:text-gray-700
+- Tab order: Client Presentation (default), Competitive Intelligence, How We Built This
+
+### SCORECARD STYLING
+- Status shown as flat colored text — NOT pill badges or rounded badges
+- .sc-status-red { color:#dc2626; font-weight:700; font-size:11px; text-transform:uppercase; }
+- .sc-status-amber { color:#d97706; font-weight:700; font-size:11px; text-transform:uppercase; }
+- .sc-status-green { color:#16a34a; font-weight:700; font-size:11px; text-transform:uppercase; }
+- Numbers use font-variant-numeric: tabular-nums with monospace font for alignment
+- All 3 tiers in ONE HTML table with table-layout:fixed and colgroup with explicit column widths
+
+### EVIDENCE BULLETS
+- Every evidence bullet in provocations uses a styled indigo arrow: <span style="color:#6366f1;font-weight:bold;font-size:16px;margin-right:6px;">›</span>
+- NOT small dots, circles, or plain bullet characters
+- Each bullet is clearly separated and readable
+
+### BUSINESS MODEL AWARENESS IN KPI SELECTION
+- Before including any KPI, verify it is relevant to the company's actual business model
+- If e-commerce is less than 10% of revenue, do NOT include DTC Delivery Speed or DTC Channel Mix
+- Do not include metrics for business lines representing less than 5% of revenue
+- The scorecard shows KPIs the COO actually manages, not aspirational metrics
+
+### AI ASSISTANT BUTTON
+- Floating button at bottom-right: fixed position, bottom:24px, right:24px, z-index:50
+- Circular 60px, bg-indigo-600, white chat icon, shadow-lg, pulse animation for 3 seconds on load
+- Opens popup card with link to Custom GPT for the company
+- The GPT URL must be updated per company. If no GPT link available, hide the button entirely
+
+### PRINT CSS
+- @media print { .tab-nav, .chat-btn, .chat-popup { display:none !important; } .tab-panel { display:block !important; } body { background:white; } }
+
+### CASH CONTEXT
+- In the closing paragraph before footer, include a sentence about the company's cash position and operating cash flow to frame that resources are not the constraint
+
+### ABBREVIATION BAR
+- Single line in text-xs text-gray-400 listing all abbreviations used
+- Positioned as first element in white body area, before The Scorecard
+
+---
+
 Generate a standalone HTML file. Read provocations.md and client_output.md.
 
 Load in the HTML <head>:

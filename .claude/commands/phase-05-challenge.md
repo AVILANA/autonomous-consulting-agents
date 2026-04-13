@@ -31,6 +31,15 @@ Before writing a single title, write this at the top of raw_provocations.md:
 RULE: Every provocation MUST connect to at least one of items 2, 3, or 4. If it does not, it is WRONG and must be replaced.
 
 ### Job 3B: Write Raw Provocations (creative mode)
+
+### TECHNOLOGY GAP VERIFICATION — MANDATORY BEFORE ANY "GAP" PROVOCATION
+Before writing ANY provocation that claims a company LACKS a system, capability, or process, verify by re-reading tech_ops_raw.md for:
+1. Is the system confirmed as CONFIRMED or LIKELY? If yes, you CANNOT claim it is missing.
+2. Is there a team or organization that handles this function? Check for job titles like "Freight Payment Analyst", "Transportation Planning Manager", etc. in tech_ops_raw.md.
+3. If the system IS confirmed, reframe the provocation around OPTIMIZATION of the existing system (e.g., "your TMS handles routing but is it connected to your demand plan?") rather than ABSENCE of the system.
+
+A provocation that claims "you don't have X" when the company demonstrably does have X is the fastest way to lose credibility. This check is non-negotiable.
+
 Read routing_decisions.md. Write 5 provocations as if you were a senior partner who just spent 48 hours reading everything about this company and now needs to write 5 sentences that will make the COO lose sleep tonight.
 
 Only 3 rules:

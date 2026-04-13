@@ -1,127 +1,124 @@
 # TJX Companies — Routing Decisions
-## Phase 5 Job 1: Conditional Routing
-## April 2026 | No web search used.
+## Phase 5 Job 1: April 2026 (Revised — incorporates updated tech_ops_raw.md)
+## Source: company_snapshot.md, benchmark_table.md, body_brain_diagnosis.md, tech_ops_raw.md
 
 ---
 
-## ROUTING ANALYSIS
+## TECHNOLOGY GAP VERIFICATION — MANDATORY CORRECTIONS TO PRIOR PHASE ASSUMPTIONS
 
-### CONDITION CHECK: company_snapshot.md
+Before routing decisions can be finalized, Phase 4 assumptions must be corrected against the updated tech_ops_raw.md.
 
-**PRIMARY CONDITION: HIGH GROWTH**
+**Correction 1 — WMS:**
+body_brain_diagnosis.md states "No confirmed WMS — CONFIRMED (absence)."
+tech_ops_raw.md (updated) confirms: **Manhattan WMS CONFIRMED** (selected 2016, displacing legacy). **Manhattan WMS upgrade evaluation CONFIRMED** (November 2025 — active procurement signal for likely Manhattan Active WMS cloud migration).
 
-company_snapshot.md flags explicitly: "CONDITION: HIGH GROWTH — weight all subsequent analysis toward scalability, distribution infrastructure, and efficiency bottlenecks at scale."
+Impact: DC provocations CANNOT claim TJX has no WMS. The framing must shift from "absent WMS" to "WMS in upgrade evaluation — is the new architecture designed to include automation hardware in the four new DCs under construction?"
 
-Supporting evidence:
-- Net sales $60.4B (FY2026), +7% year-on-year [FACT]
-- Operating margin at record 11.9% (FY2026) [FACT]
-- Free cash flow $4.92B (FY2026) [FACT]
-- 146 net new stores planned FY2027; long-term target 7,000 stores [FACT]
-- CapEx guidance $2.2B–$2.3B for FY2027 — largest in company history [FACT]
-- New market entries in FY2027: Spain, Mexico JV expansion, Middle East stake (Brands for Less) [FACT]
+**Correction 2 — TMS:**
+value_levers.md (Area 6) states "No confirmed TMS — CONFIRMED absence."
+tech_ops_raw.md confirms: TMS CONFIRMED to exist. Freight Payment Coordinator role: "Authorizes payment of over $700 million in domestic and international logistics costs annually" through the TMS. Transportation Planning Analyst role confirms TMS configuration and load building. Oracle OTM is LIKELY (OTM User Conference 2023 attendance). EDI Specialist TMS role confirmed in Canada.
 
-**Routing instruction applied:** All 5 provocations must connect to the question "can TJX sustain 11.9%+ operating margins at 7,000 stores, or will infrastructure bottlenecks erode unit economics as volume grows 7% per year?"
+Impact: Transport provocations CANNOT claim TJX has no TMS. The framing must focus on whether the TMS (processing $700M+ in freight) has automated invoice audit logic or relies on manual processes.
 
-**No FINANCIAL DISTRESS flag.** TJX carries $6.2B cash (FY2026), 0.34x debt/equity, and $4.92B FCF (FY2026). Cost-reduction weighting alone is not the pitch. The frame is: efficiency at scale — protecting and extending the margin record as the store network and vendor universe expand.
+**Correction 3 — Freight Audit:**
+value_levers.md (Area 7) implies absence. tech_ops_raw.md confirms: freight audit function EXISTS internally — dedicated Freight Payment Specialist role + carrier invoice audit + routing guide chargeback management. No confirmed third-party freight audit provider (Cass, Trax, nVision). Appears internally managed via TMS-embedded logic.
 
----
+Impact: Freight provocation must be about SCALE AND AUTOMATION of the existing audit process — not about absence of a function.
 
-### STANDOUT PEER CHECK: benchmark_table.md
+**Correction 4 — Supply Chain Visibility:**
+FourKites real-time tracking LIKELY — TJX's Chief Logistics Officer (CLO) Raina Avalon is listed on FourKites' Executive Customer Advisory Board. Advisory board seats are reserved for paying customers.
 
-**STANDOUT PEER CONFIRMED: Gap Inc. (+600bp in 2 years)**
-
-Gap Inc. improved operating margin from approximately 1% (FY2022) to approximately 7% (FY2024) — approximately +600 basis points (bp = hundredths of a percentage point) in 2 years. This clears the >5pp in 2 years threshold established in memory.md for STANDOUT PEER routing.
-
-Routing instruction: Gap Inc. must appear as a named evidence reference in at least 2 of the 5 provocations. Specifically: Gap's +600bp improvement demonstrates that operational discipline at a comparable revenue scale can produce margin step-changes within a 24-month window. This is the "it is achievable and fast" argument for TJX's COO.
-
-**Primary operational benchmark: Ross Stores**
-
-Ross Stores operates at 12.2% operating margin (FY2025) on $21.1B revenue — 30bp higher than TJX at 2.9x less revenue and scale. Economics of scale predicts the larger business should have higher margins. TJX does not demonstrate this vs. Ross on a consolidated basis. More directly: Ross generates approximately $240K revenue per employee (FY2025 estimate) vs. TJX's approximately $163K (FY2026 estimate) — a 47% productivity gap on a comparable off-price operating model. Ross is the near-term operational benchmark and must appear in at least 2 provocations.
-
-Note on the previous run's routing: The prior execution of Phase 5 for this company selected Gap as the single standout peer and included store labor scheduling as a supply chain provocation. Labor scheduling is explicitly excluded from the valid supply chain definition (see memory.md section 21B). The prior routing also used International margin gap as a standalone provocation without tracing it to a specific supply chain operational cause. This run corrects both issues.
-
-**Burlington Stores: DC automation benchmark**
-
-Burlington's new highly automated Distribution Center (DC) in Savannah, Georgia is the most specific DC benchmark in the peer set. Burlington CapEx intensity: 8.9% of revenue (FY2025) vs. TJX 2.4% (FY2026 implied) — 3.7x more CapEx per dollar of revenue, explicitly targeting automated DC infrastructure. Burlington is the primary evidence reference for the DC automation provocation.
+Impact: Cannot claim absence of tracking visibility. Can claim the gap between having tracking data and using it to drive forward planning decisions.
 
 ---
 
-### BODY VS. BRAIN CHECK: body_brain_diagnosis.md
+## CONDITION FLAG: HIGH GROWTH
 
-**MASTER DIAGNOSIS: BODY-ADEQUATE, BRAIN-CONSTRAINED — one body upgrade required**
+**Source:** company_snapshot.md — explicitly flagged.
 
-| Stream | Primary Bottleneck | First Action |
-|---|---|---|
-| DC Operations Intelligence | BOTH — body (automation design in new DCs) AND brain (Warehouse Management System layer) — sequential dependency | Commit to WMS + automation design in NJ, El Paso, Ohio DCs within 12-month window |
-| Buyer Intelligence Augmentation | BRAIN only — no body dependency | Start Oracle Enterprise Resource Planning (ERP) data engineering immediately |
-| Store Labor + Loss Prevention | BRAIN primarily — activate existing infrastructure (UKG, KODE Labs Energy Management Information System) | UKG AI scheduling extension (upgrade, not new procurement) |
+TJX: $60.4B revenue (FY2026, +7% YoY), record 11.9% operating margin, $4.92B FCF (FY2026), 146 net new stores planned FY2027, CapEx guidance $2.2B–$2.3B (FY2027). Long-term target: 7,000 stores (current 5,214 — gap of 1,786 stores).
 
-**Body is the primary constraint in 1 area** (DC Operations). The routing threshold for "body is primary constraint in 2+ areas" (which would trigger network optimization as a Phase Two priority) is not fully met.
+**Routing instruction:** All 5 provocations must connect to "can TJX sustain 11.9%+ operating margins at 7,000 stores, or will infrastructure bottlenecks erode unit economics as volume grows?" The frame is challenge-from-success, not challenge-from-weakness.
 
-**However:** The DC body decision has a hard 12-month window. New DCs in New Jersey, El Paso TX, and Ohio are being designed and built during FY2027. Automation designed in at construction = baseline cost. Automation retrofitted after opening = estimated 3–5x cost. This is a one-time, time-sensitive body decision that must be surfaced with explicit urgency. The 12-month window IS the provocation — not the abstract concept of automation.
-
-**Routing instruction applied:** DC automation provocation must be framed as a decision being made right now during construction design, not as a future aspiration. The body network optimization is not flagged as a standalone Phase Two workstream — the DC design commitment is framed as the immediate scoping item within Phase One.
+No FINANCIAL DISTRESS flag. No cost-cutting language. Every efficiency argument is about protecting and extending a record that is already working.
 
 ---
 
-### SUPPLY CHAIN MODEL IDENTIFICATION — MANDATORY BEFORE PROVOCATIONS
+## STANDOUT PEER FLAG: ROSS STORES — OPERATIONAL BENCHMARK
 
-This section, required by memory.md section 21B, establishes the supply chain lens before any provocation titles are written.
+**Source:** peer_set.md, benchmark_table.md
+
+Ross Stores: **12.2% operating margin (FY2025)** on **$21.1B revenue** — higher than TJX at **11.9% (FY2026)** on **$60.4B**. At 2.7x less scale, Ross outperforms TJX on consolidated margin. Standard scale economics says the larger operator should win.
+
+Three explanations (from benchmark_table.md):
+1. TJX International at 7.3% drags consolidated — Marmaxx alone runs 14.4%, far above Ross
+2. Multi-banner overhead (8 banners, 9 countries) not present in Ross
+3. Ross investing $1.1B FY2026 CapEx including DC automation; TJX at 2.4% CapEx intensity vs. Ross 5.2%
+
+**Routing instruction:** Ross must be central to at least two provocations. The anomaly (larger operation, lower consolidated margin) is the most commercially uncomfortable fact in the peer set.
+
+**Burlington — DC automation benchmark:**
+Burlington's new highly automated DC in Savannah, GA opens in 2026. Burlington CapEx intensity: 8.9% of revenue vs. TJX 2.4% — 3.7x more intensive, explicitly in automation. Burlington is the primary peer evidence for DC automation provocation.
+
+---
+
+## BODY VS. BRAIN ROUTING (CORRECTED)
+
+**Source:** body_brain_diagnosis.md + tech_ops_raw.md corrections above
+
+| Stream | Body State | Brain State (CORRECTED) | Routing |
+|---|---|---|---|
+| DC Operations | Expanding: 4 new DCs (El Paso 1.6M+ sq ft, Sunbridge FL 1.93M sq ft, Ohio $170M, NJ 1.3M sq ft) | WMS CONFIRMED (Manhattan, 2016) + UPGRADE EVALUATION (Nov 2025). Automation hardware uncommitted. | Provocation: automation design in new DCs — this is the open window, not WMS absence |
+| Buyer Intelligence | Healthy: 1,400 buyers, global vendor relationships | No AI deal-scoring confirmed. Oracle EBS deal history available. India GCC Data & Automation growing. | Provocation: AI augmentation during peak deal flow — pure brain, start immediately |
+| Freight / Transport | TMS CONFIRMED ($700M+ annual freight). Internal audit function confirmed. | No freight audit AUTOMATION confirmed. Manual human review at $700M+ scale. | Provocation: automated invoice audit on existing process — scale the brain, not install it |
+| Store Allocation | Oracle Retail Allocation CONFIRMED. | No AI new-store demand bootstrapping. 146 new stores in FY2027. | Provocation: allocation accuracy for new stores — improve the brain layer on existing allocation system |
+
+**Phase Two body priority:**
+DC automation hardware design in new facilities (NJ, El Paso, Sunbridge FL, Ohio) must be decided during the current construction planning phase — estimated 12-month window before concrete locks automation prerequisites. This is the one time-sensitive body decision. All other improvements are pure brain, no body prerequisite.
+
+---
+
+## SUPPLY CHAIN MODEL IDENTIFICATION — MANDATORY
 
 **(1) What makes this company's supply chain unique?**
-
-TJX does not buy predictable, repeating products. It buys excess, cancelled, and overstock inventory from approximately 21,000 vendors across 100+ countries. Every lot is different. No stable SKU (Stock Keeping Unit) catalog. No replenishment cycle. The supply chain is not driven by consumer demand forecasts — it is driven by vendor surplus availability. The entire flow runs: vendor excess inventory → buying decision (accept or pass) → DC receives non-standard lot → allocation to stores → store sells with no ability to reorder. The model rests on the speed and quality of three non-repeatable decisions: which lot to buy, how to allocate it, and how fast the DC can process and dispatch it.
+TJX buys excess, cancelled, and overstock inventory opportunistically from ~21,000 vendors across 100+ countries. No forward factory orders. No stable SKU (Stock Keeping Unit) catalog. No replenishment cycle. Every lot is different. The supply chain is driven by vendor surplus availability, not consumer demand forecasts. The full flow is: vendor excess exists → buyer accepts or rejects deal → DC receives non-standard lot → Oracle Retail Allocation sends product to stores → store sells with no reorder possible. Every decision is one-shot.
 
 **(2) What is the core operational differentiator?**
+The speed and quality of the buying decision. TJX's 1,400 buyers evaluate deals from 21,000 vendors daily. The difference between a 45% discount and a 40% discount on ~$41.7B estimated FY2026 COGS = ~$2B in gross profit. Buying quality — markon achieved, markdown avoided — is where gross margin is made or lost.
 
-The speed and quality of the buying decision. TJX's 1,400 buyers evaluate thousands of deals per year from 21,000 vendors. The difference between accepting a deal at 45% below cost vs. 40% below cost on $41.7B in estimated COGS (FY2026) is approximately $2B in gross margin. Buying quality — markon (markup above cost) achieved plus markdown (further discounting) rate avoided — determines whether gross margin is 31% or 33%. Everything else in the supply chain executes the buying decision: DCs process the deals, allocation distributes them, stores sell the treasure.
+**(3) Three most critical daily supply chain decisions:**
+1. Accept, reject, or price a vendor deal — multiplied across 1,400 buyers, this is where gross margin is set
+2. Which stores receive which portion of which lot (allocation) — determines markdown rate and cash conversion speed
+3. How fast to process non-standard incoming lots through DCs — determines time from purchase commitment to store shelf and cash
 
-**(3) What are the 3 most critical supply chain decisions TJX makes every day?**
+**(4) Supply chain processes that handle the most money:**
+- Buying / vendor negotiation: ~$41.7B estimated COGS (FY2026)
+- DC receiving and processing: estimated $1B–$2B in DC labor embedded in COGS [INFERENCE — MODERATE]
+- Inbound + outbound freight: estimated $1B–$3B total [INFERENCE — MODERATE — not separately disclosed]; $700M+ confirmed processed through TMS domestically and internationally
 
-1. **Accept/reject/price a vendor deal.** A buyer evaluates a vendor offering branded merchandise at X% below cost. Accept or pass? At what markon? This decision, multiplied across 1,400 buyers and thousands of deals per year, is where gross margin is made or lost.
-
-2. **Which stores receive which portion of which lot.** Oracle Retail Allocation routes each incoming lot to specific stores. Getting this right — right product to stores where it sells fast — directly impacts markdown rate and gross margin. Getting it wrong = either markdown (too much sent to low-demand stores) or lost sales (too little sent to high-demand stores).
-
-3. **How to process incoming lots through DCs efficiently.** 21,000 vendors ship non-standard lots. Each truck arrival requires sorting, tagging, and dispatching to store allocations. DC throughput speed determines how quickly TJX can put product on store shelves and convert it to cash before demand cools.
-
-**(4) What supply chain processes handle the most money?**
-
-- **Buying / vendor negotiation:** ~$41.7B estimated COGS (FY2026). Even 1% improvement in markon across this cost base = ~$417M.
-- **DC receiving and processing:** DC labor embedded in COGS. Estimated $1B–$2B in DC labor (INFERENCE — MODERATE — not separately disclosed). Non-standard lot receiving is the most labor-intensive process per unit in TJX's model.
-- **Inbound and outbound freight:** Total freight spend (inbound from 100+ source countries + outbound DC to store) estimated $1B–$3B annually (INFERENCE — MODERATE — not separately disclosed). Lower freight costs were explicitly cited as a gross margin driver in FY2024–FY2025 [FACT].
-
-**Mandatory connection check:** Every provocation must connect to items 2, 3, or 4 above.
-- P1 (DC automation): connects to Decision 3 + Process 2 (DC processing, labor cost in COGS) ✓
-- P2 (Buyer intelligence): connects to Decision 1 + Process 1 (buying determines $41.7B COGS) ✓
-- P3 (Freight audit): connects to Process 3 (freight spend is the largest unchecked cost after merchandise) ✓
-- P4 (Allocation intelligence): connects to Decision 2 + Process 1 (allocation accuracy determines markdown rate on COGS basis) ✓
-- P5 (Synthesis): connects to all ✓
-
-All 5 provocations pass the mandatory connection test. ✓
+**Connection test:** Every provocation must connect to item 2, 3, or 4 above.
+- P1 (DC automation) → Decision 3 + Process 2 ✓
+- P2 (Buyer intelligence) → Decision 1 + Process 1 ✓
+- P3 (Freight audit) → Process 3 ✓
+- P4 (Allocation) → Decision 2 + Process 1 ✓
+- P5 (Synthesis) → all ✓
 
 ---
 
-### PROVOCATION ROUTING SUMMARY
+## ROUTING SUMMARY TABLE
 
-| # | Topic | Routing Basis | Key Peers | Core Urgency |
+| # | Provocation Topic | Routing Basis | Key Peers | Core Urgency |
 |---|---|---|---|---|
-| P1 | DC Automation Design | HIGH GROWTH + one-time body decision window in new DC construction | Burlington (8.9% CapEx intensity) + Ross ($1.1B CapEx, FY2026) | 12-month design window — automation now or 3–5x retrofit cost after opening |
-| P2 | Buyer Intelligence | HIGH GROWTH + brain gap during record deal flow + Ross productivity gap | Ross (47% more revenue/person) | Best buying environment in company history; buyer bandwidth is the constraint right now |
-| P3 | Freight Audit | HIGH GROWTH + confirmed absence of freight audit + network complexity | Ross (simpler US-only carrier network; structural contrast) + Gap (freight simplification as turnaround driver) | Complex carrier network across 30+ DCs, 21,000 vendors, 9 countries with no confirmed audit system |
-| P4 | Allocation Intelligence | HIGH GROWTH + 146 new stores per year with no demand history + markdown risk | Gap (+600bp improvement partly via markdown discipline) + Inditex (8–9x inventory turns vs. TJX 5.6x) | FY2027 new store expansion creates systematic allocation gaps — 146 stores with zero historical data |
-| P5 | Synthesis | All of P1–P4 | Ross + Gap | $500M+ opportunity connecting the 4 gaps to the 11.9% → 13%+ operating margin path |
+| P1 | DC automation design in new facilities | HIGH GROWTH + 12-month construction window | Burlington (highly automated, 8.9% CapEx) + Ross ($1.1B CapEx) | Automation designed in = baseline cost. Retrofit after opening = 3–5x cost. |
+| P2 | Buyer deal-ranking during peak deal flow | HIGH GROWTH + brain gap + tariff windfall | Ross (12.2% margin at 2.7x less scale — productivity gap) | CEO calls this the best buying environment in company history. Buyer bandwidth is the real constraint. |
+| P3 | Freight invoice audit automation | HIGH GROWTH + $700M+ confirmed freight at manual audit scale | DHL-managed TJX Europe (internal contrast — Europe's logistics is systematically managed; US is manual) | $700M+ in confirmed freight payments with human-intensive audit across multi-carrier, 9-country network |
+| P4 | New store allocation accuracy | HIGH GROWTH + 146 new stores/year with zero demand history | Inditex (8–9x inventory turns; allocation precision) + lower markdowns as confirmed TJX margin driver | 146 new stores this year, each with one first allocation and no reorder if it's wrong |
+| P5 | Synthesis: four gaps → margin sustainability | All of P1–P4 + 7,000-store commitment | Ross (margin benchmark — same model, higher margin at lower scale) | $365M+ total annual value; 60bp margin improvement; connects to sustaining 11.9% through 7,000-store expansion |
 
-**Lever distribution check (required: 3+ distinct financial AND 3+ distinct operational):**
-- Financial levers: COGS Avoidance (P1), Gross Margin Improvement (P2), OPEX Reduction (P3), Working Capital Release (P4), Operating Margin Expansion (P5) = 5 distinct ✓
-- Operational levers: Throughput/Process Efficiency (P1), Decision Cycle Compression (P2), Planning Cycle Speed (P3), Production-to-Shelf Velocity (P4), Response Latency (P5) = 5 distinct ✓
-
-**Supply chain coverage check (required: transport/freight, sourcing/procurement, DC operations — all three must be covered):**
-- Transport/freight: P3 (freight audit, carrier management) ✓
-- Sourcing/procurement: P2 (buying decisions, vendor selection, deal quality) ✓
-- DC operations/inventory flow: P1 (DC automation, WMS design) + P4 (DC-to-store allocation) ✓
-
-**Supply chain validity check:** None of the 5 provocations cover store labor scheduling, store layout, marketing, e-commerce UX, HR, or real estate — all excluded per memory.md section 21B. P4 covers DC-to-store allocation (valid), not store-level replenishment planning (excluded). ✓
+**Financial lever distribution:** COGS Avoidance (P1) + Gross Margin Improvement (P2) + OPEX Reduction (P3) + Gross Margin Improvement/Working Capital (P4) + Operating Margin Expansion (P5) = 4 distinct financial levers ✓
+**Operational lever distribution:** Throughput/Process Efficiency (P1) + Decision Cycle Compression (P2) + Planning Cycle Speed (P3) + Production-to-Shelf Velocity (P4) + Response Latency (P5) = 5 distinct operational levers ✓
+**Supply chain coverage:** Transport/freight (P3) ✓ + Sourcing/procurement (P2) ✓ + DC operations/inventory flow (P1, P4) ✓
 
 ---
 
-*Source: company_snapshot.md, benchmark_table.md, body_brain_diagnosis.md, value_levers.md, stream_ranking.md, tech_ops_footprint.md, management_roadmap.md (prior phase outputs). No web search used.*
+*Sources: company_snapshot.md, benchmark_table.md, body_brain_diagnosis.md, tech_ops_raw.md, value_levers.md, stream_ranking.md, peer_set.md. No web search used.*

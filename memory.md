@@ -104,6 +104,9 @@ Three tiers in ONE single HTML table (not separate tables) with table-layout: fi
 - Narrative paragraph below table bridging scorecard to provocations: "[X] of [Y] tracked KPIs sit at or below peer median..."
 - Light theme matching rest of page — NOT dark/Bloomberg
 
+### KPIs That Must Never Appear for Primarily Brick-and-Mortar Companies
+If e-commerce is less than 10% of revenue: exclude DTC Delivery Speed, DTC Channel Mix. If a KPI gap reflects a deliberate business model choice (not an operational failure), exclude it. Example: TJX's 3% e-commerce is deliberate — treasure hunt model requires physical stores. Putting DTC metrics in the scorecard shows you don't understand the business.
+
 ## 7. ENGAGEMENT PLAN
 **Phase One: Validate & Scope — Weeks 1-4, fixed fee.**
 - Stress-test provocations against internal data
@@ -203,6 +206,9 @@ YES: sourcing, procurement, inbound transport, freight consolidation, freight au
 NO: store labor scheduling, store layout, marketing, e-commerce UX, international margin gaps (unless traced to specific operational cause), HR, real estate, corporate overhead.
 TEST: If it would make sense in a board presentation, too generic. If it only makes sense talking to VP Supply Chain about a specific process, it is right.
 
+### Business Model Awareness in KPI Selection
+Before including any KPI in the scorecard, verify it is relevant to the company's actual business model. If e-commerce is less than 10% of revenue, do NOT include DTC Delivery Speed or DTC Channel Mix — these are not meaningful for primarily brick-and-mortar retailers. Similarly, do not include metrics for business lines that represent less than 5% of revenue. The scorecard must show KPIs the COO actually manages, not aspirational metrics for channels the company has deliberately de-prioritized.
+
 ### Mandatory Coverage Check
 Before finalizing 5 provocations, verify ALL THREE covered: at least ONE on transport/freight, at least ONE on sourcing/procurement, at least ONE on DC operations or inventory flow. If any missing, replace the weakest.
 
@@ -214,6 +220,15 @@ Before skipping Tier 3, search ALL output files for margin targets, store count 
 
 ### Role-Specific Language Clarity
 Never use terms with dual meaning without defining them. "Buyers" in retail = purchasing agents NOT end customers. "Allocation" = which products go to which stores NOT budget allocation.
+
+### Technology Gap Verification — LESSON FROM TJX (April 2026)
+NEVER claim a company lacks a system, capability, or team without exhaustive verification across 5 source categories: (1) vendor press releases, (2) job postings, (3) vendor customer/award pages, (4) technology databases like AppsRunTheWorld, (5) LinkedIn profiles and advisory board memberships. TJX was found to have Blue Yonder TMS, Oracle OTM, Manhattan WMS, a dedicated Freight Payment & Audit team, FourKites visibility, and Voxware — NONE of which appeared in SEC filings or earnings calls. All were found through job postings, vendor databases, and LinkedIn. A provocation that claims "you don't have X" when the company demonstrably does have X destroys credibility instantly. If a capability IS confirmed, reframe around OPTIMIZATION of the existing system, not ABSENCE.
+
+### Inventory Allocation > DC Automation as Provocation
+DC automation is a CapEx observation that a CFO already knows about. It is not a supply chain provocation that makes a COO uncomfortable. Inventory misallocation ($900M more on shelves — is it in the right stores?) is more specific, more falsifiable, and more actionable. Prefer inventory/allocation provocations over infrastructure/CapEx observations.
+
+### MODERATE Confidence Presentation Rules
+Every number tagged INFERENCE-MODERATE must have qualifying language: "estimated", "approximately", "may", "Phase One validates", or similar. NEVER present a MODERATE number as definitive. Titles use only FACT and HIGH numbers. Cost of Inaction sections always say "estimated" before dollar amounts. EBIT bridge tables always include "Phase One validation required" per row. The synthesis total is always conditional: "if confirmed at conservative estimates" not "these gaps cost $X."
 
 ## 22. DOCUMENT STRUCTURE (client-facing)
 Header → "What is this?" intro → The Scorecard (KPI dashboard) → Provocations (4-5 with dual levers, evidence, cost of inaction, discovery question) → Engagement Plan (Phase One + Phase Two) → Discovery Questions → Closing paragraph.
@@ -238,7 +253,7 @@ The goal: a European COO should never feel the analysis only covered the US. A U
 
 ## Execution History
 - April 2026: Adidas — Full pipeline v2 (8-step then migrated to 6-phase). Source gate PASS. HTML produced. Deployed on GitHub Pages.
-- April 2026: TJX Companies — Full pipeline v3 (7-phase). Source gate PASS. QUALITY ISSUE: First run provocations too generic (DCs, store labor, international margin) instead of actual supply chain. Corrected with supply chain specificity rules.
+- April 2026: TJX Companies — Full pipeline v3 (7-phase). Source gate PASS. Multiple re-runs required. KEY LESSONS: (1) Phase 1 missed Blue Yonder TMS, Manhattan WMS, FourKites, freight audit team because it only searched vendor press releases — expanded to include job postings, vendor databases, LinkedIn, advisory boards. (2) DC automation provocation rejected by user as CapEx observation, replaced with inventory allocation. (3) Store labor scheduling and international margin gap rejected as non-supply-chain. (4) DTC delivery speed and channel mix removed from scorecard — irrelevant for 97% brick-and-mortar model. (5) MODERATE confidence numbers must always have qualifying language.
 
 ## Company-Specific Learnings
 
@@ -249,12 +264,15 @@ The goal: a European COO should never feel the analysis only covered the US. A U
 - Technology: o9 Solutions, project44 (Feb 2026).
 - Supply chain: 60+ DCs, 15+ carriers, no confirmed centralized freight reconciliation.
 
-### TJX Companies
+### TJX Companies (Updated April 2026)
 - US company, NYSE-listed. SEC EDGAR primary source.
 - Off-price model: NO traditional demand planning. Opportunistic buying from 21,000 vendors, 100+ countries.
 - Core differentiator: speed of buying decisions + DC-to-store allocation accuracy.
-- Peer set: Ross Stores, Burlington Stores, Inditex, H&M, Next, Gap, Nordstrom.
-- Key numbers: $60.4B revenue FY2026, 11.9% op margin, 14.4% Marmaxx, 7.3% International.
-- Technology: Oracle E-Business Suite, Oracle Retail Allocation, UKG Workforce Central, KODE Labs EMIS.
-- MISSED in first run: tariff arbitrage, freight consolidation, DC-to-store allocation intelligence, freight audit.
-- Public targets: 7,000 stores long-term (currently 5,214), 146 net new stores FY2027.
+- Peer set: Ross Stores (closest comp), Burlington Stores, Inditex, H&M, Next, Gap, Nordstrom.
+- Key numbers: $60.4B revenue FY2026, 11.9% op margin, 14.4% Marmaxx, 7.3% International, $7.3B inventory (+10% per store), 377,000 employees, $6.2B cash.
+- CONFIRMED tech stack: Oracle E-Business Suite (ERP), Oracle Retail Allocation, Oracle iSupplier, TMS processing $700M+ freight (vendor unconfirmed but system confirmed), Manhattan WMS (selected 2016, upgrade evaluation Nov 2025), UKG Workforce Central, KODE Labs EMIS, SPS Commerce (EDI), Voxware VoiceLogistics (historical 2004), FourKites (LIKELY — CLO on advisory board), DHL managed service for Europe logistics.
+- CONFIRMED team: Dedicated Freight Payment and Audit organization with Analyst, Specialist, Coordinator, and Manager roles in Marlborough MA. Uses Power BI for freight analytics. SOX compliance audits on freight payment controls.
+- Blue Yonder TMS: Found in deep research (job postings, live system URLs) but NOT found by automated Phase 1 search. This gap led to a provocation claiming $60M freight audit gap when TJX already has the capability. LESSON: Phase 1 must search job postings, vendor databases, LinkedIn, and advisory boards — not just press releases and SEC filings.
+- Public targets: 7,000 stores long-term (currently 5,214), 146 net new stores FY2027, CapEx $2.2-2.3B FY2027, pretax margin guidance 11.7-11.8% FY2027, 13% dividend growth, $2.5-2.75B buyback FY2027.
+- E-commerce ~3% of revenue — DTC delivery speed and DTC channel mix are NOT relevant KPIs for this business model.
+- Tariff environment: Supreme Court invalidated IEEPA tariffs Feb 2026, new global tariff imposed. TJX benefits from tariff chaos (competitors cancel orders, TJX buys excess). Buying speed is the competitive weapon.

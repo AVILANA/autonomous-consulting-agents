@@ -34,17 +34,82 @@ DATA RECENCY RULE: Always use the MOST RECENT data. FY2025 annual over FY2024. L
 
 Save as: sources/financial_data.md
 
-## Step 3: Technology and Operations Data
-- Search: '$ARGUMENTS' + each: Blue Yonder, Manhattan Associates, SAP TM, SAP EWM, SAP IBP, Oracle TMS, Kinaxis, o9 Solutions, Coupa, project44, FourKites, Transporeon, Descartes, E2open, AutoStore, Ocado
-- Search: '$ARGUMENTS' + each: SAP S/4HANA, Oracle Cloud, Salesforce, Workday, ServiceNow
-- Search: '$ARGUMENTS' + each: Databricks, Snowflake, AWS SageMaker, Azure ML, Palantir, UiPath, Celonis
-- Search: '$ARGUMENTS' + each: Accenture, Deloitte, McKinsey, Capgemini, TCS, Infosys, IBM Consulting
-- Search: '$ARGUMENTS delivery time SLA fulfillment speed'
-- Search: '$ARGUMENTS distribution center warehouse locations'
-- Search: '$ARGUMENTS ship from store microfulfillment dark store'
-- Search: '$ARGUMENTS supply chain visibility automation robotics'
+## Step 3: Technology and Operations Data — DEEP DISCOVERY
 
-Save as: tech_ops_raw.md (tag each finding as CONFIRMED, LIKELY, or UNCONFIRMED)
+This step must be EXHAUSTIVE. Missing a confirmed technology implementation leads to provocations that destroy credibility with the client. The TJX case proved that companies often DO NOT publicize their vendor relationships — you must search indirect sources.
+
+### 3A — Direct Vendor Searches (existing, keep these)
+Search: '$ARGUMENTS' + each: Blue Yonder, Manhattan Associates, SAP TM, SAP EWM, SAP IBP, Oracle Transportation Management, Oracle WMS, Kinaxis, o9 Solutions, Coupa, Jaggaer, Ariba, GEP, project44, FourKites, Transporeon, Descartes, E2open, Korber, Honeywell Intelligrated, Locus Robotics, AutoStore, Ocado Solutions
+Search: '$ARGUMENTS' + each: SAP S/4HANA, Oracle Cloud, Microsoft Dynamics, Salesforce, Workday, ServiceNow, NetSuite
+Search: '$ARGUMENTS' + each: Databricks, Snowflake, AWS SageMaker, Azure ML, Palantir, UiPath, Celonis
+Search: '$ARGUMENTS' + each: Accenture, Deloitte, McKinsey, Capgemini, TCS, Infosys, IBM Consulting
+
+### 3B — JOB POSTING SEARCHES (NEW — CRITICAL)
+Job postings are the single most revealing source of technology implementations. Companies that never issue press releases about vendor selections DO post jobs requiring expertise in those systems.
+
+Search: '$ARGUMENTS jobs transportation management system TMS'
+Search: '$ARGUMENTS jobs warehouse management system WMS'
+Search: '$ARGUMENTS jobs Blue Yonder OR JDA'
+Search: '$ARGUMENTS jobs Manhattan Associates'
+Search: '$ARGUMENTS jobs SAP EWM OR SAP TM OR SAP IBP'
+Search: '$ARGUMENTS jobs freight payment audit'
+Search: '$ARGUMENTS jobs supply chain analyst systems'
+Search: '$ARGUMENTS careers logistics technology'
+Search: 'site:linkedin.com $ARGUMENTS transportation management'
+Search: 'site:linkedin.com $ARGUMENTS freight payment audit'
+Search: 'site:linkedin.com $ARGUMENTS supply chain technology'
+
+For each job posting found, extract: system name mentioned, role level (analyst/manager/director), location (HQ vs DC), and whether the posting describes an existing system or a new implementation.
+
+### 3C — VENDOR REFERENCE AND AWARD SEARCHES (NEW)
+Search: '$ARGUMENTS' on each vendor's customer page or case study section
+Search: '$ARGUMENTS award supply chain logistics'
+Search: '$ARGUMENTS SmartWay EPA transportation'
+Search: '$ARGUMENTS innovation supply chain partner'
+Search: 'site:fourkites.com $ARGUMENTS'
+Search: 'site:descartes.com $ARGUMENTS'
+Search: 'site:blueyonder.com $ARGUMENTS'
+Search: 'site:manh.com $ARGUMENTS' (Manhattan Associates)
+Search: 'site:project44.com $ARGUMENTS'
+
+Also search for the company's executives on advisory boards:
+Search: '$ARGUMENTS chief logistics officer advisory board'
+Search: '$ARGUMENTS VP supply chain advisory board'
+Search: '$ARGUMENTS supply chain executive board member'
+
+### 3D — TECHNOLOGY DATABASE SEARCHES (NEW)
+Search: 'site:appsruntheworld.com $ARGUMENTS'
+Search: '$ARGUMENTS technographics software stack'
+Search: '$ARGUMENTS EDI supply chain integration'
+Search: '$ARGUMENTS SPS Commerce OR Coupa OR Ariba supplier portal'
+
+### 3E — EXISTING SYSTEM VERIFICATION (NEW — CRITICAL)
+Before concluding that a company LACKS a system, verify the absence by searching:
+Search: '$ARGUMENTS' + 'TMS' OR 'transportation management'
+Search: '$ARGUMENTS' + 'freight audit' OR 'freight payment'
+Search: '$ARGUMENTS' + 'WMS' OR 'warehouse management'
+Search: '$ARGUMENTS' + 'yard management'
+Search: '$ARGUMENTS' + 'labor management system'
+
+RULE: You may ONLY state "no confirmed [system]" if ALL of the following return zero results:
+1. Direct vendor search (3A)
+2. Job posting search (3B) — no job mentions the system
+3. Vendor reference search (3C) — no vendor lists the company
+4. Technology database search (3D)
+5. General system search (3E)
+
+If ANY of these five search categories returns a result suggesting the system exists, tag it as LIKELY or CONFIRMED and include it in tech_ops_raw.md.
+
+### 3F — DELIVERY SPEED AND FULFILLMENT (keep existing)
+Search: '$ARGUMENTS delivery time SLA fulfillment speed'
+Search: '$ARGUMENTS distribution center warehouse locations'
+Search: '$ARGUMENTS ship from store microfulfillment dark store'
+Search: '$ARGUMENTS supply chain visibility automation robotics'
+
+Save everything as: tech_ops_raw.md
+Tag each finding as CONFIRMED (multiple independent sources), LIKELY (single credible source like job posting or vendor database), or UNCONFIRMED (indirect evidence only).
+
+LESSON LEARNED (April 2026 — TJX): TJX runs Blue Yonder TMS, Oracle OTM, Manhattan WMS, Voxware voice picking, Descartes logistics, and FourKites visibility — NONE of which appeared in their 10-K, earnings calls, or press releases. All were found through job postings, vendor databases, LinkedIn profiles, and advisory board memberships. If Phase 1 had only searched vendor press releases and SEC filings, it would have missed the entire technology stack. NEVER assume a company lacks a system just because they don't publicize it.
 
 ## Step 4: Peer Data Collection
 - Search: 'top publicly listed competitors of $ARGUMENTS'
